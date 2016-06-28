@@ -191,6 +191,7 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
                     }
                     final CharSequence selectedText = messageTextView.getText().subSequence(min, max);
                     Log.i(TAG, "onActionItemClicked: selected text = " + selectedText);
+                    trieT9.add(encodeWord(selectedText.toString()), selectedText.toString());
                     new InsertWordTask(new WeakReference<Context>(MainActivity.this)).execute(selectedText.toString());
                     mode.finish();
                     // return true;

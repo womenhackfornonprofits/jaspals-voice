@@ -1,5 +1,7 @@
 package uk.co.jaspalsvoice.jv;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -54,6 +56,7 @@ public class TrieT9 {
     private void addWordIfNotExists(Node root, String newWord) {
         if (!root.words.contains(newWord)) {
             root.words.add(newWord);
+//            Log.i("TrieT9", "new word successfully added");
         }
     }
 

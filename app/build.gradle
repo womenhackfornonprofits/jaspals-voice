@@ -14,10 +14,10 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file("../support_files/debug.keystore")
+ //           storeFile file("../support_files/debug.keystore")
         }
         release {
-            storeFile file('../support_files/release.keystore')
+            //storeFile file('../support_files/release.keystore')
             storePassword "jaspal"
             keyAlias "release"
             keyPassword "jaspal"
