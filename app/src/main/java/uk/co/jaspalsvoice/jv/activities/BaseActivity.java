@@ -3,6 +3,7 @@ package uk.co.jaspalsvoice.jv.activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import uk.co.jaspalsvoice.jv.JvApplication;
 import uk.co.jaspalsvoice.jv.JvPreferences;
@@ -31,5 +32,9 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         onBackPressed();
         return true;
+    }
+
+    public void showToast(String message, int duration){
+        Toast.makeText(this, message, duration).show();
     }
 }

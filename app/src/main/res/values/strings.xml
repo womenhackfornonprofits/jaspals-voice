@@ -95,5 +95,6 @@
     <string name="about_me_physical_abilities">Physical Abilities</string>
     <string name="about_me_physical_abilities_subtitle">I Can Walk</string>
     <string name="about_me_transfer_to">I Need Help To Transfer To</string>
+    <string name="medicine_add_success_message">Medicine added successfully</string>
 
 </resources>

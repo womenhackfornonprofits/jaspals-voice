@@ -1,5 +1,6 @@
 package uk.co.jaspalsvoice.jv.views.custom.medicine;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import java.util.List;
 
 import uk.co.jaspalsvoice.jv.R;
+import uk.co.jaspalsvoice.jv.activities.MedicinesActivity;
+import uk.co.jaspalsvoice.jv.models.*;
 
 /**
  * Created by Ana on 3/6/2016.
@@ -20,14 +23,16 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_OTHER = 1;
+    private Context context;
 
-    private List<Medicine> data;
+    private List<uk.co.jaspalsvoice.jv.models.Medicine> data;
 
-    public MedicineListAdapter(List<Medicine> data) {
+    public MedicineListAdapter(Context context, List<uk.co.jaspalsvoice.jv.models.Medicine> data) {
         this.data = data;
+        this.context = context;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView nameView;
         TextView dosageView;
         TextView reasonView;
@@ -40,6 +45,8 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         Button edit;
         boolean editMode;
+
+        Context context;
 
         public ViewHolder(View view) {
             super(view);
@@ -54,6 +61,8 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             frequencyEdit = (EditText) view.findViewById(R.id.edit_value_frequency);
 
             edit = (Button) view.findViewById(R.id.edit);
+
+            context = MedicineListAdapter.this.context;
 
             showNonEditMode();
 
@@ -72,6 +81,11 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
 
         private void showNonEditMode() {
+
+            saveMedicineData(nameEdit.getText().toString(),
+                    dosageEdit.getText().toString(), reasonEdit.getText().toString(),
+                    frequencyEdit.getText().toString());
+
             nameEdit.setVisibility(View.GONE);
             nameView.setVisibility(View.VISIBLE);
 
@@ -135,7 +149,7 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == TYPE_ITEM) {
             ViewHolder vHolder = ((ViewHolder) holder);
-            Medicine medicine = data.get(position);
+            uk.co.jaspalsvoice.jv.models.Medicine medicine = data.get(position);
 
             vHolder.nameView.setText(medicine.getName());
             vHolder.dosageView.setText(medicine.getDosage());
@@ -158,4 +172,9 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public int getItemViewType(int position) {
         return position == getItemCount() - 1 ? TYPE_OTHER : TYPE_ITEM;
     }
+
+    private void saveMedicineData(String... medicineData){
+        ((MedicinesActivity)context).saveMedicineData(medicineData);
+    }
+
 }
