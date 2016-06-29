@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minWidth="@dimen/label_min_width"
+        android:padding="@dimen/margin_small"
+        android:textSize="@dimen/text_big_size"
+        tools:text="Title"/>
+
+    <include layout="@layout/divider"/>
+
+    <TextView
+        android:drawableRight="@drawable/ic_action_edit"
+        android:id="@+id/title2"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minWidth="@dimen/label_min_width"
+        android:padding="@dimen/margin_small"
+        android:textSize="@dimen/text_big_size"
+        tools:text="Title"/>
+
+    <include layout="@layout/divider"/>
+
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_small"
+        android:singleLine="false"
+        android:textSize="@dimen/text_normal_size"
+        tools:text="Text"/>
+
+    <EditText
+        android:id="@+id/edit2"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_small"
+        android:textSize="@dimen/text_normal_size"
+        android:visibility="gone"
+        tools:text="Edit this"/>
+
+    <include layout="@layout/divider"/>
+
+
+    <TextView
+        android:drawableRight="@drawable/ic_action_edit"
+        android:id="@+id/title3"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minWidth="@dimen/label_min_width"
+        android:padding="@dimen/margin_small"
+        android:textSize="@dimen/text_big_size"
+        tools:text="Title"/>
+
+    <include layout="@layout/divider"/>
+
+
+    <TextView
+        android:id="@+id/text3"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_small"
+        android:singleLine="false"
+        android:textSize="@dimen/text_normal_size"
+        tools:text="Text"/>
+
+    <EditText
+        android:id="@+id/edit3"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_small"
+        android:textSize="@dimen/text_normal_size"
+        android:visibility="gone"
+        tools:text="Edit this"/>
+
+    <include layout="@layout/divider"/>
+
+
+    <TextView
+        android:drawableRight="@drawable/ic_action_edit"
+        android:id="@+id/title4"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minWidth="@dimen/label_min_width"
+        android:padding="@dimen/margin_small"
+        android:textSize="@dimen/text_big_size"
+        tools:text="Title"/>
+
+    <include layout="@layout/divider"/>
+
+
+    <TextView
+        android:id="@+id/text4"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_small"
+        android:singleLine="false"
+        android:textSize="@dimen/text_normal_size"
+        tools:text="Text"/>
+
+    <EditText
+        android:id="@+id/edit4"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_small"
+        android:textSize="@dimen/text_normal_size"
+        android:visibility="gone"
+        tools:text="Edit this"/>
+
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_small"
+        android:visibility="gone">
+
+        <Button
+            style="@style/DefaultButton"
+            android:id="@+id/cancel"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="Cancel"/>
+
+        <Button
+            style="@style/DefaultButton"
+            android:id="@+id/save"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="Save"/>
+    </LinearLayout>
+</LinearLayout>

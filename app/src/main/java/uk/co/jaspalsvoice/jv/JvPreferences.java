@@ -10,7 +10,7 @@ public class JvPreferences {
 
     private static final String PREFS_FILE_NAME = "JvPreferences.txt";
 
-    private static final String PERSONAL_DETAILS_NAME = "pd_name";
+    private static final String PERSONAL_DETAILS_FIRST_NAME = "pd_name";
     private static final String PERSONAL_DETAILS_PREFERRED_NAME = "pd_preferred_name";
     private static final String PERSONAL_DETAILS_LIVE_WITH = "pd_live_with";
     private static final String PERSONAL_DETAILS_EMAIL = "pd_email";
@@ -29,6 +29,14 @@ public class JvPreferences {
     private static final String LIKES_DISLIKES_OTHER = "ld_other";
 
     private static final String DIAGNOSIS = "d_diagnosis";
+    private static final String PERSONAL_DETAILS_STREET = "pd_street";
+    private static final String PERSONAL_DETAILS_TOWN = "pd_town";
+    private static final String PERSONAL_DETAILS_COUNTY = "pd_county";
+    private static final String HOME_TELEPHONE = "pd_home_telephone";
+    private static final String PERSONAL_DETAILS_LAST_NAME = "pd_last_name";
+    private static final String MOBILE = "pd_mobile";
+    private static final String GENDER = "pd_gender";
+    private static final String CARER_LANG = "pd_carer_language";
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -38,12 +46,20 @@ public class JvPreferences {
         editor = preferences.edit();
     }
 
-    public String getPersonalDetailsName() {
-        return preferences.getString(PERSONAL_DETAILS_NAME, "");
+    public String getPersonalDetailsFirstName() {
+        return preferences.getString(PERSONAL_DETAILS_FIRST_NAME, "");
     }
 
-    public void setPersonalDetailsName(String name) {
-        editor.putString(PERSONAL_DETAILS_NAME, name).apply();
+    public void setPersonalDetailsFirstName(String name) {
+        editor.putString(PERSONAL_DETAILS_FIRST_NAME, name).apply();
+    }
+
+    public String getPersonalDetailsLastName() {
+        return preferences.getString(PERSONAL_DETAILS_LAST_NAME, "");
+    }
+
+    public void setPersonalDetailsLastName(String name) {
+        editor.putString(PERSONAL_DETAILS_LAST_NAME, name).apply();
     }
 
     public String getPersonalDetailsPreferredName() {
@@ -88,6 +104,28 @@ public class JvPreferences {
 
     public String getPersonalDetailsCarerTel() {
         return preferences.getString(PERSONAL_DETAILS_CARER_TEL, "");
+    }
+
+    public String getStreet() {
+        return preferences.getString(PERSONAL_DETAILS_STREET, "");
+    }
+    public String getTown() {
+        return preferences.getString(PERSONAL_DETAILS_TOWN, "");
+    }
+    public String getCounty() {
+        return preferences.getString(PERSONAL_DETAILS_COUNTY, "");
+    }
+
+    public void setStreet(String name) {
+        editor.putString(PERSONAL_DETAILS_STREET, name).apply();
+    }
+
+    public void setTown(String name) {
+        editor.putString(PERSONAL_DETAILS_TOWN, name).apply();
+    }
+
+    public void setCounty(String name) {
+        editor.putString(PERSONAL_DETAILS_COUNTY, name).apply();
     }
 
     public void setPersonalDetailsCarerTel(String tel) {
@@ -164,5 +202,37 @@ public class JvPreferences {
 
     public void setDiagnosis(String diagnosis) {
         editor.putString(DIAGNOSIS, diagnosis).apply();
+    }
+
+    public String getPersonalDetailHomeTel() {
+        return preferences.getString(HOME_TELEPHONE, "");
+    }
+
+    public void setHomeTelephone(String homeTelephone) {
+        editor.putString(HOME_TELEPHONE, homeTelephone).apply();
+    }
+
+    public void setMobile(String mobile) {
+        editor.putString(MOBILE, mobile).apply();
+    }
+
+    public void setPersonalDetailGender(String gender) {
+        editor.putString(GENDER, gender).apply();
+    }
+
+    public void setCarerLanguage(String carerLanguage) {
+        editor.putString(CARER_LANG, carerLanguage).apply();
+    }
+
+    public String getPersonalDetailMobile() {
+        return preferences.getString(MOBILE, "");
+    }
+
+    public String getPersonalDetailGender() {
+        return preferences.getString(GENDER, "");
+    }
+
+    public String getCarerLanguage() {
+        return preferences.getString(CARER_LANG, "");
     }
 }

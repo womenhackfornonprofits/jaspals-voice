@@ -175,8 +175,11 @@ public class EditableCardView extends CardView {
 
     private void save() {
         switch (titleId) {
-            case R.string.personal_details_name:
-                preferences.setPersonalDetailsName(text);
+            case R.string.personal_details_first_name:
+                preferences.setPersonalDetailsFirstName(text);
+                break;
+            case R.string.personal_details_last_name:
+                preferences.setPersonalDetailsLastName(text);
                 break;
             case R.string.personal_details_name_to_be_called:
                 preferences.setPersonalDetailsPreferredName(text);
@@ -220,14 +223,29 @@ public class EditableCardView extends CardView {
             case R.string.diagnosis_title:
                 preferences.setDiagnosis(text);
                 break;
+            case R.string.personal_details_home_tel:
+                preferences.setHomeTelephone(text);
+                break;
+            case R.string.personal_details_mobile:
+                preferences.setMobile(text);
+                break;
+            case R.string.personal_details_gender:
+                preferences.setPersonalDetailGender(text);
+                break;
+            case R.string.personal_details_carer_language:
+                preferences.setCarerLanguage(text);
+                break;
         }
     }
 
     private String getSavedText() {
         String text = "";
         switch (titleId) {
-            case R.string.personal_details_name:
-                text = preferences.getPersonalDetailsName();
+            case R.string.personal_details_first_name:
+                text = preferences.getPersonalDetailsFirstName();
+                break;
+            case R.string.personal_details_last_name:
+                text = preferences.getPersonalDetailsLastName();
                 break;
             case R.string.personal_details_name_to_be_called:
                 text = preferences.getPersonalDetailsPreferredName();
@@ -270,6 +288,18 @@ public class EditableCardView extends CardView {
                 break;
             case R.string.diagnosis_title:
                 text = preferences.getDiagnosis();
+                break;
+            case R.string.personal_details_home_tel:
+                text = preferences.getPersonalDetailHomeTel();
+                break;
+            case R.string.personal_details_mobile:
+                text = preferences.getPersonalDetailMobile();
+                break;
+            case R.string.personal_details_gender:
+                text = preferences.getPersonalDetailGender();
+                break;
+            case R.string.personal_details_carer_language:
+                text = preferences.getCarerLanguage();
                 break;
         }
         return text;

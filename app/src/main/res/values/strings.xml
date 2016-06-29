@@ -39,7 +39,8 @@
     <string name="default_text_when_not_specified">Not specified</string>
 
     <string name="personal_details">Personal Details</string>
-    <string name="personal_details_name">Name</string>
+    <string name="personal_details_first_name">First Name</string>
+    <string name="personal_details_last_name">Last Name</string>
     <string name="personal_details_name_to_be_called">Name I would like to be called</string>
     <string name="personal_details_live_with">Who I live with</string>
     <string name="personal_details_email">Email</string>
@@ -100,5 +101,14 @@
     <string name="save">save</string>
     <string name="add_new_medicine">Add New Medicine</string>
     <string name="medicine_update_success_message">Medicine updated</string>
+
+    <string name="address_title">Address</string>
+    <string name="street_title">Street</string>
+    <string name="town_title">Town</string>
+    <string name="county_title">County</string>
+    <string name="personal_details_home_tel">Home Telephone</string>
+    <string name="personal_details_mobile">Mobile</string>
+    <string name="personal_details_gender">Gender</string>
+    <string name="personal_details_carer_language">Language of Carer</string>
 
 </resources>

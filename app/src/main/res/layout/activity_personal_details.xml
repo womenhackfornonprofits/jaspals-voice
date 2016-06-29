@@ -14,7 +14,55 @@
 
         <uk.co.jaspalsvoice.jv.views.EditableCardView
             android:elevation="@dimen/elevation"
-            android:id="@+id/pd_name"
+            android:id="@+id/pd_first_name"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:padding="@dimen/margin_small"/>
+
+        <uk.co.jaspalsvoice.jv.views.EditableCardView
+            android:elevation="@dimen/elevation"
+            android:id="@+id/pd_last_name"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:padding="@dimen/margin_small"/>
+
+        <uk.co.jaspalsvoice.jv.views.AddressCardView
+            android:elevation="@dimen/elevation"
+            android:id="@+id/pd_address"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:padding="@dimen/margin_small"/>
+
+        <uk.co.jaspalsvoice.jv.views.EditableCardView
+            android:elevation="@dimen/elevation"
+            android:id="@+id/pd_home_telephone"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:padding="@dimen/margin_small"/>
+
+        <uk.co.jaspalsvoice.jv.views.EditableCardView
+            android:elevation="@dimen/elevation"
+            android:id="@+id/pd_mobile_number"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:padding="@dimen/margin_small"/>
+
+        <uk.co.jaspalsvoice.jv.views.EditableCardView
+            android:elevation="@dimen/elevation"
+            android:id="@+id/pd_gender"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:padding="@dimen/margin_small"/>
+
+        <uk.co.jaspalsvoice.jv.views.EditableCardView
+            android:elevation="@dimen/elevation"
+            android:id="@+id/pd_language_of_carer"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
