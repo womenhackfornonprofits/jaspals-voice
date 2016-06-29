@@ -10,7 +10,7 @@ import uk.co.jaspalsvoice.jv.db.DbOpenHelper;
 public class Medicine {
 
     private String uuid;
-    private String id;
+    private int id;
     private String name;
     private String dosage;
     private String reason;
@@ -18,10 +18,11 @@ public class Medicine {
 
     public ContentValues toContentValues() {
         ContentValues cv = new ContentValues();
-        cv.put(DbOpenHelper.COLUMN_M_UUID, getUuid());
-        cv.put(DbOpenHelper.COLUMN_M_ID, getId());
+//        cv.put(DbOpenHelper.COLUMN_M_UUID, getUuid());
+        //cv.put(DbOpenHelper.COLUMN_M_ID, getId());
         cv.put(DbOpenHelper.COLUMN_M_NAME, getName());
         cv.put(DbOpenHelper.COLUMN_M_DOSAGE, getDosage());
+        cv.put(DbOpenHelper.COLUMN_M_REASON, getReason());
         cv.put(DbOpenHelper.COLUMN_M_FREQUENCY, getFrequency());
         return cv;
     }
@@ -34,11 +35,11 @@ public class Medicine {
         this.uuid = uuid;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -1,9 +1,12 @@
 package uk.co.jaspalsvoice.jv.activities;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -22,6 +25,7 @@ public class MedicinesActivity extends BaseActivity {
 
     private JvApplication application;
     private List<Medicine> medicineList;
+    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +74,38 @@ public class MedicinesActivity extends BaseActivity {
         return list;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.addMedicine:
+                addMedicine();
+                break;
+        }
+//        return true;
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void addMedicine() {
+        Intent intent = new Intent(this, AddMedicineActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.medicine_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
     public void saveMedicineData(String... medicineData){
         new Save().execute(medicineData);
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     private class Save extends AsyncTask<String, Void, uk.co.jaspalsvoice.jv.models.Medicine> {
@@ -80,18 +114,19 @@ public class MedicinesActivity extends BaseActivity {
             List<uk.co.jaspalsvoice.jv.models.Medicine> medicines= new ArrayList<>();
             uk.co.jaspalsvoice.jv.models.Medicine medicine = new uk.co.jaspalsvoice.jv.models.Medicine();
             medicine.setName(params[0]);
+            //medicine.setId(getId());
             medicine.setDosage(params[1]);
             medicine.setReason(params[2]);
             medicine.setFrequency(params[3]);
             medicines.add(medicine);
-            application.getDbHelper().insertOrReplaceMedicine(medicines);
+            application.getDbHelper().insertOrReplaceMedicine(medicines, true, getId());
             return medicine;
         }
 
         @Override
         protected void onPostExecute(uk.co.jaspalsvoice.jv.models.Medicine medicine) {
             if (medicine != null){
-                showToast(getString(R.string.medicine_add_success_message), Toast.LENGTH_SHORT);
+                showToast(getString(R.string.medicine_update_success_message), Toast.LENGTH_SHORT);
             }
         }
     }

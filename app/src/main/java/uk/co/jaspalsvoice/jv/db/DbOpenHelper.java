@@ -42,8 +42,8 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     // Creation statement for TABLE_MEDICINES
     private static final String CREATE_TABLE_MEDICINES = "CREATE TABLE "
             + TABLE_MEDICINES + "("
-            + COLUMN_M_UUID + " TEXT UNIQUE ON CONFLICT REPLACE, "
-            + COLUMN_M_ID + " TEXT, "
+            + COLUMN_M_UUID + " TEXT, "
+            + COLUMN_M_ID + " INTEGER PRIMARY KEY, "
             + COLUMN_M_NAME + " TEXT, "
             + COLUMN_M_DOSAGE + " TEXT, "
             + COLUMN_M_REASON + " TEXT, "

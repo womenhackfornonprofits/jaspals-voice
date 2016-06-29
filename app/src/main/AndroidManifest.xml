@@ -46,6 +46,9 @@
         <activity
             android:label="@string/about_me"
             android:name=".activities.AboutMeActivity"/>
+        <activity
+            android:label="@string/add_new_medicine"
+            android:name=".activities.AddMedicineActivity"/>
     </application>
 
 </manifest>
