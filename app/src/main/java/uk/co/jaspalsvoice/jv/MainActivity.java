@@ -414,7 +414,7 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
         Runnable r = new Runnable() {
             @Override
             public void run() {
-                InputStream inputStream = getResources().openRawResource(R.raw.words);
+                InputStream inputStream = getResources().openRawResource(R.raw.corncob_lowercase);
                 BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
                 String line;
                 try {

@@ -37,7 +37,7 @@ public class InitWordsTask extends AsyncTask<Object, Void, Void> {
         List<String> words = new ArrayList<>();
         try {
             Resources res = (Resources) params[0];
-            InputStream inputStream = res.openRawResource(R.raw.words);
+            InputStream inputStream = res.openRawResource(R.raw.corncob_lowercase);
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
             String line = br.readLine();
             while (line != null) {
