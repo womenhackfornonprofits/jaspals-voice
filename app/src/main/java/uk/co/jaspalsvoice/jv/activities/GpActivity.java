@@ -93,9 +93,29 @@ public class GpActivity extends BaseActivity {
         other.setTitle(getString(R.string.other_medical_title));
         other.setLabel1View(getString(R.string.gp_medical_team_name));
         other.setLabel2View(getString(R.string.gp_medical_team_address));
-        carer.setLabel3View(getString(R.string.gp_medical_team_phone));
-        carer.setLabel4View(getString(R.string.gp_medical_team_email));
+        other.setLabel3View(getString(R.string.gp_medical_team_phone));
+        other.setLabel4View(getString(R.string.gp_medical_team_email));
         setupDoctor(doctors, DoctorType.OTHER.name(), other);
+
+        /*if (doctors.size() > 6){
+            for (int position = 6; position < doctors.size(); position++){
+                MedicalContactCardView sampleCard = new MedicalContactCardView(this);
+                sampleCard.setPadding((int) getResources().getDimension(R.dimen.margin_small),
+                        (int) getResources().getDimension(R.dimen.margin_small),
+                        (int) getResources().getDimension(R.dimen.margin_small),
+                        (int) getResources().getDimension(R.dimen.margin_small));
+                ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) sampleCard.getLayoutParams();
+                layoutParams.setMargins((int) getResources().getDimension(R.dimen.activity_horizontal_margin),
+                        (int) getResources().getDimension(R.dimen.activity_vertical_margin),
+                        (int) getResources().getDimension(R.dimen.activity_horizontal_margin),
+                        (int) getResources().getDimension(R.dimen.activity_vertical_margin));
+                sampleCard.setTitle(getString(doctors.geti));
+                sampleCard.setLabel1View(getString(R.string.gp_medical_team_name));
+                sampleCard.setLabel2View(getString(R.string.gp_medical_team_contact_details));
+                setupDoctor(doctors, DoctorType.OTHER.name(), other);
+                containerLayout.addView(sampleCard);
+            }
+        }*/
 
        /* MedicalContactCardView sampleCard = new MedicalContactCardView(this);
         sampleCard.setPadding((int)getResources().getDimension(R.dimen.margin_small),

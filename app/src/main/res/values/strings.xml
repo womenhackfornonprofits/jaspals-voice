@@ -113,5 +113,6 @@
     <string name="personal_details_mobile">Mobile</string>
     <string name="personal_details_gender">Gender</string>
     <string name="personal_details_carer_language">Language of Carer</string>
+    <string name="type">Type:</string>
 
 </resources>

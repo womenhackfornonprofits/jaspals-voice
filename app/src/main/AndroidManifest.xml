@@ -1,54 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="uk.co.jaspalsvoice.jv"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="uk.co.jaspalsvoice.jv">
 
     <application
+        android:name=".JvApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".JvApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:label="@string/personal_details"
-            android:name=".activities.PersonalDetailsActivity"/>
+            android:name=".activities.PersonalDetailsActivity"
+            android:label="@string/personal_details" />
         <activity
-            android:label="@string/medicines"
-            android:name=".activities.MedicinesActivity"/>
+            android:name=".activities.MedicinesActivity"
+            android:label="@string/medicines" />
         <activity
-            android:label="@string/medical_allergies"
-            android:name=".activities.MedicalAllergiesActivity"/>
+            android:name=".activities.MedicalAllergiesActivity"
+            android:label="@string/medical_allergies" />
         <activity
-            android:label="@string/food_allergies"
-            android:name=".activities.FoodAllergiesActivity"/>
+            android:name=".activities.FoodAllergiesActivity"
+            android:label="@string/food_allergies" />
         <activity
-            android:label="@string/gp_medical_team"
-            android:name=".activities.GpActivity"/>
+            android:name=".activities.GpActivity"
+            android:label="@string/gp_medical_team" />
         <activity
-            android:label="@string/likes_dislikes"
-            android:name=".activities.LikesDislikesActivity"/>
+            android:name=".activities.LikesDislikesActivity"
+            android:label="@string/likes_dislikes" />
         <activity
-            android:label="@string/diagnosis"
-            android:name=".activities.DiagnosisActivity"/>
+            android:name=".activities.DiagnosisActivity"
+            android:label="@string/diagnosis" />
         <activity
-            android:label="@string/about_me"
-            android:name=".activities.AboutMeActivity"/>
+            android:name=".activities.AboutMeActivity"
+            android:label="@string/about_me" />
         <activity
-            android:label="@string/add_new_medicine"
-            android:name=".activities.AddMedicineActivity"/>
+            android:name=".activities.AddMedicineActivity"
+            android:label="@string/add_new_medicine" />
+        <activity android:name=".activities.AddTeamMemberActivity"></activity>
     </application>
 
 </manifest>
