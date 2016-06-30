@@ -286,6 +286,10 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
         @Override
         public void afterTextChanged(Editable s) {
             shareIntent.putExtra(Intent.EXTRA_TEXT, s.toString());
+            if (TextUtils.isEmpty(s)){
+                if (popupWindow != null)
+                popupWindow.dismiss();
+            }
             if (shareActionProvider != null) {
                 shareActionProvider.setShareIntent(shareIntent);
             }
