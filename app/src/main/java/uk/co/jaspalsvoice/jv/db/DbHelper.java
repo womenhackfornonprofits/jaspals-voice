@@ -32,7 +32,9 @@ public class DbHelper {
             DbOpenHelper.COLUMN_MT_ID,
             DbOpenHelper.COLUMN_MT_DOCTOR_TYPE,
             DbOpenHelper.COLUMN_MT_NAME,
-            DbOpenHelper.COLUMN_MT_CONTACT_DETAILS};
+            DbOpenHelper.COLUMN_MT_ADDRESS,
+            DbOpenHelper.COLUMN_MT_EMAIL,
+            DbOpenHelper.COLUMN_MT_PHONE};
 
     private static final String[] MEDICINES_COLUMN_NAMES = new String[] {
             DbOpenHelper.COLUMN_M_UUID,
@@ -121,7 +123,9 @@ public class DbHelper {
                         Doctor doctor = new Doctor();
                         doctor.setName(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_NAME)));
                         doctor.setType(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_DOCTOR_TYPE)));
-                        doctor.setContact(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_CONTACT_DETAILS)));
+                        doctor.setAddress(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_ADDRESS)));
+                        doctor.setPhone(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_PHONE)));
+                        doctor.setEmail(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_EMAIL)));
                         doctors.put(doctor.getType(), doctor);
                         allDoctors.moveToNext();
                     }

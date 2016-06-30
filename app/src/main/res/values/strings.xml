@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Jaspal\'s Voice</string>
+    <string name="app_name">Medivoice</string>
     <string name="clear_screen">Clear screen</string>
     <string name="delete_letter">Delete letter</string>
     <string name="t_9">T9</string>
@@ -67,7 +67,10 @@
     <string name="gp_medical_team">G.P / Medical Team</string>
     <string name="gp_title">GP</string>
     <string name="gp_medical_team_name">Name:</string>
-    <string name="gp_medical_team_contact_details">Contact Details:</string>
+    <!--<string name="gp_medical_team_contact_details">Contact Details:</string>-->
+    <string name="gp_medical_team_address">Address:</string>
+    <string name="gp_medical_team_phone">Phone:</string>
+    <string name="gp_medical_team_email">Email:</string>
     <string name="mnd_contact_title">MND Contact</string>
     <string name="physiotherapist_title">Physiotherapist</string>
     <string name="therapist_title">Speech and language therapist</string>

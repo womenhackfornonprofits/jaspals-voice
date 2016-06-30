@@ -26,6 +26,8 @@ public class MedicalContactCardView extends CardView {
     private String title;
     private String text1;
     private String text2;
+    private String text3;
+    private String text4;
     private String doctorType;
     private boolean editMode;
 
@@ -38,6 +40,14 @@ public class MedicalContactCardView extends CardView {
     private TextView label2View;
     private TextView text2View;
     private EditText edit2View;
+
+    private TextView label3View;
+    private TextView text3View;
+    private EditText edit3View;
+
+    private TextView label4View;
+    private TextView text4View;
+    private EditText edit4View;
 
     private ViewGroup buttonsView;
     private Button cancelBtn;
@@ -75,6 +85,14 @@ public class MedicalContactCardView extends CardView {
         text2View = (TextView) root.findViewById(R.id.text2);
         edit2View = (EditText) root.findViewById(R.id.edit2);
 
+        label3View = (TextView) root.findViewById(R.id.label3);
+        text3View = (TextView) root.findViewById(R.id.text3);
+        edit3View = (EditText) root.findViewById(R.id.edit3);
+
+        label4View = (TextView) root.findViewById(R.id.label4);
+        text4View = (TextView) root.findViewById(R.id.text4);
+        edit4View = (EditText) root.findViewById(R.id.edit4);
+
         buttonsView = (ViewGroup) root.findViewById(R.id.buttons);
         cancelBtn = (Button) root.findViewById(R.id.cancel);
         saveBtn = (Button) root.findViewById(R.id.save);
@@ -101,6 +119,9 @@ public class MedicalContactCardView extends CardView {
 
                 setEdit(edit1View, text1);
                 setEdit(edit2View, text2);
+
+                setEdit(edit3View, text1);
+                setEdit(edit4View, text2);
                 showNonEditMode();
             }
         });
@@ -110,7 +131,8 @@ public class MedicalContactCardView extends CardView {
             public void onClick(View v) {
                 editMode = !editMode;
 
-                new Save().execute(edit1View.getText().toString(), edit2View.getText().toString());
+                new Save().execute(edit1View.getText().toString(), edit2View.getText().toString(),
+                        edit3View.getText().toString(),edit4View.getText().toString());
             }
         });
     }
@@ -138,6 +160,16 @@ public class MedicalContactCardView extends CardView {
         text2View.setText(text);
     }
 
+    public void setText3(String text) {
+        this.text3 = text;
+        text3View.setText(text);
+    }
+
+    public void setText4(String text) {
+        this.text4 = text;
+        text4View.setText(text);
+    }
+
     public String getText1() {
         return text1;
     }
@@ -162,6 +194,14 @@ public class MedicalContactCardView extends CardView {
         label2View.setText(text);
     }
 
+    public void setLabel3View(String text) {
+        label3View.setText(text);
+    }
+
+    public void setLabel4View(String text) {
+        label4View.setText(text);
+    }
+
     public void setEditMode(boolean editMode) {
         this.editMode = editMode;
     }
@@ -173,9 +213,16 @@ public class MedicalContactCardView extends CardView {
     private void showNonEditMode() {
         edit1View.setVisibility(GONE);
         edit2View.setVisibility(GONE);
-        buttonsView.setVisibility(GONE);
         text1View.setVisibility(VISIBLE);
         text2View.setVisibility(VISIBLE);
+
+        edit3View.setVisibility(GONE);
+        edit4View.setVisibility(GONE);
+        text3View.setVisibility(VISIBLE);
+        text4View.setVisibility(VISIBLE);
+        
+        
+        buttonsView.setVisibility(GONE);
         showDefaultText();
         titleView.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(R.drawable.ic_action_edit), null);
     }
@@ -188,6 +235,12 @@ public class MedicalContactCardView extends CardView {
         edit1View.setVisibility(VISIBLE);
         edit2View.setText(text2View.getText());
         edit2View.setVisibility(VISIBLE);
+        text3View.setVisibility(GONE);
+        text4View.setVisibility(GONE);
+        edit3View.setText(text3View.getText());
+        edit3View.setVisibility(VISIBLE);
+        edit4View.setText(text4View.getText());
+        edit4View.setVisibility(VISIBLE);
         buttonsView.setVisibility(VISIBLE);
     }
 
@@ -198,6 +251,13 @@ public class MedicalContactCardView extends CardView {
         if (TextUtils.isEmpty(text2)) {
             text2View.setText(R.string.default_text_when_not_specified);
         }
+
+        if (TextUtils.isEmpty(text3)) {
+            text3View.setText(R.string.default_text_when_not_specified);
+        }
+        if (TextUtils.isEmpty(text4)) {
+            text4View.setText(R.string.default_text_when_not_specified);
+        }
     }
 
     private class Save extends AsyncTask<String, Void, Doctor> {
@@ -206,7 +266,9 @@ public class MedicalContactCardView extends CardView {
             List<Doctor> doctors = new ArrayList<>();
             Doctor doctor = new Doctor();
             doctor.setName(params[0]);
-            doctor.setContact(params[1]);
+            doctor.setAddress(params[1]);
+            doctor.setPhone(params[2]);
+            doctor.setEmail(params[3]);
             doctor.setType(doctorType);
             doctors.add(doctor);
             application.getDbHelper().insertOrReplaceDoctor(doctors);
@@ -216,7 +278,9 @@ public class MedicalContactCardView extends CardView {
         @Override
         protected void onPostExecute(Doctor doctor) {
             setText1(doctor.getName());
-            setText2(doctor.getContact());
+            setText2(doctor.getAddress());
+            setText3(doctor.getPhone());
+            setText4(doctor.getEmail());
             showNonEditMode();
         }
     }

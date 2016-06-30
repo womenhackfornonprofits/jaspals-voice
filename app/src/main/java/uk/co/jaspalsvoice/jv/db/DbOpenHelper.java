@@ -18,7 +18,12 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     public static final String COLUMN_MT_ID = "id";
     public static final String COLUMN_MT_DOCTOR_TYPE = "type";
     public static final String COLUMN_MT_NAME = "name";
-    public static final String COLUMN_MT_CONTACT_DETAILS = "contact";
+    public static final String COLUMN_MT_ADDRESS = "address";
+    public static final String COLUMN_MT_PHONE = "phone";
+    public static final String COLUMN_MT_EMAIL = "email";
+    public static final String COLUMN_MT_HOSPITAL_NAME = "hostpitalname";
+    public static final String COLUMN_MT_HOSPITAL_ADDRESS = "hospitaladdress";
+    public static final String COLUMN_MT_HOSPITAL_PHONE = "hospitalphone";
 
 
     // Table, columns
@@ -37,7 +42,12 @@ public class DbOpenHelper extends SQLiteOpenHelper {
             + COLUMN_MT_ID + " TEXT, "
             + COLUMN_MT_DOCTOR_TYPE + " TEXT, "
             + COLUMN_MT_NAME + " TEXT, "
-            + COLUMN_MT_CONTACT_DETAILS + " TEXT);";
+            + COLUMN_MT_HOSPITAL_NAME + " TEXT, "
+            + COLUMN_MT_HOSPITAL_ADDRESS + " TEXT, "
+            + COLUMN_MT_HOSPITAL_PHONE + " TEXT, "
+            + COLUMN_MT_ADDRESS + " TEXT, "
+            + COLUMN_MT_PHONE + " TEXT, "
+            + COLUMN_MT_EMAIL + " TEXT);";
 
     // Creation statement for TABLE_MEDICINES
     private static final String CREATE_TABLE_MEDICINES = "CREATE TABLE "
