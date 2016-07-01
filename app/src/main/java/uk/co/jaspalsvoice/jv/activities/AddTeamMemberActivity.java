@@ -2,7 +2,6 @@ package uk.co.jaspalsvoice.jv.activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +14,6 @@ import java.util.List;
 import uk.co.jaspalsvoice.jv.JvApplication;
 import uk.co.jaspalsvoice.jv.R;
 import uk.co.jaspalsvoice.jv.models.Doctor;
-import uk.co.jaspalsvoice.jv.models.Medicine;
 
 public class AddTeamMemberActivity extends BaseActivity {
 
@@ -85,15 +83,16 @@ public class AddTeamMemberActivity extends BaseActivity {
         @Override
         protected void onPostExecute(Doctor doctor) {
             showToast("Team member added", Toast.LENGTH_SHORT);
+            launchGpActivity();
         }
     }
 
     @Override
     public void onBackPressed() {
-        launchMedicinesActivity();
+        launchGpActivity();
     }
 
-    private void launchMedicinesActivity() {
+    private void launchGpActivity() {
         Intent intent = new Intent(this, GpActivity.class);
         startActivity(intent);
         finish();

@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,9 +49,15 @@ public class AddMedicineActivity extends BaseActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveMedicineData(medicineNameText.getText().toString(),
-                        dosagetext.getText().toString(), reasonText.getText().toString(),
-                        frequencyText.getText().toString());
+                if (!TextUtils.isEmpty(medicineNameText.getText().toString())
+                        && !TextUtils.isEmpty(dosagetext.getText().toString()) &&
+                        !TextUtils.isEmpty(frequencyText.getText().toString())) {
+                    saveMedicineData(medicineNameText.getText().toString(),
+                            dosagetext.getText().toString(), reasonText.getText().toString(),
+                            frequencyText.getText().toString());
+                } else {
+                    showToast("Please enter medicine name, dosage and frequency", Toast.LENGTH_LONG);
+                }
             }
         });
     }
@@ -90,6 +97,7 @@ public class AddMedicineActivity extends BaseActivity {
         protected void onPostExecute(uk.co.jaspalsvoice.jv.models.Medicine medicine) {
             if (medicine != null){
                 showToast(getString(R.string.medicine_add_success_message), Toast.LENGTH_SHORT);
+                launchMedicinesActivity();
             }
         }
     }
