@@ -32,9 +32,21 @@ public class DbHelper {
             DbOpenHelper.COLUMN_MT_ID,
             DbOpenHelper.COLUMN_MT_DOCTOR_TYPE,
             DbOpenHelper.COLUMN_MT_NAME,
+            DbOpenHelper.COLUMN_MT_HOSPITAL_NAME,
+            DbOpenHelper.COLUMN_MT_HOSPITAL_ADDRESS,
+            DbOpenHelper.COLUMN_MT_HOSPITAL_PHONE,
             DbOpenHelper.COLUMN_MT_ADDRESS,
             DbOpenHelper.COLUMN_MT_EMAIL,
             DbOpenHelper.COLUMN_MT_PHONE};
+
+    private static final String[] MEDICAL_TEAM_MEMBER_COLUMN_NAMES = new String[] {
+            DbOpenHelper.COLUMN_ME_UUID,
+            DbOpenHelper.COLUMN_ME_ID,
+            DbOpenHelper.COLUMN_ME_DOCTOR_TYPE,
+            DbOpenHelper.COLUMN_ME_NAME,
+            DbOpenHelper.COLUMN_ME_ADDRESS,
+            DbOpenHelper.COLUMN_ME_EMAIL,
+            DbOpenHelper.COLUMN_ME_PHONE};
 
     private static final String[] MEDICINES_COLUMN_NAMES = new String[] {
             DbOpenHelper.COLUMN_M_UUID,
@@ -60,6 +72,33 @@ public class DbHelper {
                     sqlite.beginTransaction();
                     for (Doctor doctor : doctors) {
                         if (sqlite.insertWithOnConflict(DbOpenHelper.TABLE_MEDICAL_TEAM, null, doctor.toContentValues(), SQLiteDatabase.CONFLICT_REPLACE) >= 0) {
+                            insertedRows++;
+                        }
+                    }
+                    Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
+                    sqlite.setTransactionSuccessful();
+                    return insertedRows;
+                } finally {
+                    sqlite.endTransaction();
+                }
+            }
+        });
+    }
+
+    /**
+     * Method to inset a team member
+     * @param doctors List of doctors to be inserted in the db
+     * @return the number of rows inserted
+     */
+    public Future<Long> insertOrReplaceTeamMember(final List<Doctor> doctors) {
+        return executor.submit(new Callable<Long>() {
+            @Override
+            public Long call() throws Exception {
+                long insertedRows = 0;
+                try {
+                    sqlite.beginTransaction();
+                    for (Doctor doctor : doctors) {
+                        if (sqlite.insertWithOnConflict(DbOpenHelper.TABLE_MEDICAL_TEAM_MEMBER, null, doctor.toContentValues(), SQLiteDatabase.CONFLICT_REPLACE) >= 0) {
                             insertedRows++;
                         }
                     }
@@ -122,6 +161,9 @@ public class DbHelper {
                     while (!allDoctors.isAfterLast()) {
                         Doctor doctor = new Doctor();
                         doctor.setName(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_NAME)));
+                        doctor.setHospitalName(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_HOSPITAL_NAME)));
+                        doctor.setHospitalAddress(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_HOSPITAL_ADDRESS)));
+                        doctor.setHospitalPhone(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_HOSPITAL_PHONE)));
                         doctor.setType(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_DOCTOR_TYPE)));
                         doctor.setAddress(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_ADDRESS)));
                         doctor.setPhone(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_PHONE)));
@@ -142,6 +184,41 @@ public class DbHelper {
         }
         return doctors;
     }
+
+    /**
+     * Gets from db a list containing all doctors.
+     */
+    public List<Doctor> readAllTeamMembers() {
+        List<Doctor> doctors = new ArrayList<>();
+        Cursor allDoctors = null;
+        try {
+            allDoctors = readAllFuture(DbOpenHelper.TABLE_MEDICAL_TEAM_MEMBER, MEDICAL_TEAM_MEMBER_COLUMN_NAMES, DbOpenHelper.COLUMN_ME_ID).get();
+            if (allDoctors != null) {
+                if (allDoctors.moveToFirst()) {
+                    while (!allDoctors.isAfterLast()) {
+                        Doctor doctor = new Doctor();
+                        doctor.setName(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_ME_NAME)));
+                        doctor.setType(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_ME_DOCTOR_TYPE)));
+                        doctor.setAddress(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_ME_ADDRESS)));
+                        doctor.setPhone(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_ME_PHONE)));
+                        doctor.setEmail(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_ME_EMAIL)));
+                        doctors.add(doctor);
+                        allDoctors.moveToNext();
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            Log.e(TAG, e.getMessage(), e);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            if (allDoctors != null) {
+                allDoctors.close();
+            }
+        }
+        return doctors;
+    }
+
 
     /**
      * Gets from db a list containing all medicines.

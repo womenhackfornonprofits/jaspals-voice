@@ -25,6 +25,21 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     public static final String COLUMN_MT_HOSPITAL_ADDRESS = "hospitaladdress";
     public static final String COLUMN_MT_HOSPITAL_PHONE = "hospitalphone";
 
+    // Table, columns
+    public static final String TABLE_MEDICAL_TEAM_MEMBER = "medical_team_member";
+    public static final String COLUMN_ME_UUID = "uuid";
+    public static final String COLUMN_ME_ID = "id";
+    public static final String COLUMN_ME_DOCTOR_TYPE = "type";
+    public static final String COLUMN_ME_NAME = "name";
+    public static final String COLUMN_ME_ADDRESS = "address";
+    public static final String COLUMN_ME_PHONE = "phone";
+    public static final String COLUMN_ME_EMAIL = "email";
+    public static final String COLUMN_ME_HOSPITAL_NAME = "hostpitalname";
+    public static final String COLUMN_ME_HOSPITAL_ADDRESS = "hospitaladdress";
+    public static final String COLUMN_ME_HOSPITAL_PHONE = "hospitalphone";
+
+
+
 
     // Table, columns
     public static final String TABLE_MEDICINES = "medicines";
@@ -49,6 +64,20 @@ public class DbOpenHelper extends SQLiteOpenHelper {
             + COLUMN_MT_PHONE + " TEXT, "
             + COLUMN_MT_EMAIL + " TEXT);";
 
+    // Creation statement for TABLE_MEDICAL_TEAM_MEMBER
+    private static final String CREATE_TABLE_MEDICAL_TEAM_MEMBER = "CREATE TABLE "
+            + TABLE_MEDICAL_TEAM_MEMBER + "("
+            + COLUMN_ME_UUID + " TEXT UNIQUE ON CONFLICT REPLACE, "
+            + COLUMN_ME_ID + " TEXT, "
+            + COLUMN_ME_DOCTOR_TYPE + " TEXT UNIQUE ON CONFLICT REPLACE, "
+            + COLUMN_ME_NAME + " TEXT, "
+            + COLUMN_ME_ADDRESS + " TEXT, "
+            + COLUMN_ME_HOSPITAL_NAME + " TEXT, "
+            + COLUMN_ME_HOSPITAL_ADDRESS+ " TEXT, "
+            + COLUMN_ME_HOSPITAL_PHONE+ " TEXT, "
+            + COLUMN_ME_PHONE + " TEXT, "
+            + COLUMN_ME_EMAIL + " TEXT);";
+
     // Creation statement for TABLE_MEDICINES
     private static final String CREATE_TABLE_MEDICINES = "CREATE TABLE "
             + TABLE_MEDICINES + "("
@@ -67,6 +96,7 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_MEDICAL_TEAM);
         db.execSQL(CREATE_TABLE_MEDICINES);
+        db.execSQL(CREATE_TABLE_MEDICAL_TEAM_MEMBER);
     }
 
     @Override

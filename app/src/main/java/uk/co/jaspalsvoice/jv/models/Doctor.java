@@ -9,16 +9,16 @@ import uk.co.jaspalsvoice.jv.db.DbOpenHelper;
  */
 public class Doctor {
 
-    private String uuid;
-    private String id;
-    private String type;
-    private String name;
-    private String address;
-    private String phone;
-    private String email;
-    private String hospitalName;
-    private String hospitalAddress;
-    private String hospitalPhone;
+    protected String uuid;
+    protected String id;
+    protected String type;
+    protected String name;
+    protected String address;
+    protected String phone;
+    protected String email;
+    protected String hospitalName;
+    protected String hospitalAddress;
+    protected String hospitalPhone;
 
     public ContentValues toContentValues() {
         ContentValues cv = new ContentValues();

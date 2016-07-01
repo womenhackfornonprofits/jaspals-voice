@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ public class MedicinesActivity extends BaseActivity {
     private JvApplication application;
     private List<Medicine> medicineList;
     private int id;
+    private TextView noContentView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +36,30 @@ public class MedicinesActivity extends BaseActivity {
 
         setContentView(R.layout.activity_medicines);
 
+        initViews();
         initValues();
 
         RecyclerView medicines = (RecyclerView) findViewById(R.id.medicines);
         medicines.setAdapter(new MedicineListAdapter(this, medicineList));
         medicines.setLayoutManager(new LinearLayoutManager(this));
+
+        if (medicineList.size() == 0){
+            showNoContentView();
+        } else {
+            hideNoContentView();
+        }
+    }
+
+    private void hideNoContentView() {
+        noContentView.setVisibility(View.GONE);
+    }
+
+    private void showNoContentView() {
+        noContentView.setVisibility(View.VISIBLE);
+    }
+
+    private void initViews() {
+        noContentView = (TextView) findViewById(R.id.noContentView);
     }
 
     private void initValues() {

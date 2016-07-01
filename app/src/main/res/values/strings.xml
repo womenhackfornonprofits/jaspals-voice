@@ -71,7 +71,7 @@
     <string name="gp_medical_team_address">Address:</string>
     <string name="gp_medical_team_phone">Phone:</string>
     <string name="gp_medical_team_email">Email:</string>
-    <string name="mnd_contact_title">MND Contact</string>
+    <string name="mnd_contact_title">Consultant Contact</string>
     <string name="physiotherapist_title">Physiotherapist</string>
     <string name="therapist_title">Speech and language therapist</string>
     <string name="carer_title">Carer</string>
@@ -114,5 +114,9 @@
     <string name="personal_details_gender">Gender</string>
     <string name="personal_details_carer_language">Language of Carer</string>
     <string name="type">Type:</string>
+    <string name="gp_hospital_name">Hospital Name</string>
+    <string name="gp_hospital_address">Hospital Address</string>
+    <string name="gp_hospital_phone">Hospital Phone</string>
+    <string name="no_content_medicine">There are no medicines to display. Please tap on the \"+\" icon in the top right corner to add a new medicine</string>
 
 </resources>

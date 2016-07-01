@@ -1,154 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:padding="10dp"
-    android:stretchColumns="1">
+    android:layout_height="match_parent">
 
-    <TableRow
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:stretchColumns="1">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:text="@string/type"/>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/typeEdittext"
-            android:inputType="text"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_width="0dp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/type" />
 
-        <TextView
-            android:id="@+id/typeTextView"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:text="@string/default_text_when_not_specified"
-            android:visibility="gone"/>
+            <EditText
+                android:id="@+id/typeEdittext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="text" />
 
-    </TableRow>
+            <TextView
+                android:id="@+id/typeTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/default_text_when_not_specified"
+                android:visibility="gone" />
+
+        </TableRow>
 
 
-    <TableRow
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:text="@string/medicines_name"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/medicines_name" />
 
-        <EditText
-            android:id="@+id/nameEdittext"
-            android:inputType="text"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_width="0dp"/>
+            <EditText
+                android:id="@+id/nameEdittext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="text" />
 
-        <TextView
-            android:id="@+id/show_value_name"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:text="@string/default_text_when_not_specified"
-            android:visibility="gone"/>
+            <TextView
+                android:id="@+id/show_value_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/default_text_when_not_specified"
+                android:visibility="gone" />
 
-    </TableRow>
+        </TableRow>
 
-    <TableRow
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:text="@string/address_title"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/address_title" />
 
-        <EditText
-            android:id="@+id/addressEdittext"
-            android:inputType="text"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_width="0dp"/>
+            <EditText
+                android:id="@+id/addressEdittext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="text" />
 
-        <TextView
-            android:id="@+id/show_value_dosage"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:text="@string/default_text_when_not_specified"
-            android:visibility="gone"/>
+            <TextView
+                android:id="@+id/show_value_dosage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/default_text_when_not_specified"
+                android:visibility="gone" />
 
-    </TableRow>
+        </TableRow>
 
-    <TableRow
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:text="@string/gp_medical_team_phone"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/gp_medical_team_phone" />
 
-        <EditText
-            android:id="@+id/phoneEdittext"
-            android:inputType="phone"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_width="0dp"/>
+            <EditText
+                android:id="@+id/phoneEdittext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="phone" />
 
-        <TextView
-            android:id="@+id/show_value_reason"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:text="@string/default_text_when_not_specified"
-            android:visibility="gone"/>
+            <TextView
+                android:id="@+id/show_value_reason"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/default_text_when_not_specified"
+                android:visibility="gone" />
 
-    </TableRow>
+        </TableRow>
 
-    <TableRow
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:text="@string/gp_medical_team_email"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/gp_medical_team_email" />
 
-        <EditText
-            android:id="@+id/emailEdittext"
-            android:inputType="textEmailAddress"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_width="0dp"/>
+            <EditText
+                android:id="@+id/emailEdittext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="textEmailAddress" />
 
-        <TextView
-            android:id="@+id/show_value_frequency"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:text="@string/default_text_when_not_specified"
-            android:visibility="gone"/>
+            <TextView
+                android:id="@+id/show_value_frequency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/default_text_when_not_specified"
+                android:visibility="gone" />
 
-    </TableRow>
+        </TableRow>
 
-    <TableRow
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_height="wrap_content"
-            android:layout_span="2"
-            android:text="@string/save"/>
-    </TableRow>
-</TableLayout>
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+                android:text="@string/save" />
+        </TableRow>
+    </TableLayout>
+</ScrollView>

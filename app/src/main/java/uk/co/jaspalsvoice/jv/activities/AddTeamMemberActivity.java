@@ -78,7 +78,7 @@ public class AddTeamMemberActivity extends BaseActivity {
             doctor.setPhone(params[3]);
             doctor.setEmail(params[4]);
             doctors.add(doctor);
-            application.getDbHelper().insertOrReplaceDoctor(doctors);
+            application.getDbHelper().insertOrReplaceTeamMember(doctors);
             return doctor;
         }
 
@@ -94,7 +94,7 @@ public class AddTeamMemberActivity extends BaseActivity {
     }
 
     private void launchMedicinesActivity() {
-        Intent intent = new Intent(this, MedicinesActivity.class);
+        Intent intent = new Intent(this, GpActivity.class);
         startActivity(intent);
         finish();
     }

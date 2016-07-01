@@ -1,17 +1,24 @@
 package uk.co.jaspalsvoice.jv.activities;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import java.util.List;
 import java.util.Map;
 
 import uk.co.jaspalsvoice.jv.JvApplication;
 import uk.co.jaspalsvoice.jv.R;
 import uk.co.jaspalsvoice.jv.models.Doctor;
 import uk.co.jaspalsvoice.jv.models.DoctorType;
+import uk.co.jaspalsvoice.jv.views.custom.ConsultantCardView;
 import uk.co.jaspalsvoice.jv.views.custom.MedicalContactCardView;
+import uk.co.jaspalsvoice.jv.views.custom.TeamMemberCardView;
 
 /**
  * Created by Ana on 2/8/2016.
@@ -29,6 +36,7 @@ public class GpActivity extends BaseActivity {
         setContentView(R.layout.activity_gp);
 
         new MedicalTeam().execute();
+        new MedicalTeamMember().execute();
     }
 
     private void initViews() {
@@ -47,6 +55,19 @@ public class GpActivity extends BaseActivity {
         }
     }
 
+    private class MedicalTeamMember extends AsyncTask<Void, Void, List<Doctor>> {
+        @Override
+        protected List<Doctor> doInBackground(Void... params) {
+            return ((JvApplication) getApplication()).getDbHelper().readAllTeamMembers();
+        }
+
+        @Override
+        protected void onPostExecute(List<Doctor> doctors) {
+            setupTeamMemberUI(doctors);
+        }
+    }
+
+
     private void setupUI(Map<String, Doctor> doctors) {
         initViews();
         MedicalContactCardView gp = (MedicalContactCardView) findViewById(R.id.gp_name);
@@ -57,13 +78,17 @@ public class GpActivity extends BaseActivity {
         gp.setLabel4View(getString(R.string.gp_medical_team_email));
         setupDoctor(doctors, DoctorType.GP.name(), gp);
 
-        MedicalContactCardView mndContact = (MedicalContactCardView) findViewById(R.id.mnd_contact);
+        ConsultantCardView mndContact = (ConsultantCardView) findViewById(R.id.mnd_contact);
         mndContact.setTitle(getString(R.string.mnd_contact_title));
         mndContact.setLabel1View(getString(R.string.gp_medical_team_name));
         mndContact.setLabel2View(getString(R.string.gp_medical_team_address));
         mndContact.setLabel3View(getString(R.string.gp_medical_team_phone));
         mndContact.setLabel4View(getString(R.string.gp_medical_team_email));
-        setupDoctor(doctors, DoctorType.MND_CONTACT.name(), mndContact);
+
+        mndContact.setLabel2hView(getString(R.string.gp_hospital_name));
+        mndContact.setLabel3hView(getString(R.string.gp_hospital_address));
+        mndContact.setLabel4hView(getString(R.string.gp_hospital_phone));
+        setupConsultant(doctors, DoctorType.MND_CONTACT.name(), mndContact);
 
         MedicalContactCardView physiotherapist = (MedicalContactCardView) findViewById(R.id.physiotherapist);
         physiotherapist.setTitle(getString(R.string.physiotherapist_title));
@@ -135,6 +160,49 @@ public class GpActivity extends BaseActivity {
 
     }
 
+    private void setupTeamMemberUI(List<Doctor> doctors) {
+        initViews();
+        for (Doctor doctor : doctors){
+            TeamMemberCardView sampleCard = new TeamMemberCardView(this);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            int margin = (int)getResources().getDimension(R.dimen.activity_horizontal_margin);
+            params.setMargins(0, 0, 0, margin);
+            sampleCard.setLayoutParams(params);
+            sampleCard.setMaxCardElevation(getResources().getDimension(R.dimen.elevation));
+
+           /* sampleCard.setPadding((int) getResources().getDimension(R.dimen.margin_small),
+                    (int) getResources().getDimension(R.dimen.margin_small),
+                    (int) getResources().getDimension(R.dimen.margin_small),
+                    (int) getResources().getDimension(R.dimen.margin_small));*/
+            sampleCard.setTitle(doctor.getType());
+            sampleCard.setLabel1View(getString(R.string.gp_medical_team_name));
+            sampleCard.setLabel2View(getString(R.string.gp_medical_team_address));
+            sampleCard.setLabel3View(getString(R.string.gp_medical_team_phone));
+            sampleCard.setLabel4View(getString(R.string.gp_medical_team_email));
+            setupTeamMember(doctor, sampleCard);
+            containerLayout.addView(sampleCard);
+        }
+    }
+
+    private void setupConsultant(Map<String, Doctor> doctors, String type, ConsultantCardView view) {
+        Doctor doctor = doctors.get(type);
+        if (doctor != null) {
+            view.setText1(doctor.getName());
+            view.setText2(doctor.getAddress());
+            view.setText3(doctor.getPhone());
+            view.setText4(doctor.getEmail());
+
+            view.setTexth2(doctor.getHospitalName());
+            view.setTexth3(doctor.getHospitalAddress());
+            view.setTexth4(doctor.getHospitalPhone());
+        }
+        view.setDoctorType(type);
+    }
+
+
     private void setupDoctor(Map<String, Doctor> doctors, String type, MedicalContactCardView view) {
         Doctor doctor = doctors.get(type);
         if (doctor != null) {
@@ -144,5 +212,37 @@ public class GpActivity extends BaseActivity {
             view.setText4(doctor.getEmail());
         }
         view.setDoctorType(type);
+    }
+
+    private void setupTeamMember(Doctor doctor, TeamMemberCardView view) {
+        if (doctor != null) {
+            view.setText1(doctor.getName());
+            view.setText2(doctor.getAddress());
+            view.setText3(doctor.getPhone());
+            view.setText4(doctor.getEmail());
+            view.setDoctorType(doctor.getType());
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.medicine_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.addMedicine:
+                addTeamMember();
+                break;
+        }
+//        return true;
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void addTeamMember() {
+        Intent intent = new Intent(this, AddTeamMemberActivity.class);
+        startActivity(intent);
     }
 }
