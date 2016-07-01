@@ -682,4 +682,10 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
     private void onRestoreTextMessage() {
         messageTextView.setText(savedTextMessage);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
 }

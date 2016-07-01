@@ -1,6 +1,9 @@
 package uk.co.jaspalsvoice.jv.activities;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import uk.co.jaspalsvoice.jv.R;
 import uk.co.jaspalsvoice.jv.views.AddressCardView;
