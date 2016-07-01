@@ -14,7 +14,7 @@ import uk.co.jaspalsvoice.jv.JvPreferences;
 public class BaseActivity extends AppCompatActivity {
 
     private JvApplication application;
-    protected JvPreferences preferences;
+    public static JvPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

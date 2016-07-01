@@ -13,7 +13,9 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import uk.co.jaspalsvoice.jv.JvPreferences;
 import uk.co.jaspalsvoice.jv.R;
+import uk.co.jaspalsvoice.jv.activities.BaseActivity;
 
 /**
  * Created by Ana on 2/21/2016.
@@ -29,6 +31,8 @@ public class TickBoxListCardView extends CardView {
     private ViewGroup buttonsView;
     private Button cancelBtn;
     private Button saveBtn;
+
+    private TickBoxListAdapter adapter;
 
     public TickBoxListCardView(Context context) {
         super(context);
@@ -67,7 +71,6 @@ public class TickBoxListCardView extends CardView {
         cancelBtn = (Button) root.findViewById(R.id.cancel);
         saveBtn = (Button) root.findViewById(R.id.save);
 
-        recyclerView.setAdapter(new TickBoxListAdapter(data));
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setHasFixedSize(true);
         recyclerView.setMinimumHeight(computeMinHeight());
@@ -96,13 +99,58 @@ public class TickBoxListCardView extends CardView {
             @Override
             public void onClick(View v) {
                 showNonEditMode();
+                save();
             }
         });
+    }
+
+    private void save() {
+        if (title.equals(getResources().getString(R.string.about_me_sitting_position))){
+            BaseActivity.preferences.storeOptions(adapter.getOptionsArray(),getResources().
+                    getString(R.string.about_me_sitting_position));
+        } else if (title.equals(getResources().getString(R.string.about_me_need_to_use))){
+            BaseActivity.preferences.storeOptions(adapter.getOptionsArray(),getResources().
+                    getString(R.string.about_me_need_to_use));
+        } else if (title.equals(getResources().getString(R.string.about_me_breathing_when))){
+            BaseActivity.preferences.storeOptions(adapter.getOptionsArray(),getResources().
+                    getString(R.string.about_me_breathing_when));
+        } else if (title.equals(getResources().getString(R.string.about_me_sleep_position))){
+            BaseActivity.preferences.storeOptions(adapter.getOptionsArray(),getResources().
+                    getString(R.string.about_me_sleep_position));
+        } else if (title.equals(getResources().getString(R.string.about_me_transfer_to))){
+            BaseActivity.preferences.storeOptions(adapter.getOptionsArray(),getResources().
+                    getString(R.string.about_me_transfer_to));
+        }
+    }
+
+    private void getData(){
+        if (title != null) {
+            if (title.equals(getResources().getString(R.string.about_me_sitting_position))) {
+                adapter = new TickBoxListAdapter(data, BaseActivity.preferences.loadOptions(
+                        getResources().getString(R.string.about_me_sitting_position)));
+            } else if (title.equals(getResources().getString(R.string.about_me_need_to_use))) {
+                adapter = new TickBoxListAdapter(data, BaseActivity.preferences.loadOptions(
+                        getResources().getString(R.string.about_me_need_to_use)));
+            } else if (title.equals(getResources().getString(R.string.about_me_breathing_when))) {
+                adapter = new TickBoxListAdapter(data, BaseActivity.preferences.loadOptions(
+                        getResources().getString(R.string.about_me_breathing_when)));
+            } else if (title.equals(getResources().getString(R.string.about_me_sleep_position))) {
+                adapter = new TickBoxListAdapter(data, BaseActivity.preferences.loadOptions(
+                        getResources().getString(R.string.about_me_sleep_position)));
+            } else if (title.equals(getResources().getString(R.string.about_me_transfer_to))) {
+                adapter = new TickBoxListAdapter(data, BaseActivity.preferences.loadOptions(
+                        getResources().getString(R.string.about_me_transfer_to)));
+            }
+            if (adapter != null) {
+                recyclerView.setAdapter(adapter);
+            }
+        }
     }
 
     public void setTitle(String title) {
         this.title = title;
         titleView.setText(title);
+        getData();
     }
 
     public String getTitle() {

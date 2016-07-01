@@ -16,11 +16,20 @@ public class TickBoxListAdapter extends RecyclerView.Adapter<TickBoxListAdapter.
 
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_OTHER = 1;
+    private Boolean[] optionsArray;
 
     private String[] data;
 
-    public TickBoxListAdapter(String[] data) {
+    public TickBoxListAdapter(String[] data, Boolean[] optionsArray) {
         this.data = data;
+        if (optionsArray.length > 0) {
+            this.optionsArray = optionsArray;
+        } else {
+            this.optionsArray = new Boolean[data.length];
+            for (int position = 0; position < this.optionsArray.length; position++){
+                this.optionsArray[position] = false;
+            }
+        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -67,8 +76,23 @@ public class TickBoxListAdapter extends RecyclerView.Adapter<TickBoxListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(TickBoxListAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final TickBoxListAdapter.ViewHolder holder, final int position) {
         holder.checkedTextView.setText(data[position]);
+        if (optionsArray != null && optionsArray.length > 0){
+            holder.checkedTextView.setChecked(optionsArray[position]);
+        }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (optionsArray != null && optionsArray.length > 0){
+                    holder.checkedTextView.setChecked(!optionsArray[position]);
+                    optionsArray[position] = holder.checkedTextView.isChecked();
+                } else {
+                    holder.checkedTextView.setChecked(true);
+                }
+                optionsArray[position] = holder.checkedTextView.isChecked();
+            }
+        });
     }
 
     @Override
@@ -79,5 +103,9 @@ public class TickBoxListAdapter extends RecyclerView.Adapter<TickBoxListAdapter.
     @Override
     public int getItemViewType(int position) {
         return position == getItemCount() - 1 ? TYPE_OTHER : TYPE_ITEM;
+    }
+
+    public Boolean[] getOptionsArray(){
+        return optionsArray;
     }
 }

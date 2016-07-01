@@ -235,4 +235,24 @@ public class JvPreferences {
     public String getCarerLanguage() {
         return preferences.getString(CARER_LANG, "");
     }
+
+    public boolean storeOptions(Boolean[] array, String arrayName) {
+
+        editor.putInt(arrayName +"_size", array.length);
+
+        for(int i=0;i<array.length;i++)
+            editor.putBoolean(arrayName + "_" + i, array[i]);
+
+        return editor.commit();
+    }
+
+    public Boolean[] loadOptions(String arrayName) {
+
+        int size = preferences.getInt(arrayName + "_size", 0);
+        Boolean array[] = new Boolean[size];
+        for(int i=0;i<size;i++)
+            array[i] = preferences.getBoolean(arrayName + "_" + i, false);
+
+        return array;
+    }
 }
