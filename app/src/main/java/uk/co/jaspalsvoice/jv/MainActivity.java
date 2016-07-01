@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -458,9 +459,17 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.share_menu, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         MenuItem item = menu.findItem(R.id.menu_text_share);
         shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+        MenuItem textSizeItem = menu.findItem(R.id.menu_text_font);
+        textSizeItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                startActivityForResult(new Intent(Settings.ACTION_DISPLAY_SETTINGS), 0);
+                return false;
+            }
+        });
         return super.onCreateOptionsMenu(menu);
     }
 
