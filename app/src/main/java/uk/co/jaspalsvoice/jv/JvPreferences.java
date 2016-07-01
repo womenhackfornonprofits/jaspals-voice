@@ -37,6 +37,9 @@ public class JvPreferences {
     private static final String MOBILE = "pd_mobile";
     private static final String GENDER = "pd_gender";
     private static final String CARER_LANG = "pd_carer_language";
+    private static final String PERSONAL_DETAILS_BREATHING_DIFFICULTY = "pd_breathing_difficulty";
+    private static final String PERSONAL_DETAILS_PHYSICAL_ABILITY = "pd_physical_ability";
+    private static final String PERSONAL_DETAILS_EATING_DRINKING = "pd_eating_drinking";
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -254,5 +257,29 @@ public class JvPreferences {
             array[i] = preferences.getBoolean(arrayName + "_" + i, false);
 
         return array;
+    }
+
+    public void setBreathingDifficultiesStatus(boolean isBreathingDifficult) {
+        editor.putBoolean(PERSONAL_DETAILS_BREATHING_DIFFICULTY, isBreathingDifficult).apply();
+    }
+
+    public void setPhysicalAbilitiesStatus(boolean canWalk) {
+        editor.putBoolean(PERSONAL_DETAILS_PHYSICAL_ABILITY, canWalk).apply();
+    }
+
+    public void setSwallowingAbilitiesStatus(boolean canSwallow) {
+        editor.putBoolean(PERSONAL_DETAILS_EATING_DRINKING, canSwallow).apply();
+    }
+
+    public boolean getBreathingDifficulties() {
+        return preferences.getBoolean(PERSONAL_DETAILS_BREATHING_DIFFICULTY, false);
+    }
+
+    public boolean getPhysicalAbilitiesStatus() {
+        return preferences.getBoolean(PERSONAL_DETAILS_PHYSICAL_ABILITY, false);
+    }
+
+    public boolean getSwallowingAbilitiesStatus() {
+        return preferences.getBoolean(PERSONAL_DETAILS_EATING_DRINKING, false);
     }
 }

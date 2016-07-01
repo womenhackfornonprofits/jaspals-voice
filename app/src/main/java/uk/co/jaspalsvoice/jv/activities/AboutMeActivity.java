@@ -25,6 +25,10 @@ public class AboutMeActivity extends BaseActivity {
 
         YesNoCardView breathing = (YesNoCardView) findViewById(R.id.breathing);
         breathing.setTitle(getString(R.string.about_me_breathing));
+        breathing.setTitleId(R.string.about_me_breathing);
+        String[] answers = getResources().getStringArray(R.array.yes_no_spinner_item);
+        breathing.setText(preferences.getBreathingDifficulties() ? answers[0] : answers[1]);
+
 
         TickBoxListCardView breathingWhen = (TickBoxListCardView) findViewById(R.id.breathing_when);
         breathingWhen.setTitle(getString(R.string.about_me_breathing_when));
@@ -34,11 +38,16 @@ public class AboutMeActivity extends BaseActivity {
 
         YesNoCardView swallowingDifficulties = (YesNoCardView) findViewById(R.id.swallowing_difficulties);
         swallowingDifficulties.setTitle(getString(R.string.about_me_swallowing_difficulties));
+        swallowingDifficulties.setTitleId(R.string.about_me_swallowing_difficulties);
         swallowingDifficulties.setSubtitle(getString(R.string.about_me_swallowing_difficulties_subtitle));
+        swallowingDifficulties.setText(preferences.getSwallowingAbilitiesStatus() ? answers[0] : answers[1]);
 
         YesNoCardView physicalAbilities = (YesNoCardView) findViewById(R.id.physical_abilities);
         physicalAbilities.setTitle(getString(R.string.about_me_physical_abilities));
+        physicalAbilities.setTitleId(R.string.about_me_physical_abilities);
         physicalAbilities.setSubtitle(getString(R.string.about_me_physical_abilities_subtitle));
+        physicalAbilities.setText(preferences.getPhysicalAbilitiesStatus() ? answers[0] : answers[1]);
+
 
         TickBoxListCardView transferTo = (TickBoxListCardView) findViewById(R.id.transfer_to);
         transferTo.setTitle(getString(R.string.about_me_transfer_to));

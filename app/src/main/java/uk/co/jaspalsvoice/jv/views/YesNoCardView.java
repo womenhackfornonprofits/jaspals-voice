@@ -98,7 +98,10 @@ public class YesNoCardView extends CardView {
                 save();
             }
         });
+
+//        getData();
     }
+
 
     public void setTitle(String title) {
         this.title = title;
@@ -171,11 +174,37 @@ public class YesNoCardView extends CardView {
     }
 
     private void save() {
+        int selection = spinnerView.getSelectedItemPosition();
         switch (titleId) {
             case R.string.personal_details_translator_needed:
-                int selection = spinnerView.getSelectedItemPosition();
                 preferences.setPersonalDetailsNeedTranslator(selection == 0);
+                break;
+            case R.string.about_me_breathing:
+                preferences.setBreathingDifficultiesStatus(selection == 0);
+                break;
+            case R.string.about_me_physical_abilities:
+                preferences.setPhysicalAbilitiesStatus(selection == 0);
+                break;
+            case R.string.about_me_swallowing_difficulties:
+                preferences.setSwallowingAbilitiesStatus(selection == 0);
                 break;
         }
     }
+
+   /* private void getData() {
+        switch (titleId) {
+            case R.string.personal_details_translator_needed:
+                textView.setText();
+                break;
+            case R.string.about_me_breathing:
+                preferences.setBreathingDifficultiesStatus(selection == 0);
+                break;
+            case R.string.about_me_physical_abilities:
+                preferences.setPhysicalAbilitiesStatus(selection == 0);
+                break;
+            case R.string.about_me_swallowing_difficulties:
+                preferences.setSwallowingAbilitiesStatus(selection == 0);
+                break;
+        }
+    }*/
 }
