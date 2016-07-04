@@ -119,5 +119,6 @@
     <string name="gp_hospital_phone">Hospital Phone</string>
     <string name="no_content_medicine">There are no medicines to display. Please tap on the \"+\" icon in the top right corner to add a new medicine</string>
     <string name="text_size">Text Size</string>
+    <string name="email_validation">Please enter email address in valid format</string>
 
 </resources>

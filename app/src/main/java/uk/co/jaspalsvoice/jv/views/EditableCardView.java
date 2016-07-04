@@ -2,14 +2,21 @@ package uk.co.jaspalsvoice.jv.views;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
+import android.text.InputFilter;
+import android.text.InputType;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.LongSparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethod;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import uk.co.jaspalsvoice.jv.JvApplication;
 import uk.co.jaspalsvoice.jv.JvPreferences;
@@ -116,6 +123,30 @@ public class EditableCardView extends CardView {
 
     public void setTitleId(int titleId) {
         this.titleId = titleId;
+        if (titleId == R.string.personal_details_mobile ||
+                titleId == R.string.personal_details_home_tel || titleId == R.string.personal_details_carer_tel) {
+            editView.setInputType(InputType.TYPE_CLASS_PHONE);
+        } else if (titleId == R.string.personal_details_email) {
+            editView.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        } else if (titleId == R.string.personal_details_first_name || titleId == R.string.personal_details_last_name
+                || titleId == R.string.town_title || titleId == R.string.county_title
+                || titleId == R.string.personal_details_carer_language || titleId == R.string.personal_details_name_to_be_called||
+                titleId == R.string.personal_details_main_carer || titleId == R.string.personal_details_live_with ){
+            editView.setFilters(new InputFilter[] {
+                    new InputFilter() {
+                        public CharSequence filter(CharSequence src, int start,
+                                                   int end, Spanned dst, int dstart, int dend) {
+                            if(src.equals("")){ // for backspace
+                                return src;
+                            }
+                            if(src.toString().matches("[a-zA-Z ]+")){
+                                return src;
+                            }
+                            return "";
+                        }
+                    }
+            });
+        }
     }
 
     public String getSubtitle() {
@@ -188,7 +219,11 @@ public class EditableCardView extends CardView {
                 preferences.setPersonalDetailsLiveWith(text);
                 break;
             case R.string.personal_details_email:
-                preferences.setPersonalDetailsEmail(text);
+                if (isValidEmail(text)) {
+                    preferences.setPersonalDetailsEmail(text);
+                } else {
+                    showEmailToast();
+                }
                 break;
             case R.string.personal_details_dob:
                 preferences.setPersonalDetailsDateOfBirth(text);
@@ -236,6 +271,11 @@ public class EditableCardView extends CardView {
                 preferences.setCarerLanguage(text);
                 break;
         }
+    }
+
+    private void showEmailToast() {
+        Toast.makeText(getContext(),
+                getResources().getString(R.string.email_validation), Toast.LENGTH_LONG).show();
     }
 
     private String getSavedText() {
@@ -303,5 +343,13 @@ public class EditableCardView extends CardView {
                 break;
         }
         return text;
+    }
+
+    public final static boolean isValidEmail(CharSequence target) {
+        if (target == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
     }
 }
