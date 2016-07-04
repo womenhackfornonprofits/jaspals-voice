@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
-                 android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-                 android:id="@+id/item"
-                 android:clickable="true"
-                 android:focusable="true"
-                 android:layout_height="match_parent"
-                 android:layout_width="match_parent"/>
+    android:id="@+id/item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+    android:clickable="true"
+    android:focusable="true"
+    android:textSize="@dimen/text_normal_size" />

@@ -11,12 +11,14 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/text_normal_size"
             android:layout_width="0dp"
             android:text="@string/medicines_name"/>
 
         <EditText
             android:id="@+id/edit_value_name"
             android:inputType="text"
+            android:textSize="@dimen/text_normal_size"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:layout_width="0dp"/>
@@ -25,6 +27,7 @@
             android:id="@+id/show_value_name"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/text_normal_size"
             android:layout_width="0dp"
             android:text="@string/default_text_when_not_specified"
             android:visibility="gone"/>
@@ -38,12 +41,14 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/text_normal_size"
             android:layout_width="0dp"
             android:text="@string/medicines_dosage"/>
 
         <EditText
             android:id="@+id/edit_value_dosage"
             android:inputType="text"
+            android:textSize="@dimen/text_normal_size"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:layout_width="0dp"/>
@@ -52,6 +57,7 @@
             android:id="@+id/show_value_dosage"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/text_normal_size"
             android:layout_width="0dp"
             android:text="@string/default_text_when_not_specified"
             android:visibility="gone"/>
@@ -65,12 +71,14 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/text_normal_size"
             android:layout_width="0dp"
             android:text="@string/medicines_reason"/>
 
         <EditText
             android:id="@+id/edit_value_reason"
             android:inputType="text"
+            android:textSize="@dimen/text_normal_size"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:layout_width="0dp"/>
@@ -79,6 +87,7 @@
             android:id="@+id/show_value_reason"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/text_normal_size"
             android:layout_width="0dp"
             android:text="@string/default_text_when_not_specified"
             android:visibility="gone"/>
@@ -92,12 +101,14 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/text_normal_size"
             android:layout_width="0dp"
             android:text="@string/medicines_frequency"/>
 
         <EditText
             android:id="@+id/edit_value_frequency"
             android:inputType="text"
+            android:textSize="@dimen/text_normal_size"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:layout_width="0dp"/>
@@ -106,6 +117,7 @@
             android:id="@+id/show_value_frequency"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/text_normal_size"
             android:layout_width="0dp"
             android:text="@string/default_text_when_not_specified"
             android:visibility="gone"/>

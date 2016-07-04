@@ -9,11 +9,13 @@
         android:clickable="true"
         android:focusable="true"
         android:id="@+id/item"
+        android:textSize="@dimen/text_normal_size"
         android:layout_height="match_parent"
         android:layout_width="match_parent"/>
 
     <EditText
         android:id="@+id/other"
+        android:textSize="@dimen/text_normal_size"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:visibility="invisible"
