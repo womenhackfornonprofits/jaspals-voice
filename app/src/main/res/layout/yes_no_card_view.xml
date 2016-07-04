@@ -41,7 +41,6 @@
         tools:text="Text"/>
 
     <Spinner
-        android:entries="@array/yes_no_spinner_item"
         android:id="@+id/spinner"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_small"

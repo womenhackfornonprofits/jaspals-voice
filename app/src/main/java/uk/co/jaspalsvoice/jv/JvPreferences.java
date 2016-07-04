@@ -219,10 +219,6 @@ public class JvPreferences {
         editor.putString(MOBILE, mobile).apply();
     }
 
-    public void setPersonalDetailGender(String gender) {
-        editor.putString(GENDER, gender).apply();
-    }
-
     public void setCarerLanguage(String carerLanguage) {
         editor.putString(CARER_LANG, carerLanguage).apply();
     }
@@ -269,6 +265,14 @@ public class JvPreferences {
 
     public void setSwallowingAbilitiesStatus(boolean canSwallow) {
         editor.putBoolean(PERSONAL_DETAILS_EATING_DRINKING, canSwallow).apply();
+    }
+
+    public void setGender(boolean isMale) {
+        editor.putBoolean(GENDER, isMale).apply();
+    }
+
+    public boolean getGender() {
+        return preferences.getBoolean(GENDER, false);
     }
 
     public boolean getBreathingDifficulties() {

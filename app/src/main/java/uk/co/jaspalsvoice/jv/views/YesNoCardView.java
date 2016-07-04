@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -66,8 +67,8 @@ public class YesNoCardView extends CardView {
         cancelBtn = (Button) root.findViewById(R.id.cancel);
         saveBtn = (Button) root.findViewById(R.id.save);
 
-        options = getResources().getStringArray(R.array.yes_no_spinner_item);
-        textView.setText(options[0]);
+        //options = getResources().getStringArray(R.array.yes_no_spinner_item);
+//        textView.setText(options[0]);
 
         titleView.setOnClickListener(new OnClickListener() {
             @Override
@@ -155,6 +156,25 @@ public class YesNoCardView extends CardView {
 
     public void setTitleId(int titleId) {
         this.titleId = titleId;
+        if (titleId == R.string.personal_details_gender){
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                    getContext(), android.R.layout.simple_spinner_item,
+                    getResources().getStringArray(R.array.gender_spinner));
+            options = getResources().getStringArray(R.array.gender_spinner);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerView.setAdapter(adapter);
+        } else {
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                    getContext(), android.R.layout.simple_spinner_item,
+                    getResources().getStringArray(R.array.yes_no_spinner_item));
+            options = getResources().getStringArray(R.array.yes_no_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerView.setAdapter(adapter);
+        }
+
+
+
+        textView.setText(options[0]);
     }
 
     private void showNonEditMode() {
@@ -188,6 +208,8 @@ public class YesNoCardView extends CardView {
             case R.string.about_me_swallowing_difficulties:
                 preferences.setSwallowingAbilitiesStatus(selection == 0);
                 break;
+            case R.string.personal_details_gender:
+                preferences.setGender(selection == 0);
         }
     }
 

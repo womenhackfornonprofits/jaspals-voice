@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:padding="@dimen/margin_small"/>
 
-        <uk.co.jaspalsvoice.jv.views.EditableCardView
+        <uk.co.jaspalsvoice.jv.views.YesNoCardView
             android:elevation="@dimen/elevation"
             android:id="@+id/pd_gender"
             android:layout_height="wrap_content"

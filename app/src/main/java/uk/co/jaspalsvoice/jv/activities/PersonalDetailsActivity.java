@@ -83,11 +83,17 @@ public class PersonalDetailsActivity extends BaseActivity {
         mobile.setTitleId(R.string.personal_details_mobile);
         mobile.setText(preferences.getPersonalDetailMobile());
 
-        EditableCardView gender = (EditableCardView) findViewById(R.id.pd_gender);
+        YesNoCardView gender = (YesNoCardView) findViewById(R.id.pd_gender);
+        gender.setTitle(getString(R.string.personal_details_gender));
+        gender.setTitleId(R.string.personal_details_gender);
+        String[] answers = getResources().getStringArray(R.array.gender_spinner);
+        gender.setText(preferences.getGender() ? answers[0] : answers[1]);
+
+        /*EditableCardView gender = (EditableCardView) findViewById(R.id.pd_gender);
         gender.setTitle(getString(R.string.personal_details_gender));
         gender.setTitleId(R.string.personal_details_gender);
         gender.setText(preferences.getPersonalDetailGender());
-
+*/
         EditableCardView carerLanguage = (EditableCardView) findViewById(R.id.pd_language_of_carer);
         carerLanguage.setTitle(getString(R.string.personal_details_carer_language));
         carerLanguage.setTitleId(R.string.personal_details_carer_language);
@@ -96,7 +102,7 @@ public class PersonalDetailsActivity extends BaseActivity {
         YesNoCardView translatorNeeded = (YesNoCardView) findViewById(R.id.pd_translator_needed);
         translatorNeeded.setTitle(getString(R.string.personal_details_translator_needed));
         translatorNeeded.setTitleId(R.string.personal_details_translator_needed);
-        String[] answers = getResources().getStringArray(R.array.yes_no_spinner_item);
+        answers = getResources().getStringArray(R.array.yes_no_spinner_item);
         translatorNeeded.setText(preferences.getPersonalDetailsNeedTranslator() ? answers[0] : answers[1]);
     }
 }

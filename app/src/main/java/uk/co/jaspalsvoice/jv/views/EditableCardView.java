@@ -264,9 +264,9 @@ public class EditableCardView extends CardView {
             case R.string.personal_details_mobile:
                 preferences.setMobile(text);
                 break;
-            case R.string.personal_details_gender:
+           /* case R.string.personal_details_gender:
                 preferences.setPersonalDetailGender(text);
-                break;
+                break;*/
             case R.string.personal_details_carer_language:
                 preferences.setCarerLanguage(text);
                 break;
@@ -335,9 +335,9 @@ public class EditableCardView extends CardView {
             case R.string.personal_details_mobile:
                 text = preferences.getPersonalDetailMobile();
                 break;
-            case R.string.personal_details_gender:
+           /* case R.string.personal_details_gender:
                 text = preferences.getPersonalDetailGender();
-                break;
+                break;*/
             case R.string.personal_details_carer_language:
                 text = preferences.getCarerLanguage();
                 break;
