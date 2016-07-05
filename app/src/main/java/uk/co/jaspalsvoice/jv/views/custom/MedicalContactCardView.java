@@ -3,6 +3,9 @@ package uk.co.jaspalsvoice.jv.views.custom;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.widget.CardView;
+import android.text.InputFilter;
+import android.text.InputType;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -11,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -130,9 +134,12 @@ public class MedicalContactCardView extends CardView {
             @Override
             public void onClick(View v) {
                 editMode = !editMode;
-
-                new Save().execute(edit1View.getText().toString(), edit2View.getText().toString(),
-                        edit3View.getText().toString(),edit4View.getText().toString());
+                if (TextUtils.isEmpty(edit4View.getText()) || isValidEmail(edit4View.getText())) {
+                    new Save().execute(edit1View.getText().toString(), edit2View.getText().toString(),
+                            edit3View.getText().toString(), edit4View.getText().toString());
+                } else {
+                    showEmailToast();
+                }
             }
         });
     }
@@ -140,6 +147,37 @@ public class MedicalContactCardView extends CardView {
     public void setTitle(String title) {
         this.title = title;
         titleView.setText(title);
+
+        edit1View.setFilters(new InputFilter[]{
+                new InputFilter() {
+                    public CharSequence filter(CharSequence src, int start,
+                                               int end, Spanned dst, int dstart, int dend) {
+                        if (src.equals("")) { // for backspace
+                            return src;
+                        }
+                        if (src.toString().matches("[a-zA-Z ]+")) {
+                            return src;
+                        }
+                        return "";
+                    }
+                }
+        });
+        edit3View.setInputType(InputType.TYPE_CLASS_PHONE);
+        edit4View.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+
+    }
+
+    private boolean isValidEmail(CharSequence target) {
+        if (target == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
+    }
+
+    private void showEmailToast() {
+        Toast.makeText(getContext(),
+                getResources().getString(R.string.email_validation), Toast.LENGTH_LONG).show();
     }
 
     public String getTitle() {
@@ -220,8 +258,8 @@ public class MedicalContactCardView extends CardView {
         edit4View.setVisibility(GONE);
         text3View.setVisibility(VISIBLE);
         text4View.setVisibility(VISIBLE);
-        
-        
+
+
         buttonsView.setVisibility(GONE);
         showDefaultText();
         titleView.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(R.drawable.ic_action_edit), null);

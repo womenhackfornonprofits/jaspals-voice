@@ -46,7 +46,11 @@
         <activity
             android:name=".activities.AddMedicineActivity"
             android:label="@string/add_new_medicine" />
-        <activity android:name=".activities.AddTeamMemberActivity"></activity>
+        <activity android:name=".activities.AddTeamMemberActivity"
+            android:label="@string/add_new_team_member"/>
+        <activity android:name=".activities.FontSizeActivity"
+            android:label="@string/change_font_size"
+            />
     </application>
 
 </manifest>

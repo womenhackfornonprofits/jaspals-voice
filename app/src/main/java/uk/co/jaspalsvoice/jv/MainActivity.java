@@ -2,6 +2,7 @@ package uk.co.jaspalsvoice.jv;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.transition.ChangeBounds;
 import android.transition.Fade;
 import android.transition.Scene;
 import android.transition.TransitionManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.ContextMenu;
@@ -51,6 +53,7 @@ import java.util.Set;
 
 import uk.co.jaspalsvoice.jv.activities.AboutMeActivity;
 import uk.co.jaspalsvoice.jv.activities.DiagnosisActivity;
+import uk.co.jaspalsvoice.jv.activities.FontSizeActivity;
 import uk.co.jaspalsvoice.jv.activities.FoodAllergiesActivity;
 import uk.co.jaspalsvoice.jv.activities.GpActivity;
 import uk.co.jaspalsvoice.jv.activities.LikesDislikesActivity;
@@ -532,8 +535,15 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         final JvPreferences preferences = ((JvApplication)getApplicationContext()).getPreferences();
+        Configuration configuration = getResources().getConfiguration();
+        configuration.fontScale = preferences.getFontSize(); //0.85 small size, 1 normal size, 1,15 big etc
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        metrics.scaledDensity = configuration.fontScale * metrics.density;
+        getBaseContext().getResources().updateConfiguration(configuration, metrics);
+        setContentView(R.layout.activity_main);
 
         setupScenes();
 
@@ -602,7 +612,8 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
         textSizeItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                startActivityForResult(new Intent(Settings.ACTION_DISPLAY_SETTINGS), 0);
+                Intent intent = new Intent(MainActivity.this, FontSizeActivity.class);
+                startActivity(intent);
                 return false;
             }
         });

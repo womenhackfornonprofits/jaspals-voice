@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="uk.co.jaspalsvoice.jv.activities.FontSizeActivity">
+
+    <TextView
+        android:id="@+id/message"
+        android:textSize="@dimen/text_small_size"
+        android:layout_alignParentTop="true"
+        android:textColor="@android:color/black"
+        android:text="@string/change_font_message"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RadioGroup
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/message"
+        android:id="@+id/fontSizeRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:text="@string/small_font_text"
+            android:id="@+id/smallRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <RadioButton
+            android:text="@string/normal_font_text"
+            android:id="@+id/normalRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <RadioButton
+            android:text="@string/large_font_text"
+            android:id="@+id/largeRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RadioGroup>
+
+</RelativeLayout>

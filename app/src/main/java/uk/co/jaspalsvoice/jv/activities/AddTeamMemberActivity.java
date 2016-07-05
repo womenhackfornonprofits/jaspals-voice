@@ -3,6 +3,7 @@ package uk.co.jaspalsvoice.jv.activities;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,11 +42,23 @@ public class AddTeamMemberActivity extends BaseActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveMedicineData(typeEdittext.getText().toString(),
-                        nameEdittext.getText().toString(), addressEdittext.getText().toString(),
-                        phoneNumberEdittext.getText().toString(), emailEdittext.getText().toString());
+                
+
+                    
+                    saveMedicineData(typeEdittext.getText().toString(),
+                            nameEdittext.getText().toString(), addressEdittext.getText().toString(),
+                            phoneNumberEdittext.getText().toString(), emailEdittext.getText().toString());
+
+
+                    
+
             }
         });
+    }
+
+    private void showValidationToast() {
+        Toast.makeText(this,getResources().getString(R.string.add_gp_validation), 
+                Toast.LENGTH_LONG).show();
     }
 
     private void initValues() {
@@ -53,16 +66,29 @@ public class AddTeamMemberActivity extends BaseActivity {
     }
 
     private void initViews() {
-        typeEdittext = (EditText)findViewById(R.id.typeEdittext);
-        nameEdittext = (EditText)findViewById(R.id.nameEdittext);
-        addressEdittext = (EditText)findViewById(R.id.addressEdittext);
-        phoneNumberEdittext = (EditText)findViewById(R.id.phoneEdittext);
-        emailEdittext = (EditText)findViewById(R.id.emailEdittext);
+        typeEdittext = (EditText) findViewById(R.id.typeEdittext);
+        nameEdittext = (EditText) findViewById(R.id.nameEdittext);
+        addressEdittext = (EditText) findViewById(R.id.addressEdittext);
+        phoneNumberEdittext = (EditText) findViewById(R.id.phoneEdittext);
+        emailEdittext = (EditText) findViewById(R.id.emailEdittext);
         saveButton = (Button) findViewById(R.id.saveButton);
     }
 
-    public void saveMedicineData(String... doctorData){
-        new Save().execute(doctorData);
+    public void saveMedicineData(String... doctorData) {
+        if (!TextUtils.isEmpty(typeEdittext.getText().toString()) &&
+                !TextUtils.isEmpty(nameEdittext.getText().toString()) &&
+                !TextUtils.isEmpty(addressEdittext.getText().toString()) &&
+                !TextUtils.isEmpty(phoneNumberEdittext.getText().toString()) &&
+                !TextUtils.isEmpty(emailEdittext.getText().toString())) {
+            new Save().execute(doctorData);
+            typeEdittext.setText("");
+            nameEdittext.setText("");
+            addressEdittext.setText("");
+            phoneNumberEdittext.setText("");
+            emailEdittext.setText("");
+        } else {
+            showValidationToast();
+        }
     }
 
     private class Save extends AsyncTask<String, Void, Doctor> {

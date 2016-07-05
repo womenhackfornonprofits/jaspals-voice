@@ -41,6 +41,7 @@ public class JvPreferences {
     private static final String PERSONAL_DETAILS_PHYSICAL_ABILITY = "pd_physical_ability";
     private static final String PERSONAL_DETAILS_EATING_DRINKING = "pd_eating_drinking";
     private static final String FIRST_RUN_STATUS = "first_run";
+    private static final String FONT_SIZE = "font_size";
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -295,5 +296,13 @@ public class JvPreferences {
 
     public boolean isFirstRun(){
         return preferences.getBoolean(FIRST_RUN_STATUS, false);
+    }
+
+    public float getFontSize() {
+        return preferences.getFloat(FONT_SIZE, 1.0f);
+    }
+
+    public void setFontSize(float fontSize) {
+        editor.putFloat(FONT_SIZE, fontSize).apply();
     }
 }
