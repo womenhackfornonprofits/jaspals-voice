@@ -2,6 +2,7 @@ package uk.co.jaspalsvoice.jv;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -41,6 +42,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -55,6 +57,7 @@ import uk.co.jaspalsvoice.jv.activities.LikesDislikesActivity;
 import uk.co.jaspalsvoice.jv.activities.MedicalAllergiesActivity;
 import uk.co.jaspalsvoice.jv.activities.MedicinesActivity;
 import uk.co.jaspalsvoice.jv.activities.PersonalDetailsActivity;
+import uk.co.jaspalsvoice.jv.db.DatabaseHelper;
 import uk.co.jaspalsvoice.jv.task.FetchWordsTask;
 import uk.co.jaspalsvoice.jv.task.HandlerConstants;
 import uk.co.jaspalsvoice.jv.task.InitWordsTask;
@@ -138,15 +141,15 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
     private View.OnClickListener onSuggestionListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (t9Enabled) {
-                currentHandler = new KeypadHandler(ContextCompat.getColor(MainActivity.this, R.color.colorAccent_40));
-                ((KeypadHandler) currentHandler).setListener(keyPadListener);
-                t9Enabled = false;
+            ((T9Handler) currentHandler).setListener(keyPadListener);
+            if (!t9Enabled){
+                t9View.setBackgroundColor(ContextCompat.getColor
+                        (MainActivity.this, android.R.color.holo_green_dark));
             } else {
-                currentHandler = new T9Handler(ContextCompat.getColor(MainActivity.this, R.color.colorAccent_40));
-                ((T9Handler) currentHandler).setListener(keyPadListener);
-                t9Enabled = true;
+                t9View.setBackgroundColor(ContextCompat.getColor
+                        (MainActivity.this, android.R.color.darker_gray));
             }
+            t9Enabled = !t9Enabled;
         }
     };
 
@@ -273,13 +276,28 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
         @Override
         public void fetchWords(String text) {
             // new FetchWordsTask(getApplicationContext(), onResultsListener).execute(text);
-            Log.i(TAG, "fetchWords: text = " + text);
-            final List<String> list = trieT9.search(encodeWord(text.toLowerCase()));
-            if (list != null) {
-                for (int i = 0; i < list.size(); i++) {
-                    Log.i(TAG, "fetchWords: " + list.get(i));
+            List<String> list = new ArrayList<>();
+            if (!t9Enabled) {
+                Cursor loadWordsCursor = DatabaseHelper.getInstance(MainActivity.this).
+                        loadWords(MainActivity.this, text);
+                if (loadWordsCursor != null) {
+                    loadWordsCursor.moveToFirst();
+                    while (!loadWordsCursor.isAfterLast()) {
+                        list.add(loadWordsCursor.getString(loadWordsCursor.getColumnIndex("word")));
+                        loadWordsCursor.moveToNext();
+                    }
+                }
+            } else {
+                list = trieT9.search(encodeWord(text.toLowerCase()));
+                if (list != null) {
+                    for (int i = 0; i < list.size(); i++) {
+                        Log.i(TAG, "fetchWords: " + list.get(i));
+                    }
                 }
             }
+
+            Log.i(TAG, "fetchWords: text = " + text);
+
 
             final int pos = messageTextView.getSelectionStart();
             messageTextLayout = messageTextView.getLayout();
@@ -316,9 +334,9 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
         @Override
         public void afterTextChanged(Editable s) {
             shareIntent.putExtra(Intent.EXTRA_TEXT, s.toString());
-            if (TextUtils.isEmpty(s)){
+            if (TextUtils.isEmpty(s)) {
                 if (popupWindow != null)
-                popupWindow.dismiss();
+                    popupWindow.dismiss();
             }
             if (shareActionProvider != null) {
                 shareActionProvider.setShareIntent(shareIntent);
@@ -353,7 +371,6 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
         charMapping.put('A', 2);
         charMapping.put('B', 2);
         charMapping.put('C', 2);
-
 
 
         keys = new HashSet<>();
