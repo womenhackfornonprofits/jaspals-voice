@@ -90,6 +90,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "MATCH ? ORDER BY rank DESC LIMIT 0,5", args));
     }
 
+    public Cursor loadAllWords(Context context) {
+        SQLiteDatabase db = getDb(context);
+            return (db.rawQuery("SELECT * FROM english_words", null));
+       /* String[] args = {match + '*'};
+        return (db.rawQuery("SELECT * FROM english_words WHERE word "
+                + "MATCH ? ORDER BY rank DESC LIMIT 0,5", args));*/
+    }
+
     private SQLiteDatabase getDb(Context app) {
         if (db == null) {
             db = getInstance(app).getWritableDatabase();

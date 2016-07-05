@@ -515,9 +515,10 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
     private String encodeWord(String word) {
         initMap();
         StringBuilder encoded = new StringBuilder("");
-
-        for (int i = 0; i < word.length(); i++) {
-            encoded.append(String.valueOf(charMapping.get(word.charAt(i))));
+        if (word != null) {
+            for (int i = 0; i < word.length(); i++) {
+                encoded.append(String.valueOf(charMapping.get(word.charAt(i))));
+            }
         }
 
         return encoded.toString();
@@ -532,23 +533,40 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final JvPreferences preferences = ((JvApplication)getApplicationContext()).getPreferences();
 
         setupScenes();
 
         Runnable r = new Runnable() {
             @Override
             public void run() {
-                InputStream inputStream = getResources().openRawResource(R.raw.corncob_lowercase);
-                BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-                String line;
-                try {
-                    while ((line = br.readLine()) != null) {
-                        trieT9.add(encodeWord(line), line);
+                if (!preferences.isFirstRun()) {
+                    new InitWordsTask(getApplicationContext()).execute(getResources());
+                    InputStream inputStream = getResources().openRawResource(R.raw.corncob_lowercase);
+                    BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+                    String line;
+                    try {
+                        while ((line = br.readLine()) != null) {
+                            trieT9.add(encodeWord(line), line);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    Log.i(TAG, "run: t9 loaded");
+                    preferences.setFirstRunStatus(true);
+                } else {
+                    Cursor loadWordsCursor = DatabaseHelper.getInstance(MainActivity.this).
+                            loadAllWords(MainActivity.this);
+                    if (loadWordsCursor != null) {
+                        loadWordsCursor.moveToFirst();
+                        while (!loadWordsCursor.isAfterLast()) {
+                            trieT9.add(
+                                    encodeWord(loadWordsCursor.getString(loadWordsCursor.getColumnIndex("word"))),
+                                    loadWordsCursor.getString(loadWordsCursor.getColumnIndex("word")));
+                            loadWordsCursor.moveToNext();
+                        }
+                    }
                 }
-                Log.i(TAG, "run: t9 loaded");
             }
         };
 
@@ -566,7 +584,6 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
             ((KeypadHandler) currentHandler).setListener(keyPadListener);
         }
 
-        new InitWordsTask(getApplicationContext()).execute(getResources());
     }
 
     @Override

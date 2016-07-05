@@ -40,6 +40,7 @@ public class JvPreferences {
     private static final String PERSONAL_DETAILS_BREATHING_DIFFICULTY = "pd_breathing_difficulty";
     private static final String PERSONAL_DETAILS_PHYSICAL_ABILITY = "pd_physical_ability";
     private static final String PERSONAL_DETAILS_EATING_DRINKING = "pd_eating_drinking";
+    private static final String FIRST_RUN_STATUS = "first_run";
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -285,5 +286,14 @@ public class JvPreferences {
 
     public boolean getSwallowingAbilitiesStatus() {
         return preferences.getBoolean(PERSONAL_DETAILS_EATING_DRINKING, false);
+    }
+
+    public void setFirstRunStatus(boolean isFirstRun){
+        editor.putBoolean(FIRST_RUN_STATUS, isFirstRun).apply();
+    }
+
+
+    public boolean isFirstRun(){
+        return preferences.getBoolean(FIRST_RUN_STATUS, false);
     }
 }
