@@ -16,6 +16,7 @@ import java.util.concurrent.Future;
 
 import uk.co.jaspalsvoice.jv.models.Doctor;
 import uk.co.jaspalsvoice.jv.models.Medicine;
+import uk.co.jaspalsvoice.jv.models.VitalsBloodPressure;
 
 
 /**
@@ -27,7 +28,7 @@ public class DbHelper {
     private ExecutorService executor = Executors.newFixedThreadPool(1);
     private final SQLiteDatabase sqlite;
 
-    private static final String[] MEDICAL_TEAM_COLUMN_NAMES = new String[] {
+    private static final String[] MEDICAL_TEAM_COLUMN_NAMES = new String[]{
             DbOpenHelper.COLUMN_MT_UUID,
             DbOpenHelper.COLUMN_MT_ID,
             DbOpenHelper.COLUMN_MT_DOCTOR_TYPE,
@@ -39,7 +40,7 @@ public class DbHelper {
             DbOpenHelper.COLUMN_MT_EMAIL,
             DbOpenHelper.COLUMN_MT_PHONE};
 
-    private static final String[] MEDICAL_TEAM_MEMBER_COLUMN_NAMES = new String[] {
+    private static final String[] MEDICAL_TEAM_MEMBER_COLUMN_NAMES = new String[]{
             DbOpenHelper.COLUMN_ME_UUID,
             DbOpenHelper.COLUMN_ME_ID,
             DbOpenHelper.COLUMN_ME_DOCTOR_TYPE,
@@ -48,13 +49,20 @@ public class DbHelper {
             DbOpenHelper.COLUMN_ME_EMAIL,
             DbOpenHelper.COLUMN_ME_PHONE};
 
-    private static final String[] MEDICINES_COLUMN_NAMES = new String[] {
+    private static final String[] MEDICINES_COLUMN_NAMES = new String[]{
             DbOpenHelper.COLUMN_M_UUID,
             DbOpenHelper.COLUMN_M_ID,
             DbOpenHelper.COLUMN_M_DOSAGE,
             DbOpenHelper.COLUMN_M_NAME,
             DbOpenHelper.COLUMN_M_REASON,
             DbOpenHelper.COLUMN_M_FREQUENCY};
+
+    private static final String[] BLOOD_PRESSURE_COLUMN_NAMES = new String[]{
+            DbOpenHelper.COLUMN_B_UUID,
+            DbOpenHelper.COLUMN_B_ID,
+            DbOpenHelper.COLUMN_B_BLOODPRESSURE,
+            DbOpenHelper.COLUMN_B_DATE,
+    };
 
     public DbHelper(DbOpenHelper DbOpenHelper) {
         sqlite = DbOpenHelper.getWritableDatabase();
@@ -86,7 +94,8 @@ public class DbHelper {
     }
 
     /**
-     * Method to inset a team member
+     * Method to insert a team member
+     *
      * @param doctors List of doctors to be inserted in the db
      * @return the number of rows inserted
      */
@@ -99,6 +108,35 @@ public class DbHelper {
                     sqlite.beginTransaction();
                     for (Doctor doctor : doctors) {
                         if (sqlite.insertWithOnConflict(DbOpenHelper.TABLE_MEDICAL_TEAM_MEMBER, null, doctor.toContentValues(), SQLiteDatabase.CONFLICT_REPLACE) >= 0) {
+                            insertedRows++;
+                        }
+                    }
+                    Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
+                    sqlite.setTransactionSuccessful();
+                    return insertedRows;
+                } finally {
+                    sqlite.endTransaction();
+                }
+            }
+        });
+    }
+
+    /**
+     * Method to insert a blood pressure entry
+     *
+     * @param bloodPressures List of doctors to be inserted in the db
+     * @return the number of rows inserted
+     */
+    public Future<Long> insertOrReplaceBloodPressure(final List<VitalsBloodPressure> bloodPressures) {
+        return executor.submit(new Callable<Long>() {
+            @Override
+            public Long call() throws Exception {
+                long insertedRows = 0;
+                try {
+                    sqlite.beginTransaction();
+                    for (VitalsBloodPressure bloodPressure : bloodPressures) {
+                        if (sqlite.insertWithOnConflict(DbOpenHelper.TABLE_BLOOD_PRESSURE, null, bloodPressure.toContentValues(),
+                                SQLiteDatabase.CONFLICT_REPLACE) >= 0) {
                             insertedRows++;
                         }
                     }
@@ -131,7 +169,7 @@ public class DbHelper {
                             }
                         } else {
                             String where = "id=?";
-                            String[] whereArgs = new String[] {String.valueOf(id)};
+                            String[] whereArgs = new String[]{String.valueOf(id)};
                             if (sqlite.update(DbOpenHelper.TABLE_MEDICINES,
                                     medicine.toContentValues(), where, whereArgs) >= 0) {
                                 insertedRows++;
@@ -217,6 +255,38 @@ public class DbHelper {
             }
         }
         return doctors;
+    }
+
+    /**
+     * Gets from db a list containing all doctors.
+     */
+    public List<VitalsBloodPressure> readAllBloodPressures() {
+        List<VitalsBloodPressure> bloodPressures = new ArrayList<>();
+        Cursor allBloodPressures = null;
+        try {
+           allBloodPressures = readAllFuture(DbOpenHelper.TABLE_BLOOD_PRESSURE,
+                    BLOOD_PRESSURE_COLUMN_NAMES, DbOpenHelper.COLUMN_B_ID).get();
+            if (allBloodPressures != null) {
+                if (allBloodPressures.moveToFirst()) {
+                    while (!allBloodPressures.isAfterLast()) {
+                        VitalsBloodPressure bloodPressure = new VitalsBloodPressure();
+                        bloodPressure .setBloodPressure(allBloodPressures.getString(allBloodPressures.getColumnIndex(DbOpenHelper.COLUMN_B_BLOODPRESSURE)));
+                        bloodPressure .setDate(allBloodPressures.getString(allBloodPressures.getColumnIndex(DbOpenHelper.COLUMN_B_DATE)));
+                        bloodPressures.add(bloodPressure);
+                        allBloodPressures.moveToNext();
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            Log.e(TAG, e.getMessage(), e);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            if (allBloodPressures != null) {
+                allBloodPressures.close();
+            }
+        }
+        return bloodPressures;
     }
 
 

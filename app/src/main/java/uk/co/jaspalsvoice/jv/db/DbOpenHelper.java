@@ -39,8 +39,6 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ME_HOSPITAL_PHONE = "hospitalphone";
 
 
-
-
     // Table, columns
     public static final String TABLE_MEDICINES = "medicines";
     public static final String COLUMN_M_UUID = "uuid";
@@ -49,6 +47,13 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     public static final String COLUMN_M_DOSAGE = "dosage";
     public static final String COLUMN_M_REASON = "reason";
     public static final String COLUMN_M_FREQUENCY = "frequency";
+
+    // Table, columns
+    public static final String TABLE_BLOOD_PRESSURE = "bloodpressuretable";
+    public static final String COLUMN_B_UUID = "uuid";
+    public static final String COLUMN_B_ID = "id";
+    public static final String COLUMN_B_BLOODPRESSURE = "bloodpressure";
+    public static final String COLUMN_B_DATE = "date";
 
     // Creation statement for TABLE_MEDICAL_TEAM
     private static final String CREATE_TABLE_MEDICAL_TEAM = "CREATE TABLE "
@@ -73,8 +78,8 @@ public class DbOpenHelper extends SQLiteOpenHelper {
             + COLUMN_ME_NAME + " TEXT, "
             + COLUMN_ME_ADDRESS + " TEXT, "
             + COLUMN_ME_HOSPITAL_NAME + " TEXT, "
-            + COLUMN_ME_HOSPITAL_ADDRESS+ " TEXT, "
-            + COLUMN_ME_HOSPITAL_PHONE+ " TEXT, "
+            + COLUMN_ME_HOSPITAL_ADDRESS + " TEXT, "
+            + COLUMN_ME_HOSPITAL_PHONE + " TEXT, "
             + COLUMN_ME_PHONE + " TEXT, "
             + COLUMN_ME_EMAIL + " TEXT);";
 
@@ -88,6 +93,14 @@ public class DbOpenHelper extends SQLiteOpenHelper {
             + COLUMN_M_REASON + " TEXT, "
             + COLUMN_M_FREQUENCY + " TEXT);";
 
+    // Creation statement for TABLE_BLOODPRESSURE
+    private static final String CREATE_TABLE_BLOODPRESSURE = "CREATE TABLE "
+            + TABLE_BLOOD_PRESSURE + "("
+            + COLUMN_B_UUID + " TEXT, "
+            + COLUMN_B_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_B_BLOODPRESSURE + " TEXT, "
+            + COLUMN_B_DATE + " TEXT);";
+
     public DbOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -97,6 +110,7 @@ public class DbOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_MEDICAL_TEAM);
         db.execSQL(CREATE_TABLE_MEDICINES);
         db.execSQL(CREATE_TABLE_MEDICAL_TEAM_MEMBER);
+        db.execSQL(CREATE_TABLE_BLOODPRESSURE);
     }
 
     @Override
