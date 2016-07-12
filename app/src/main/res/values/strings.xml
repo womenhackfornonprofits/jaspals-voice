@@ -133,5 +133,16 @@
     <string name="vitals_blood_pressure_title">Blood Pressure Record</string>
     <string name="date_title">Date</string>
     <string name="vitals_blood_pressure_subtitle">Blood Pressure</string>
+    <string name="key_vitals">Vitals</string>
+    <string name="no_content_bloodglucose">Currently there are no entries for blood glucose. Please click on the + icon above to add a new entry.</string>
+    <string name="no_content_bloodpressure">Currently there are no entries for blood pressure. Please click on the + icon above to add a new entry.</string>
+    <string name="vitals_blood_glucose_title">Blood Glucose</string>
+    <string name="vitals_blood_glucose_subtitle">Blood Glucose</string>
+    <string name="vitals_height_title" >Height</string>
+    <string name="vitals_height_subtitle">Height</string>
+    <string name="vitals_weight_title" >Weight</string>
+    <string name="vitals_weight_subtitle">Weight</string>
+    <string name="no_content_height">Currently there are no entries for height. Please click on the + icon above to add a new entry.</string>
+    <string name="no_content_weight">Currently there are no entries for weight. Please click on the + icon above to add a new entry.</string>
 
 </resources>

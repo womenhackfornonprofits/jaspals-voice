@@ -7,23 +7,23 @@ import uk.co.jaspalsvoice.jv.db.DbOpenHelper;
 /**
  * Created by Srinivas Kalyani on 11 Jul 16.
  */
-public class VitalsBloodPressure {
+public class VitalsHeight {
 
-    public String bloodPressure;
+    public String height;
     public String date;
     public String uuid;
     public int id;
 
-    public void setBloodPressure(String bloodPressure){
-        this.bloodPressure = bloodPressure;
+    public void setHeight(String height){
+        this.height = height;
     }
 
     public void setDate (String date){
         this.date = date;
     }
 
-    public String getBloodPressure(){
-        return bloodPressure;
+    public String getHeight(){
+        return height;
     }
 
     public String getDate(){
@@ -50,8 +50,8 @@ public class VitalsBloodPressure {
         ContentValues cv = new ContentValues();
        /* cv.put(DbOpenHelper.COLUMN_B_UUID, getUuid());
         cv.put(DbOpenHelper.COLUMN_B_ID, getId());*/
-        cv.put(DbOpenHelper.COLUMN_B_BLOODPRESSURE, getBloodPressure());
-        cv.put(DbOpenHelper.COLUMN_B_DATE, getDate());
+        cv.put(DbOpenHelper.COLUMN_H_HEIGHT, getHeight());
+        cv.put(DbOpenHelper.COLUMN_H_DATE, getDate());
         return cv;
     }
 }

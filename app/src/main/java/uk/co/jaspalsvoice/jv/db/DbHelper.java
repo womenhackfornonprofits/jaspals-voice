@@ -16,7 +16,10 @@ import java.util.concurrent.Future;
 
 import uk.co.jaspalsvoice.jv.models.Doctor;
 import uk.co.jaspalsvoice.jv.models.Medicine;
+import uk.co.jaspalsvoice.jv.models.VitalsBloodGlucose;
 import uk.co.jaspalsvoice.jv.models.VitalsBloodPressure;
+import uk.co.jaspalsvoice.jv.models.VitalsHeight;
+import uk.co.jaspalsvoice.jv.models.VitalsWeight;
 
 
 /**
@@ -62,6 +65,27 @@ public class DbHelper {
             DbOpenHelper.COLUMN_B_ID,
             DbOpenHelper.COLUMN_B_BLOODPRESSURE,
             DbOpenHelper.COLUMN_B_DATE,
+    };
+
+    private static final String[] BLOOD_GLUCOSE_COLUMN_NAMES = new String[]{
+            DbOpenHelper.COLUMN_BG_UUID,
+            DbOpenHelper.COLUMN_BG_ID,
+            DbOpenHelper.COLUMN_BG_BLOODGLUCOSE,
+            DbOpenHelper.COLUMN_BG_DATE,
+    };
+
+    private static final String[] HEIGHT_COLUMN_NAMES = new String[]{
+            DbOpenHelper.COLUMN_H_UUID,
+            DbOpenHelper.COLUMN_H_ID,
+            DbOpenHelper.COLUMN_H_HEIGHT,
+            DbOpenHelper.COLUMN_H_DATE,
+    };
+
+    private static final String[] WEIGHT_COLUMN_NAMES = new String[]{
+            DbOpenHelper.COLUMN_W_UUID,
+            DbOpenHelper.COLUMN_W_ID,
+            DbOpenHelper.COLUMN_W_WEIGHT,
+            DbOpenHelper.COLUMN_W_DATE,
     };
 
     public DbHelper(DbOpenHelper DbOpenHelper) {
@@ -187,6 +211,154 @@ public class DbHelper {
     }
 
     /**
+     * Inserts blood pressures in the db.
+     */
+    public Future<Long> insertOrReplaceBloodPressure(final List<VitalsBloodPressure> bloodPressures,
+                                                     final boolean isUpdate, final int id) {
+        return executor.submit(new Callable<Long>() {
+            @Override
+            public Long call() throws Exception {
+                long insertedRows = 0;
+                try {
+                    sqlite.beginTransaction();
+                    for (VitalsBloodPressure bloodPressure: bloodPressures) {
+                        if (!isUpdate) {
+                            if (sqlite.insert(DbOpenHelper.TABLE_BLOOD_PRESSURE, null,
+                                    bloodPressure.toContentValues()) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
+                            }
+                        } else {
+                            String where = "id=?";
+                            String[] whereArgs = new String[]{String.valueOf(id)};
+                            if (sqlite.update(DbOpenHelper.TABLE_BLOOD_PRESSURE,
+                                    bloodPressure.toContentValues(), where, whereArgs) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Update succeeded, updated rows:" + insertedRows + id);
+                            }
+                        }
+                    }
+                    sqlite.setTransactionSuccessful();
+                    return insertedRows;
+                } finally {
+                    sqlite.endTransaction();
+                }
+            }
+        });
+    }
+
+    /**
+     * Inserts blood glucoses in the db.
+     */
+    public Future<Long> insertOrReplaceBloodGlucose(final List<VitalsBloodGlucose> bloodGlucoses,
+                                                     final boolean isUpdate, final int id) {
+        return executor.submit(new Callable<Long>() {
+            @Override
+            public Long call() throws Exception {
+                long insertedRows = 0;
+                try {
+                    sqlite.beginTransaction();
+                    for (VitalsBloodGlucose bloodGlucose: bloodGlucoses) {
+                        if (!isUpdate) {
+                            if (sqlite.insert(DbOpenHelper.TABLE_BLOOD_GLUCOSE, null,
+                                    bloodGlucose.toContentValues()) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
+                            }
+                        } else {
+                            String where = "id=?";
+                            String[] whereArgs = new String[]{String.valueOf(id)};
+                            if (sqlite.update(DbOpenHelper.TABLE_BLOOD_GLUCOSE,
+                                    bloodGlucose.toContentValues(), where, whereArgs) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Update succeeded, updated rows:" + insertedRows + id);
+                            }
+                        }
+                    }
+                    sqlite.setTransactionSuccessful();
+                    return insertedRows;
+                } finally {
+                    sqlite.endTransaction();
+                }
+            }
+        });
+    }
+
+    /**
+     * Inserts heights in the db.
+     */
+    public Future<Long> insertOrReplaceHeight(final List<VitalsHeight> heights,
+                                                    final boolean isUpdate, final int id) {
+        return executor.submit(new Callable<Long>() {
+            @Override
+            public Long call() throws Exception {
+                long insertedRows = 0;
+                try {
+                    sqlite.beginTransaction();
+                    for (VitalsHeight height: heights) {
+                        if (!isUpdate) {
+                            if (sqlite.insert(DbOpenHelper.TABLE_HEIGHT, null,
+                                    height.toContentValues()) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
+                            }
+                        } else {
+                            String where = "id=?";
+                            String[] whereArgs = new String[]{String.valueOf(id)};
+                            if (sqlite.update(DbOpenHelper.TABLE_HEIGHT,
+                                    height.toContentValues(), where, whereArgs) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Update succeeded, updated rows:" + insertedRows + id);
+                            }
+                        }
+                    }
+                    sqlite.setTransactionSuccessful();
+                    return insertedRows;
+                } finally {
+                    sqlite.endTransaction();
+                }
+            }
+        });
+    }
+
+    /**
+     * Inserts weights in the db.
+     */
+    public Future<Long> insertOrReplaceWeight(final List<VitalsWeight> weights,
+                                              final boolean isUpdate, final int id) {
+        return executor.submit(new Callable<Long>() {
+            @Override
+            public Long call() throws Exception {
+                long insertedRows = 0;
+                try {
+                    sqlite.beginTransaction();
+                    for (VitalsWeight weight: weights) {
+                        if (!isUpdate) {
+                            if (sqlite.insert(DbOpenHelper.TABLE_WEIGHT, null,
+                                    weight.toContentValues()) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
+                            }
+                        } else {
+                            String where = "id=?";
+                            String[] whereArgs = new String[]{String.valueOf(id)};
+                            if (sqlite.update(DbOpenHelper.TABLE_WEIGHT,
+                                    weight.toContentValues(), where, whereArgs) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Update succeeded, updated rows:" + insertedRows + id);
+                            }
+                        }
+                    }
+                    sqlite.setTransactionSuccessful();
+                    return insertedRows;
+                } finally {
+                    sqlite.endTransaction();
+                }
+            }
+        });
+    }
+
+    /**
      * Gets from db a list containing all doctors.
      */
     public Map<String, Doctor> readAllDoctors() {
@@ -258,7 +430,7 @@ public class DbHelper {
     }
 
     /**
-     * Gets from db a list containing all doctors.
+     * Gets from db a list containing all blood pressures.
      */
     public List<VitalsBloodPressure> readAllBloodPressures() {
         List<VitalsBloodPressure> bloodPressures = new ArrayList<>();
@@ -270,6 +442,7 @@ public class DbHelper {
                 if (allBloodPressures.moveToFirst()) {
                     while (!allBloodPressures.isAfterLast()) {
                         VitalsBloodPressure bloodPressure = new VitalsBloodPressure();
+                        bloodPressure.setId(allBloodPressures.getInt(allBloodPressures.getColumnIndex(DbOpenHelper.COLUMN_B_ID)));
                         bloodPressure .setBloodPressure(allBloodPressures.getString(allBloodPressures.getColumnIndex(DbOpenHelper.COLUMN_B_BLOODPRESSURE)));
                         bloodPressure .setDate(allBloodPressures.getString(allBloodPressures.getColumnIndex(DbOpenHelper.COLUMN_B_DATE)));
                         bloodPressures.add(bloodPressure);
@@ -287,6 +460,106 @@ public class DbHelper {
             }
         }
         return bloodPressures;
+    }
+
+    /**
+     * Gets from db a list containing all blood glucoses.
+     */
+    public List<VitalsBloodGlucose> readAllBloodGlucoses() {
+        List<VitalsBloodGlucose> bloodGlucoses = new ArrayList<>();
+        Cursor allBloodGlucoses = null;
+        try {
+            allBloodGlucoses = readAllFuture(DbOpenHelper.TABLE_BLOOD_GLUCOSE,
+                    BLOOD_GLUCOSE_COLUMN_NAMES, DbOpenHelper.COLUMN_BG_ID).get();
+            if (allBloodGlucoses != null) {
+                if (allBloodGlucoses.moveToFirst()) {
+                    while (!allBloodGlucoses.isAfterLast()) {
+                        VitalsBloodGlucose bloodGlucose = new VitalsBloodGlucose();
+                        bloodGlucose.setId(allBloodGlucoses.getInt(allBloodGlucoses.getColumnIndex(DbOpenHelper.COLUMN_BG_ID)));
+                        bloodGlucose .setBloodGlucose(allBloodGlucoses.getString(allBloodGlucoses.getColumnIndex(DbOpenHelper.COLUMN_BG_BLOODGLUCOSE)));
+                        bloodGlucose .setDate(allBloodGlucoses.getString(allBloodGlucoses.getColumnIndex(DbOpenHelper.COLUMN_BG_DATE)));
+                        bloodGlucoses.add(bloodGlucose);
+                        allBloodGlucoses.moveToNext();
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            Log.e(TAG, e.getMessage(), e);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            if (allBloodGlucoses != null) {
+                allBloodGlucoses.close();
+            }
+        }
+        return bloodGlucoses;
+    }
+
+    /**
+     * Gets from db a list containing all heights.
+     */
+    public List<VitalsHeight> readAllHeights() {
+        List<VitalsHeight> heights = new ArrayList<>();
+        Cursor allHeights= null;
+        try {
+            allHeights = readAllFuture(DbOpenHelper.TABLE_HEIGHT,
+                    HEIGHT_COLUMN_NAMES, DbOpenHelper.COLUMN_H_ID).get();
+            if (allHeights != null) {
+                if (allHeights.moveToFirst()) {
+                    while (!allHeights.isAfterLast()) {
+                        VitalsHeight height = new VitalsHeight();
+                        height.setId(allHeights.getInt(allHeights.getColumnIndex(DbOpenHelper.COLUMN_H_ID)));
+                        height .setHeight(allHeights.getString(allHeights.getColumnIndex(DbOpenHelper.COLUMN_H_HEIGHT)));
+                        height .setDate(allHeights.getString(allHeights.getColumnIndex(DbOpenHelper.COLUMN_H_DATE)));
+                        heights.add(height);
+                        allHeights.moveToNext();
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            Log.e(TAG, e.getMessage(), e);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            if (allHeights != null) {
+                allHeights.close();
+            }
+        }
+        return heights;
+    }
+
+
+    /**
+     * Gets from db a list containing all weights.
+     */
+    public List<VitalsWeight> readAllWeights() {
+        List<VitalsWeight> weights = new ArrayList<>();
+        Cursor allWeights= null;
+        try {
+            allWeights = readAllFuture(DbOpenHelper.TABLE_WEIGHT,
+                    WEIGHT_COLUMN_NAMES, DbOpenHelper.COLUMN_W_ID).get();
+            if (allWeights != null) {
+                if (allWeights.moveToFirst()) {
+                    while (!allWeights.isAfterLast()) {
+                        VitalsWeight weight = new VitalsWeight();
+                        weight.setId(allWeights.getInt(allWeights.getColumnIndex(DbOpenHelper.COLUMN_W_ID)));
+                        weight .setWeight(allWeights.getString(allWeights.getColumnIndex(DbOpenHelper.COLUMN_W_WEIGHT)));
+                        weight .setDate(allWeights.getString(allWeights.getColumnIndex(DbOpenHelper.COLUMN_W_DATE)));
+                        weights.add(weight);
+                        allWeights.moveToNext();
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            Log.e(TAG, e.getMessage(), e);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            if (allWeights != null) {
+                allWeights.close();
+            }
+        }
+        return weights;
     }
 
 

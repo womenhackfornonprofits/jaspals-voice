@@ -1,21 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="uk.co.jaspalsvoice.jv.activities.VitalsActivity">
+        <uk.co.jaspalsvoice.jv.views.VitalsBloodPressureCardView
+            android:id="@+id/bloodPressureCardView"
+            android:elevation="@dimen/elevation"
+            app:cardUseCompatPadding="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-</RelativeLayout>
+        <uk.co.jaspalsvoice.jv.views.VitalsBloodGlucoseCardView
+            android:id="@+id/bloodGlucoseCardView"
+            android:elevation="@dimen/elevation"
+            app:cardUseCompatPadding="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-</android.support.v4.widget.NestedScrollView>
+        <uk.co.jaspalsvoice.jv.views.VitalsHeightCardView
+            android:id="@+id/heightCardView"
+            android:elevation="@dimen/elevation"
+            app:cardUseCompatPadding="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <uk.co.jaspalsvoice.jv.views.VitalsWeightCardView
+            android:id="@+id/weightCardView"
+            android:elevation="@dimen/elevation"
+            app:cardUseCompatPadding="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</ScrollView>
+
 

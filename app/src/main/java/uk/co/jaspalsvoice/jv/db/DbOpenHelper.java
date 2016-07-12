@@ -55,6 +55,29 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     public static final String COLUMN_B_BLOODPRESSURE = "bloodpressure";
     public static final String COLUMN_B_DATE = "date";
 
+    // Table, columns
+    public static final String TABLE_BLOOD_GLUCOSE = "bloodglucosetable";
+    public static final String COLUMN_BG_UUID = "uuid";
+    public static final String COLUMN_BG_ID = "id";
+    public static final String COLUMN_BG_BLOODGLUCOSE = "bloodglucose";
+    public static final String COLUMN_BG_DATE = "date";
+
+    // Table, columns
+    public static final String TABLE_HEIGHT= "heighttable";
+    public static final String COLUMN_H_UUID = "uuid";
+    public static final String COLUMN_H_ID = "id";
+    public static final String COLUMN_H_HEIGHT= "height";
+    public static final String COLUMN_H_DATE = "date";
+
+    // Table, columns
+    public static final String TABLE_WEIGHT= "weighttable";
+    public static final String COLUMN_W_UUID = "uuid";
+    public static final String COLUMN_W_ID = "id";
+    public static final String COLUMN_W_WEIGHT= "weight";
+    public static final String COLUMN_W_DATE = "date";
+    
+    
+
     // Creation statement for TABLE_MEDICAL_TEAM
     private static final String CREATE_TABLE_MEDICAL_TEAM = "CREATE TABLE "
             + TABLE_MEDICAL_TEAM + "("
@@ -101,6 +124,30 @@ public class DbOpenHelper extends SQLiteOpenHelper {
             + COLUMN_B_BLOODPRESSURE + " TEXT, "
             + COLUMN_B_DATE + " TEXT);";
 
+    // Creation statement for TABLE_BLOODGLUCOSE
+    private static final String CREATE_TABLE_BLOODGLUCOSE= "CREATE TABLE "
+            + TABLE_BLOOD_GLUCOSE+ "("
+            + COLUMN_BG_UUID + " TEXT, "
+            + COLUMN_BG_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_BG_BLOODGLUCOSE + " TEXT, "
+            + COLUMN_BG_DATE + " TEXT);";
+
+    // Creation statement for TABLE_HEIGHT
+    private static final String CREATE_TABLE_HEIGHT= "CREATE TABLE "
+            + TABLE_HEIGHT+ "("
+            + COLUMN_H_UUID + " TEXT, "
+            + COLUMN_H_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_H_HEIGHT+ " TEXT, "
+            + COLUMN_H_DATE + " TEXT);";
+
+    // Creation statement for TABLE_WEIGHT
+    private static final String CREATE_TABLE_WEIGHT= "CREATE TABLE "
+            + TABLE_WEIGHT+ "("
+            + COLUMN_W_UUID + " TEXT, "
+            + COLUMN_W_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_W_WEIGHT+ " TEXT, "
+            + COLUMN_W_DATE + " TEXT);";
+
     public DbOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -111,6 +158,9 @@ public class DbOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_MEDICINES);
         db.execSQL(CREATE_TABLE_MEDICAL_TEAM_MEMBER);
         db.execSQL(CREATE_TABLE_BLOODPRESSURE);
+        db.execSQL(CREATE_TABLE_BLOODGLUCOSE);
+        db.execSQL(CREATE_TABLE_HEIGHT);
+        db.execSQL(CREATE_TABLE_WEIGHT);
     }
 
     @Override

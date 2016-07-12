@@ -60,6 +60,7 @@ import uk.co.jaspalsvoice.jv.activities.LikesDislikesActivity;
 import uk.co.jaspalsvoice.jv.activities.MedicalAllergiesActivity;
 import uk.co.jaspalsvoice.jv.activities.MedicinesActivity;
 import uk.co.jaspalsvoice.jv.activities.PersonalDetailsActivity;
+import uk.co.jaspalsvoice.jv.activities.VitalsActivity;
 import uk.co.jaspalsvoice.jv.db.DatabaseHelper;
 import uk.co.jaspalsvoice.jv.task.FetchWordsTask;
 import uk.co.jaspalsvoice.jv.task.HandlerConstants;
@@ -788,7 +789,8 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
         passportScene.getSceneRoot().findViewById(R.id.eight).setOnClickListener(passportKeyListener);
         passportScene.getSceneRoot().findViewById(R.id.nine).setOnClickListener(passportKeyListener);
         passportScene.getSceneRoot().findViewById(R.id.zero).setOnClickListener(passportKeyListener);
-        passportScene.getSceneRoot().findViewById(R.id.hash).setOnClickListener(passportKeyListener);
+        passportScene.getSceneRoot().findViewById(R.id.hash).setOnClickListener(passportKeyListener);        passportScene.getSceneRoot().findViewById(R.id.hash).setOnClickListener(passportKeyListener);
+        passportScene.getSceneRoot().findViewById(R.id.vitals).setOnClickListener(passportKeyListener);
     }
 
     private View.OnClickListener passportKeyListener = new View.OnClickListener() {
@@ -818,6 +820,10 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
                     break;
                 case R.id.hash:
                     startActivity(new Intent(MainActivity.this, AboutMeActivity.class));
+                    break;
+
+                case R.id.vitals:
+                    startActivity(new Intent(MainActivity.this, VitalsActivity.class));
                     break;
             }
         }

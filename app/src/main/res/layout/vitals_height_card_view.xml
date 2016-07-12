@@ -25,7 +25,7 @@
     <ImageView
         android:src="@drawable/ic_add_box_grey_600_24dp"
         android:layout_alignParentRight="true"
-        android:id="@+id/addBloodPressureButton"
+        android:id="@+id/addHeightButton"
         android:layout_width="wrap_content"
         android:layout_centerVertical="true"
         android:layout_height="wrap_content" />
@@ -42,7 +42,7 @@
         android:padding="@dimen/margin_small">
 
         <TextView
-            android:id="@+id/bloodPressureTitle"
+            android:id="@+id/heightTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -65,7 +65,7 @@
     <include layout="@layout/divider" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/bloodPressureRecyclerView"
+        android:id="@+id/heightRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -73,8 +73,8 @@
         android:padding="10dp" />
 
     <include
-        android:id="@+id/addNewBloodPressure"
-        layout="@layout/view_add_new_bloodpressure"/>
+        android:id="@+id/addNewHeight"
+        layout="@layout/view_add_new_height"/>
 
     <TextView
         android:id="@+id/noContentView"
