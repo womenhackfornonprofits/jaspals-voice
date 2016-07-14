@@ -15,6 +15,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import uk.co.jaspalsvoice.jv.models.Doctor;
+import uk.co.jaspalsvoice.jv.models.EnvironmentalAllergies;
+import uk.co.jaspalsvoice.jv.models.FoodAllergies;
+import uk.co.jaspalsvoice.jv.models.MedicalAllergies;
 import uk.co.jaspalsvoice.jv.models.Medicine;
 import uk.co.jaspalsvoice.jv.models.VitalsBloodGlucose;
 import uk.co.jaspalsvoice.jv.models.VitalsBloodPressure;
@@ -88,6 +91,27 @@ public class DbHelper {
             DbOpenHelper.COLUMN_W_DATE,
     };
 
+    private static final String[] MEDICAL_ALLERGIES_COLUMN_NAMES = new String[]{
+            DbOpenHelper.COLUMN_MA_UUID,
+            DbOpenHelper.COLUMN_MA_ID,
+            DbOpenHelper.COLUMN_MA_ALLERGY,
+            DbOpenHelper.COLUMN_MA_TYPE,
+    };
+
+    private static final String[] FOOD_ALLERGIES_COLUMN_NAMES = new String[]{
+            DbOpenHelper.COLUMN_FA_UUID,
+            DbOpenHelper.COLUMN_FA_ID,
+            DbOpenHelper.COLUMN_FA_ALLERGY,
+            DbOpenHelper.COLUMN_FA_TYPE,
+    };
+
+    private static final String[] ENVIRONMENTAL_ALLERGIES_COLUMN_NAMES = new String[]{
+            DbOpenHelper.COLUMN_EA_UUID,
+            DbOpenHelper.COLUMN_EA_ID,
+            DbOpenHelper.COLUMN_EA_ALLERGY,
+            DbOpenHelper.COLUMN_EA_TYPE,
+    };
+
     public DbHelper(DbOpenHelper DbOpenHelper) {
         sqlite = DbOpenHelper.getWritableDatabase();
     }
@@ -132,35 +156,6 @@ public class DbHelper {
                     sqlite.beginTransaction();
                     for (Doctor doctor : doctors) {
                         if (sqlite.insertWithOnConflict(DbOpenHelper.TABLE_MEDICAL_TEAM_MEMBER, null, doctor.toContentValues(), SQLiteDatabase.CONFLICT_REPLACE) >= 0) {
-                            insertedRows++;
-                        }
-                    }
-                    Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
-                    sqlite.setTransactionSuccessful();
-                    return insertedRows;
-                } finally {
-                    sqlite.endTransaction();
-                }
-            }
-        });
-    }
-
-    /**
-     * Method to insert a blood pressure entry
-     *
-     * @param bloodPressures List of doctors to be inserted in the db
-     * @return the number of rows inserted
-     */
-    public Future<Long> insertOrReplaceBloodPressure(final List<VitalsBloodPressure> bloodPressures) {
-        return executor.submit(new Callable<Long>() {
-            @Override
-            public Long call() throws Exception {
-                long insertedRows = 0;
-                try {
-                    sqlite.beginTransaction();
-                    for (VitalsBloodPressure bloodPressure : bloodPressures) {
-                        if (sqlite.insertWithOnConflict(DbOpenHelper.TABLE_BLOOD_PRESSURE, null, bloodPressure.toContentValues(),
-                                SQLiteDatabase.CONFLICT_REPLACE) >= 0) {
                             insertedRows++;
                         }
                     }
@@ -357,6 +352,119 @@ public class DbHelper {
             }
         });
     }
+
+    /**
+     * Inserts medical allergies in the db.
+     */
+    public Future<Long> insertOrReplaceMedicalAllergies(final List<MedicalAllergies> allergies,
+                                              final boolean isUpdate, final int id) {
+        return executor.submit(new Callable<Long>() {
+            @Override
+            public Long call() throws Exception {
+                long insertedRows = 0;
+                try {
+                    sqlite.beginTransaction();
+                    for (MedicalAllergies allergy: allergies) {
+                        if (!isUpdate) {
+                            if (sqlite.insert(DbOpenHelper.TABLE_MEDICAL_ALLERGIES, null,
+                                    allergy.toContentValues()) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
+                            }
+                        } else {
+                            String where = "id=?";
+                            String[] whereArgs = new String[]{String.valueOf(id)};
+                            if (sqlite.update(DbOpenHelper.TABLE_MEDICAL_ALLERGIES,
+                                    allergy.toContentValues(), where, whereArgs) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Update succeeded, updated rows:" + insertedRows + id);
+                            }
+                        }
+                    }
+                    sqlite.setTransactionSuccessful();
+                    return insertedRows;
+                } finally {
+                    sqlite.endTransaction();
+                }
+            }
+        });
+    }
+
+    /**
+     * Inserts food allergies in the db.
+     */
+    public Future<Long> insertOrReplaceFoodAllergies(final List<FoodAllergies> allergies,
+                                                        final boolean isUpdate, final int id) {
+        return executor.submit(new Callable<Long>() {
+            @Override
+            public Long call() throws Exception {
+                long insertedRows = 0;
+                try {
+                    sqlite.beginTransaction();
+                    for (FoodAllergies allergy: allergies) {
+                        if (!isUpdate) {
+                            if (sqlite.insert(DbOpenHelper.TABLE_FOOD_ALLERGIES, null,
+                                    allergy.toContentValues()) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
+                            }
+                        } else {
+                            String where = "id=?";
+                            String[] whereArgs = new String[]{String.valueOf(id)};
+                            if (sqlite.update(DbOpenHelper.TABLE_FOOD_ALLERGIES,
+                                    allergy.toContentValues(), where, whereArgs) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Update succeeded, updated rows:" + insertedRows + id);
+                            }
+                        }
+                    }
+                    sqlite.setTransactionSuccessful();
+                    return insertedRows;
+                } finally {
+                    sqlite.endTransaction();
+                }
+            }
+        });
+    }
+
+    /**
+     * Inserts environmental allergies in the db.
+     */
+    public Future<Long> insertOrReplaceEnvironmentalAllergies(final List<EnvironmentalAllergies> allergies,
+                                                     final boolean isUpdate, final int id) {
+        return executor.submit(new Callable<Long>() {
+            @Override
+            public Long call() throws Exception {
+                long insertedRows = 0;
+                try {
+                    sqlite.beginTransaction();
+                    for (EnvironmentalAllergies allergy: allergies) {
+                        if (!isUpdate) {
+                            if (sqlite.insert(DbOpenHelper.TABLE_ENVIRONMENTAL_ALLERGIES, null,
+                                    allergy.toContentValues()) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
+                            }
+                        } else {
+                            String where = "id=?";
+                            String[] whereArgs = new String[]{String.valueOf(id)};
+                            if (sqlite.update(DbOpenHelper.TABLE_ENVIRONMENTAL_ALLERGIES,
+                                    allergy.toContentValues(), where, whereArgs) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Update succeeded, updated rows:" + insertedRows + id);
+                            }
+                        }
+                    }
+                    sqlite.setTransactionSuccessful();
+                    return insertedRows;
+                } finally {
+                    sqlite.endTransaction();
+                }
+            }
+        });
+    }
+
+
 
     /**
      * Gets from db a list containing all doctors.
@@ -561,6 +669,107 @@ public class DbHelper {
         }
         return weights;
     }
+
+    /**
+     * Gets from db a list containing all medical allergies.
+     */
+    public List<MedicalAllergies> readAllMedicalAllergies() {
+        List<MedicalAllergies> allergies = new ArrayList<>();
+        Cursor allMedicalAllergies= null;
+        try {
+            allMedicalAllergies = readAllFuture(DbOpenHelper.TABLE_MEDICAL_ALLERGIES,
+                    MEDICAL_ALLERGIES_COLUMN_NAMES, DbOpenHelper.COLUMN_MA_ID).get();
+            if (allMedicalAllergies != null) {
+                if (allMedicalAllergies.moveToFirst()) {
+                    while (!allMedicalAllergies.isAfterLast()) {
+                        MedicalAllergies allergy = new MedicalAllergies();
+                        allergy.setId(allMedicalAllergies.getInt(allMedicalAllergies.getColumnIndex(DbOpenHelper.COLUMN_MA_ID)));
+                        allergy .setMedicalAllergies(allMedicalAllergies.getString(allMedicalAllergies.getColumnIndex(DbOpenHelper.COLUMN_MA_ALLERGY)));
+                        allergy .setType(allMedicalAllergies.getString(allMedicalAllergies.getColumnIndex(DbOpenHelper.COLUMN_MA_TYPE)));
+                        allergies.add(allergy);
+                        allMedicalAllergies.moveToNext();
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            Log.e(TAG, e.getMessage(), e);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            if (allMedicalAllergies != null) {
+                allMedicalAllergies.close();
+            }
+        }
+        return allergies;
+    }
+
+    /**
+     * Gets from db a list containing all food allergies.
+     */
+    public List<FoodAllergies> readAllFoodAllergies() {
+        List<FoodAllergies> allergies = new ArrayList<>();
+        Cursor allFoodAllergies= null;
+        try {
+            allFoodAllergies = readAllFuture(DbOpenHelper.TABLE_FOOD_ALLERGIES,
+                    FOOD_ALLERGIES_COLUMN_NAMES, DbOpenHelper.COLUMN_MA_ID).get();
+            if (allFoodAllergies != null) {
+                if (allFoodAllergies.moveToFirst()) {
+                    while (!allFoodAllergies.isAfterLast()) {
+                        FoodAllergies allergy = new FoodAllergies();
+                        allergy.setId(allFoodAllergies.getInt(allFoodAllergies.getColumnIndex(DbOpenHelper.COLUMN_FA_ID)));
+                        allergy .setFoodAllergies(allFoodAllergies.getString(allFoodAllergies.getColumnIndex(DbOpenHelper.COLUMN_FA_ALLERGY)));
+                        allergy .setType(allFoodAllergies.getString(allFoodAllergies.getColumnIndex(DbOpenHelper.COLUMN_FA_TYPE)));
+                        allergies.add(allergy);
+                        allFoodAllergies.moveToNext();
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            Log.e(TAG, e.getMessage(), e);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            if (allFoodAllergies != null) {
+                allFoodAllergies.close();
+            }
+        }
+        return allergies;
+    }
+
+    /**
+     * Gets from db a list containing all environmental allergies.
+     */
+    public List<EnvironmentalAllergies> readAllEnvironmentalAllergies() {
+        List<EnvironmentalAllergies> allergies = new ArrayList<>();
+        Cursor allEnvironmentalAllergies= null;
+        try {
+            allEnvironmentalAllergies = readAllFuture(DbOpenHelper.TABLE_ENVIRONMENTAL_ALLERGIES,
+                    ENVIRONMENTAL_ALLERGIES_COLUMN_NAMES, DbOpenHelper.COLUMN_MA_ID).get();
+            if (allEnvironmentalAllergies != null) {
+                if (allEnvironmentalAllergies.moveToFirst()) {
+                    while (!allEnvironmentalAllergies.isAfterLast()) {
+                        EnvironmentalAllergies allergy = new EnvironmentalAllergies();
+                        allergy.setId(allEnvironmentalAllergies.getInt(allEnvironmentalAllergies.getColumnIndex(DbOpenHelper.COLUMN_FA_ID)));
+                        allergy .setEnvironmentalAllergies(allEnvironmentalAllergies.getString(allEnvironmentalAllergies.getColumnIndex(DbOpenHelper.COLUMN_FA_ALLERGY)));
+                        allergy .setType(allEnvironmentalAllergies.getString(allEnvironmentalAllergies.getColumnIndex(DbOpenHelper.COLUMN_FA_TYPE)));
+                        allergies.add(allergy);
+                        allEnvironmentalAllergies.moveToNext();
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            Log.e(TAG, e.getMessage(), e);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            if (allEnvironmentalAllergies != null) {
+                allEnvironmentalAllergies.close();
+            }
+        }
+        return allergies;
+    }
+
+
 
 
     /**

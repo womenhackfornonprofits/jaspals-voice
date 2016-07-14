@@ -75,8 +75,30 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     public static final String COLUMN_W_ID = "id";
     public static final String COLUMN_W_WEIGHT= "weight";
     public static final String COLUMN_W_DATE = "date";
-    
-    
+
+    // Table, columns
+    public static final String TABLE_MEDICAL_ALLERGIES= "medicalallergies";
+    public static final String COLUMN_MA_UUID = "uuid";
+    public static final String COLUMN_MA_ID = "id";
+    public static final String COLUMN_MA_ALLERGY= "allergy";
+    public static final String COLUMN_MA_TYPE = "type";
+
+
+    // Table, columns
+    public static final String TABLE_FOOD_ALLERGIES= "foodallergies";
+    public static final String COLUMN_FA_UUID = "uuid";
+    public static final String COLUMN_FA_ID = "id";
+    public static final String COLUMN_FA_ALLERGY= "allergy";
+    public static final String COLUMN_FA_TYPE = "type";
+
+    // Table, columns
+    public static final String TABLE_ENVIRONMENTAL_ALLERGIES= "environmentalallergies";
+    public static final String COLUMN_EA_UUID = "uuid";
+    public static final String COLUMN_EA_ID = "id";
+    public static final String COLUMN_EA_ALLERGY= "allergy";
+    public static final String COLUMN_EA_TYPE = "type";
+
+
 
     // Creation statement for TABLE_MEDICAL_TEAM
     private static final String CREATE_TABLE_MEDICAL_TEAM = "CREATE TABLE "
@@ -148,6 +170,30 @@ public class DbOpenHelper extends SQLiteOpenHelper {
             + COLUMN_W_WEIGHT+ " TEXT, "
             + COLUMN_W_DATE + " TEXT);";
 
+    // Creation statement for TABLE_MEDICAL_ALLERGIES
+    private static final String CREATE_TABLE_MEDICAL_ALLERGIES= "CREATE TABLE "
+            + TABLE_MEDICAL_ALLERGIES+ "("
+            + COLUMN_MA_UUID + " TEXT, "
+            + COLUMN_MA_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_MA_ALLERGY+ " TEXT, "
+            + COLUMN_MA_TYPE + " TEXT);";
+
+    // Creation statement for TABLE_FOOD_ALLERGIES
+    private static final String CREATE_TABLE_FOOD_ALLERGIES= "CREATE TABLE "
+            + TABLE_FOOD_ALLERGIES+ "("
+            + COLUMN_FA_UUID + " TEXT, "
+            + COLUMN_FA_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_FA_ALLERGY+ " TEXT, "
+            + COLUMN_FA_TYPE + " TEXT);";
+
+    // Creation statement for TABLE_ENVIRONMENTAL_ALLERGIES
+    private static final String CREATE_TABLE_ENVIRONMENTAL_ALLERGIES= "CREATE TABLE "
+            + TABLE_ENVIRONMENTAL_ALLERGIES+ "("
+            + COLUMN_EA_UUID + " TEXT, "
+            + COLUMN_EA_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_EA_ALLERGY+ " TEXT, "
+            + COLUMN_EA_TYPE + " TEXT);";
+
     public DbOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -161,6 +207,10 @@ public class DbOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_BLOODGLUCOSE);
         db.execSQL(CREATE_TABLE_HEIGHT);
         db.execSQL(CREATE_TABLE_WEIGHT);
+        db.execSQL(CREATE_TABLE_MEDICAL_ALLERGIES);
+        db.execSQL(CREATE_TABLE_FOOD_ALLERGIES);
+        db.execSQL(CREATE_TABLE_ENVIRONMENTAL_ALLERGIES);
+
     }
 
     @Override

@@ -52,6 +52,7 @@ import java.util.Map;
 import java.util.Set;
 
 import uk.co.jaspalsvoice.jv.activities.AboutMeActivity;
+import uk.co.jaspalsvoice.jv.activities.AllergiesActivity;
 import uk.co.jaspalsvoice.jv.activities.DiagnosisActivity;
 import uk.co.jaspalsvoice.jv.activities.FontSizeActivity;
 import uk.co.jaspalsvoice.jv.activities.FoodAllergiesActivity;
@@ -789,7 +790,8 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
         passportScene.getSceneRoot().findViewById(R.id.eight).setOnClickListener(passportKeyListener);
         passportScene.getSceneRoot().findViewById(R.id.nine).setOnClickListener(passportKeyListener);
         passportScene.getSceneRoot().findViewById(R.id.zero).setOnClickListener(passportKeyListener);
-        passportScene.getSceneRoot().findViewById(R.id.hash).setOnClickListener(passportKeyListener);        passportScene.getSceneRoot().findViewById(R.id.hash).setOnClickListener(passportKeyListener);
+        passportScene.getSceneRoot().findViewById(R.id.hash).setOnClickListener(passportKeyListener);
+        passportScene.getSceneRoot().findViewById(R.id.hash).setOnClickListener(passportKeyListener);
         passportScene.getSceneRoot().findViewById(R.id.vitals).setOnClickListener(passportKeyListener);
     }
 
@@ -804,7 +806,7 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
                     startActivity(new Intent(MainActivity.this, MedicinesActivity.class));
                     break;
                 case R.id.five:
-                    startActivity(new Intent(MainActivity.this, MedicalAllergiesActivity.class));
+                    startActivity(new Intent(MainActivity.this, AllergiesActivity.class));
                     break;
                 case R.id.six:
                     startActivity(new Intent(MainActivity.this, FoodAllergiesActivity.class));
