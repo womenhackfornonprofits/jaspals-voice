@@ -63,9 +63,8 @@ public class VitalsBloodGlucoseAdapter extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-        VitalsBloodGlucose bloodGlucose = bloodGlucoses.get(position);
+        final VitalsBloodGlucose bloodGlucose = bloodGlucoses.get(position);
         if (bloodGlucose != null) {
-            ((VitalsActivity)context).setBloodGlucoseId(bloodGlucose.getId());
             ((BloodGlucoseViewHolder) holder).bloodGlucoseTextView.setText(bloodGlucose.bloodGlucose);
             ((BloodGlucoseViewHolder) holder).dateTextView.setText(bloodGlucose.date);
             ((BloodGlucoseViewHolder) holder).bloodGlucoseEdittext.setText(bloodGlucose.bloodGlucose);
@@ -86,6 +85,7 @@ public class VitalsBloodGlucoseAdapter extends RecyclerView.Adapter<RecyclerView
         ((BloodGlucoseViewHolder) holder).saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((VitalsActivity)context).setBloodGlucoseId(bloodGlucose.getId());
                 updateData(((BloodGlucoseViewHolder)holder).bloodGlucoseEdittext.getText().toString(),
                         ((BloodGlucoseViewHolder)holder).dateText.getText().toString());
                 ((BloodGlucoseViewHolder) holder).bloodGlucoseTextView.setText(

@@ -54,10 +54,7 @@
             android:label="@string/change_font_size" />
         <activity android:name=".activities.VitalsActivity" />
         <activity android:name=".activities.AllergiesActivity" />
-        <activity
-            android:name=".activities.MedicalDiagnosisActivity"
-            android:label="@string/title_activity_medical_diagnosis"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activities.DiagnosesActivity"></activity>
     </application>
 
 </manifest>

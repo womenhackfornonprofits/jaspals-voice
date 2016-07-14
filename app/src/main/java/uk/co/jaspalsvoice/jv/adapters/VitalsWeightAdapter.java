@@ -63,9 +63,8 @@ public class VitalsWeightAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-        VitalsWeight weight = weights.get(position);
+        final VitalsWeight weight = weights.get(position);
         if (weight != null) {
-            ((VitalsActivity)context).setWeightId(weight.getId());
             ((WeightViewHolder) holder).weightTextView.setText(weight.weight);
             ((WeightViewHolder) holder).dateTextView.setText(weight.date);
             ((WeightViewHolder) holder).weightEdittext.setText(weight.weight);
@@ -86,6 +85,7 @@ public class VitalsWeightAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         ((WeightViewHolder) holder).saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((VitalsActivity)context).setWeightId(weight.getId());
                 updateData(((WeightViewHolder)holder).weightEdittext.getText().toString(),
                         ((WeightViewHolder)holder).dateText.getText().toString());
                 ((WeightViewHolder) holder).weightTextView.setText(

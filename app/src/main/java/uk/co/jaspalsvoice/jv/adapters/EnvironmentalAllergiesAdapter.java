@@ -63,9 +63,8 @@ public class EnvironmentalAllergiesAdapter extends RecyclerView.Adapter<Recycler
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-        EnvironmentalAllergies environmentalAllergy = environmentalAllergies.get(position);
+        final EnvironmentalAllergies environmentalAllergy = environmentalAllergies.get(position);
         if (environmentalAllergy != null) {
-            ((AllergiesActivity)context).setEnvironmentalAllergiesId(environmentalAllergy.getId());
             ((EnvironmentalAllergiesViewHolder) holder).environmentalAllergiesTextView.setText(environmentalAllergy.environmentalAllergies);
             ((EnvironmentalAllergiesViewHolder) holder).typeTextView.setText(environmentalAllergy.type);
             ((EnvironmentalAllergiesViewHolder) holder).environmentalAllergiesEdittext.setText(environmentalAllergy.environmentalAllergies);
@@ -86,6 +85,7 @@ public class EnvironmentalAllergiesAdapter extends RecyclerView.Adapter<Recycler
         ((EnvironmentalAllergiesViewHolder) holder).saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((AllergiesActivity)context).setEnvironmentalAllergiesId(environmentalAllergy.getId());
                 uptypeData(((EnvironmentalAllergiesViewHolder)holder).environmentalAllergiesEdittext.getText().toString(),
                         ((EnvironmentalAllergiesViewHolder)holder).typeText.getText().toString());
                 ((EnvironmentalAllergiesViewHolder) holder).environmentalAllergiesTextView.setText(

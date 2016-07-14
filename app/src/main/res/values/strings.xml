@@ -151,8 +151,13 @@
     <string name="environmental_allergies_title">Environmental Allergies</string>
     <string name="environmental_allergies_subtitle">Environmental Allergies</string>
     <string name="no_content_food_allergies">Currently there are no entries for food allergies. Please click on the + icon above to add a new entry.</string>
-    <string name="no_content_environmental_allergies">Currently there are no entries for environmental allergies. Please click on the + icon above to add a new entry.</string>
+    <string name="no_content_environmental_allergies">
+        Currently there are no entries for environmental allergies. Please click on the + icon above to add a new entry.</string>
     <string name="title_activity_medical_diagnosis">MedicalDiagnosisActivity</string>
+    <string name="no_content_diagnosis" />
+    <string name="surgical_history_title">Surgical History</string>
+    <string name="surgical_history_subtitle">Surgery</string>
+    <string name="no_content_surgical_history">Currently there are no entries for surgical history. Please click on the + icon above to add a new entry.</string>
 
 
 </resources>

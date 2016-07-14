@@ -53,6 +53,7 @@ import java.util.Set;
 
 import uk.co.jaspalsvoice.jv.activities.AboutMeActivity;
 import uk.co.jaspalsvoice.jv.activities.AllergiesActivity;
+import uk.co.jaspalsvoice.jv.activities.DiagnosesActivity;
 import uk.co.jaspalsvoice.jv.activities.DiagnosisActivity;
 import uk.co.jaspalsvoice.jv.activities.FontSizeActivity;
 import uk.co.jaspalsvoice.jv.activities.FoodAllergiesActivity;
@@ -818,7 +819,7 @@ public class MainActivity extends AppCompatActivity implements SuggestionsAdapte
                     startActivity(new Intent(MainActivity.this, LikesDislikesActivity.class));
                     break;
                 case R.id.zero:
-                    startActivity(new Intent(MainActivity.this, DiagnosisActivity.class));
+                    startActivity(new Intent(MainActivity.this, DiagnosesActivity.class));
                     break;
                 case R.id.hash:
                     startActivity(new Intent(MainActivity.this, AboutMeActivity.class));

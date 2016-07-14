@@ -63,9 +63,8 @@ public class VitalsHeightAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-        VitalsHeight height = heights.get(position);
+        final VitalsHeight height = heights.get(position);
         if (height != null) {
-            ((VitalsActivity)context).setHeightId(height.getId());
             ((HeightViewHolder) holder).heightTextView.setText(height.height);
             ((HeightViewHolder) holder).dateTextView.setText(height.date);
             ((HeightViewHolder) holder).heightEdittext.setText(height.height);
@@ -86,6 +85,7 @@ public class VitalsHeightAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         ((HeightViewHolder) holder).saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((VitalsActivity)context).setHeightId(height.getId());
                 updateData(((HeightViewHolder)holder).heightEdittext.getText().toString(),
                         ((HeightViewHolder)holder).dateText.getText().toString());
                 ((HeightViewHolder) holder).heightTextView.setText(

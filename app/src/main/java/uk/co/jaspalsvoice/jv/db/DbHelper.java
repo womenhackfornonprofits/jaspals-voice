@@ -14,11 +14,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import uk.co.jaspalsvoice.jv.models.Diagnosis;
 import uk.co.jaspalsvoice.jv.models.Doctor;
 import uk.co.jaspalsvoice.jv.models.EnvironmentalAllergies;
 import uk.co.jaspalsvoice.jv.models.FoodAllergies;
 import uk.co.jaspalsvoice.jv.models.MedicalAllergies;
 import uk.co.jaspalsvoice.jv.models.Medicine;
+import uk.co.jaspalsvoice.jv.models.SurgicalHistory;
 import uk.co.jaspalsvoice.jv.models.VitalsBloodGlucose;
 import uk.co.jaspalsvoice.jv.models.VitalsBloodPressure;
 import uk.co.jaspalsvoice.jv.models.VitalsHeight;
@@ -112,6 +114,20 @@ public class DbHelper {
             DbOpenHelper.COLUMN_EA_TYPE,
     };
 
+    private static final String[] DIAGNOSIS_COLUMN_NAMES = new String[]{
+            DbOpenHelper.COLUMN_D_UUID,
+            DbOpenHelper.COLUMN_D_ID,
+            DbOpenHelper.COLUMN_D_DIAGNOSIS,
+            DbOpenHelper.COLUMN_D_DATE,
+    };
+
+
+    private static final String[] SURGICAL_HISTORY_COLUMN_NAMES = new String[]{
+            DbOpenHelper.COLUMN_SH_UUID,
+            DbOpenHelper.COLUMN_SH_ID,
+            DbOpenHelper.COLUMN_SH_HISTORY,
+            DbOpenHelper.COLUMN_SH_DATE,
+    };
     public DbHelper(DbOpenHelper DbOpenHelper) {
         sqlite = DbOpenHelper.getWritableDatabase();
     }
@@ -339,6 +355,81 @@ public class DbHelper {
                             String[] whereArgs = new String[]{String.valueOf(id)};
                             if (sqlite.update(DbOpenHelper.TABLE_WEIGHT,
                                     weight.toContentValues(), where, whereArgs) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Update succeeded, updated rows:" + insertedRows + id);
+                            }
+                        }
+                    }
+                    sqlite.setTransactionSuccessful();
+                    return insertedRows;
+                } finally {
+                    sqlite.endTransaction();
+                }
+            }
+        });
+    }
+
+
+    /**
+     * Inserts diagnoses in the db.
+     */
+    public Future<Long> insertOrReplaceDiagnosis(final List<Diagnosis> diagnoses,
+                                              final boolean isUpdate, final int id) {
+        return executor.submit(new Callable<Long>() {
+            @Override
+            public Long call() throws Exception {
+                long insertedRows = 0;
+                try {
+                    sqlite.beginTransaction();
+                    for (Diagnosis weight: diagnoses) {
+                        if (!isUpdate) {
+                            if (sqlite.insert(DbOpenHelper.TABLE_DIAGNOSIS, null,
+                                    weight.toContentValues()) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
+                            }
+                        } else {
+                            String where = "id=?";
+                            String[] whereArgs = new String[]{String.valueOf(id)};
+                            if (sqlite.update(DbOpenHelper.TABLE_DIAGNOSIS,
+                                    weight.toContentValues(), where, whereArgs) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Update succeeded, updated rows:" + insertedRows + id);
+                            }
+                        }
+                    }
+                    sqlite.setTransactionSuccessful();
+                    return insertedRows;
+                } finally {
+                    sqlite.endTransaction();
+                }
+            }
+        });
+    }
+
+    /**
+     * Inserts surgical history in the db.
+     */
+    public Future<Long> insertOrReplaceSurgicalHistory(final List<SurgicalHistory> histories,
+                                                 final boolean isUpdate, final int id) {
+        return executor.submit(new Callable<Long>() {
+            @Override
+            public Long call() throws Exception {
+                long insertedRows = 0;
+                try {
+                    sqlite.beginTransaction();
+                    for (SurgicalHistory history: histories) {
+                        if (!isUpdate) {
+                            if (sqlite.insert(DbOpenHelper.TABLE_SURGICAL_HISTORY, null,
+                                    history.toContentValues()) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
+                            }
+                        } else {
+                            String where = "id=?";
+                            String[] whereArgs = new String[]{String.valueOf(id)};
+                            if (sqlite.update(DbOpenHelper.TABLE_SURGICAL_HISTORY,
+                                    history.toContentValues(), where, whereArgs) >= 0) {
                                 insertedRows++;
                                 Log.d(TAG, "Update succeeded, updated rows:" + insertedRows + id);
                             }
@@ -768,6 +859,73 @@ public class DbHelper {
         }
         return allergies;
     }
+
+    /**
+     * Gets from db a list containing all environmental allergies.
+     */
+    public List<Diagnosis> readAllDiagnosis() {
+        List<Diagnosis> diagnoses = new ArrayList<>();
+        Cursor allDiagnoses= null;
+        try {
+            allDiagnoses= readAllFuture(DbOpenHelper.TABLE_DIAGNOSIS,
+                    DIAGNOSIS_COLUMN_NAMES, DbOpenHelper.COLUMN_D_ID).get();
+            if (allDiagnoses != null) {
+                if (allDiagnoses.moveToFirst()) {
+                    while (!allDiagnoses.isAfterLast()) {
+                        Diagnosis diagnosis = new Diagnosis();
+                        diagnosis.setId(allDiagnoses.getInt(allDiagnoses.getColumnIndex(DbOpenHelper.COLUMN_D_ID)));
+                        diagnosis .setDiagnosis(allDiagnoses.getString(allDiagnoses.getColumnIndex(DbOpenHelper.COLUMN_D_DIAGNOSIS)));
+                        diagnosis .setDate(allDiagnoses.getString(allDiagnoses.getColumnIndex(DbOpenHelper.COLUMN_D_DATE)));
+                        diagnoses.add(diagnosis);
+                        allDiagnoses.moveToNext();
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            Log.e(TAG, e.getMessage(), e);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            if (allDiagnoses != null) {
+                allDiagnoses.close();
+            }
+        }
+        return diagnoses;
+    }
+
+    /**
+     * Gets from db a list containing surgical history.
+     */
+    public List<SurgicalHistory> readAllSurgicalHistory() {
+        List<SurgicalHistory> histories = new ArrayList<>();
+        Cursor allHistories= null;
+        try {
+            allHistories= readAllFuture(DbOpenHelper.TABLE_SURGICAL_HISTORY,
+                    SURGICAL_HISTORY_COLUMN_NAMES, DbOpenHelper.COLUMN_SH_ID).get();
+            if (allHistories != null) {
+                if (allHistories.moveToFirst()) {
+                    while (!allHistories.isAfterLast()) {
+                        SurgicalHistory history = new SurgicalHistory();
+                        history.setId(allHistories.getInt(allHistories.getColumnIndex(DbOpenHelper.COLUMN_SH_ID)));
+                        history .setSurgicalHistory(allHistories.getString(allHistories.getColumnIndex(DbOpenHelper.COLUMN_SH_HISTORY)));
+                        history .setDate(allHistories.getString(allHistories.getColumnIndex(DbOpenHelper.COLUMN_SH_DATE)));
+                        histories.add(history);
+                        allHistories.moveToNext();
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            Log.e(TAG, e.getMessage(), e);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            if (allHistories != null) {
+                allHistories.close();
+            }
+        }
+        return histories;
+    }
+
 
 
 

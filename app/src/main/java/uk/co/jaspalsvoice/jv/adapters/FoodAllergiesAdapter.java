@@ -63,9 +63,8 @@ public class FoodAllergiesAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-        FoodAllergies foodAllergy = foodAllergies.get(position);
+        final FoodAllergies foodAllergy = foodAllergies.get(position);
         if (foodAllergy != null) {
-            ((AllergiesActivity)context).setFoodAllergiesId(foodAllergy.getId());
             ((FoodAllergiesViewHolder) holder).foodAllergiesTextView.setText(foodAllergy.foodAllergies);
             ((FoodAllergiesViewHolder) holder).typeTextView.setText(foodAllergy.type);
             ((FoodAllergiesViewHolder) holder).foodAllergiesEdittext.setText(foodAllergy.foodAllergies);
@@ -86,6 +85,7 @@ public class FoodAllergiesAdapter extends RecyclerView.Adapter<RecyclerView.View
         ((FoodAllergiesViewHolder) holder).saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((AllergiesActivity)context).setFoodAllergiesId(foodAllergy.getId());
                 uptypeData(((FoodAllergiesViewHolder)holder).foodAllergiesEdittext.getText().toString(),
                         ((FoodAllergiesViewHolder)holder).typeText.getText().toString());
                 ((FoodAllergiesViewHolder) holder).foodAllergiesTextView.setText(

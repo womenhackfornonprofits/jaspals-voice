@@ -63,9 +63,8 @@ public class MedicalAllergiesAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-        MedicalAllergies medicalAllergy = medicalAllergies.get(position);
+        final MedicalAllergies medicalAllergy = medicalAllergies.get(position);
         if (medicalAllergy != null) {
-            ((AllergiesActivity)context).setMedicalAllergiesId(medicalAllergy.getId());
             ((MedicalAllergiesViewHolder) holder).medicalAllergiesTextView.setText(medicalAllergy.medicalAllergies);
             ((MedicalAllergiesViewHolder) holder).typeTextView.setText(medicalAllergy.type);
             ((MedicalAllergiesViewHolder) holder).medicalAllergiesEdittext.setText(medicalAllergy.medicalAllergies);
@@ -86,6 +85,7 @@ public class MedicalAllergiesAdapter extends RecyclerView.Adapter<RecyclerView.V
         ((MedicalAllergiesViewHolder) holder).saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((AllergiesActivity)context).setMedicalAllergiesId(medicalAllergy.getId());
                 uptypeData(((MedicalAllergiesViewHolder)holder).medicalAllergiesEdittext.getText().toString(),
                         ((MedicalAllergiesViewHolder)holder).typeText.getText().toString());
                 ((MedicalAllergiesViewHolder) holder).medicalAllergiesTextView.setText(

@@ -64,9 +64,8 @@ public class VitalsBloodPressureAdapter extends RecyclerView.Adapter<RecyclerVie
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-        VitalsBloodPressure bloodPressure = bloodPressures.get(position);
+        final VitalsBloodPressure bloodPressure = bloodPressures.get(position);
         if (bloodPressure != null) {
-            ((VitalsActivity)context).setBloodPressureId(bloodPressure.getId());
             ((BloodPressureViewHolder) holder).bloodPressureTextView.setText(bloodPressure.bloodPressure);
             ((BloodPressureViewHolder) holder).dateTextView.setText(bloodPressure.date);
             ((BloodPressureViewHolder) holder).bloodPressureEdittext.setText(bloodPressure.bloodPressure);
@@ -87,6 +86,7 @@ public class VitalsBloodPressureAdapter extends RecyclerView.Adapter<RecyclerVie
         ((BloodPressureViewHolder) holder).saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((VitalsActivity)context).setBloodPressureId(bloodPressure.getId());
                 updateData(((BloodPressureViewHolder)holder).bloodPressureEdittext.getText().toString(),
                         ((BloodPressureViewHolder)holder).dateText.getText().toString());
                 ((BloodPressureViewHolder) holder).bloodPressureTextView.setText(
