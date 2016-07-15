@@ -29,6 +29,8 @@ public class MedicinesActivity extends BaseActivity {
     private List<Medicine> medicineList;
     private int id;
     private TextView noContentView;
+    private int renalDosageId;
+    private int hepaticDosageId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,6 +132,22 @@ public class MedicinesActivity extends BaseActivity {
         this.id = id;
     }
 
+    public int getRenalDosageId() {
+        return renalDosageId;
+    }
+
+    public void setRenalDosageId(int renalDosageId) {
+        this.renalDosageId = renalDosageId;
+    }
+
+    public int getHepaticDosageId() {
+        return hepaticDosageId;
+    }
+
+    public void setHepaticDosageId(int hepaticDosageId) {
+        this.hepaticDosageId = hepaticDosageId;
+    }
+
     private class Save extends AsyncTask<String, Void, uk.co.jaspalsvoice.jv.models.Medicine> {
         @Override
         protected uk.co.jaspalsvoice.jv.models.Medicine doInBackground(String... params) {
@@ -140,6 +158,8 @@ public class MedicinesActivity extends BaseActivity {
             medicine.setDosage(params[1]);
             medicine.setReason(params[2]);
             medicine.setFrequency(params[3]);
+            medicine.setRenalDosage(getRenalDosageId());
+            medicine.setHepaticDosage(getHepaticDosageId());
             medicines.add(medicine);
             application.getDbHelper().insertOrReplaceMedicine(medicines, true, getId());
             return medicine;

@@ -128,13 +128,6 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
 
-                <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:textSize="@dimen/text_normal_size"
-                    android:layout_width="0dp"
-                    android:text="@string/renal_dosage"/>
-
                 <uk.co.jaspalsvoice.jv.views.YesNoCardView
                     android:elevation="@dimen/elevation"
                     android:id="@+id/renalDosageCard"
@@ -149,13 +142,6 @@
             <TableRow
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
-
-                <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:textSize="@dimen/text_normal_size"
-                    android:layout_width="0dp"
-                    android:text="@string/hepatic_dosage"/>
 
                 <uk.co.jaspalsvoice.jv.views.YesNoCardView
                     android:elevation="@dimen/elevation"

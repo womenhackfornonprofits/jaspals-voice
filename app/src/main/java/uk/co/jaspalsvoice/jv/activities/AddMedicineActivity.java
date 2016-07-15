@@ -19,6 +19,7 @@ import java.util.List;
 import uk.co.jaspalsvoice.jv.JvApplication;
 import uk.co.jaspalsvoice.jv.R;
 import uk.co.jaspalsvoice.jv.models.Medicine;
+import uk.co.jaspalsvoice.jv.views.YesNoCardView;
 import uk.co.jaspalsvoice.jv.views.custom.medicine.MedicineListAdapter;
 
 /**
@@ -33,6 +34,10 @@ public class AddMedicineActivity extends BaseActivity {
     private EditText reasonText;
     private EditText frequencyText;
     private Button saveButton;
+    private YesNoCardView renalCardView;
+    private YesNoCardView hepaticCardView;
+    private int renalDosageSelection;
+    private int hepaticDosageSelection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,26 +73,57 @@ public class AddMedicineActivity extends BaseActivity {
     }
 
     private void initViews() {
-        medicineNameText = (EditText)findViewById(R.id.edit_value_name);
-        dosagetext = (EditText)findViewById(R.id.edit_value_dosage);
-        reasonText = (EditText)findViewById(R.id.edit_value_reason);
-        frequencyText = (EditText)findViewById(R.id.edit_value_frequency);
+        medicineNameText = (EditText) findViewById(R.id.edit_value_name);
+        dosagetext = (EditText) findViewById(R.id.edit_value_dosage);
+        reasonText = (EditText) findViewById(R.id.edit_value_reason);
+        frequencyText = (EditText) findViewById(R.id.edit_value_frequency);
         saveButton = (Button) findViewById(R.id.saveButton);
+        renalCardView = (YesNoCardView) findViewById(R.id.renalDosageCard);
+        hepaticCardView = (YesNoCardView) findViewById(R.id.hepaticDosageCard);
+        renalCardView.setTitle(getResources().
+                getString(R.string.renal_dosage));
+        renalCardView.setTitleId(R.string.renal_dosage);
+
+        hepaticCardView.setTitle(getResources().
+                getString(R.string.hepatic_dosage));
+        hepaticCardView.setTitleId(R.string.hepatic_dosage);
     }
 
-    public void saveMedicineData(String... medicineData){
+
+
+
+    public void saveMedicineData(String... medicineData) {
         new Save().execute(medicineData);
     }
+
+    public int getRenalDosageSelection() {
+        return renalCardView.getSelection();
+    }
+
+    public void setRenalDosageSelection(int renalDosageSelection) {
+        this.renalDosageSelection = renalDosageSelection;
+    }
+
+    public int getHepaticDosageSelection() {
+        return hepaticCardView.getSelection();
+    }
+
+    public void setHepaticDosageSelection(int hepaticDosageSelection) {
+        this.hepaticDosageSelection = hepaticDosageSelection;
+    }
+
 
     private class Save extends AsyncTask<String, Void, uk.co.jaspalsvoice.jv.models.Medicine> {
         @Override
         protected uk.co.jaspalsvoice.jv.models.Medicine doInBackground(String... params) {
-            List<uk.co.jaspalsvoice.jv.models.Medicine> medicines= new ArrayList<>();
+            List<uk.co.jaspalsvoice.jv.models.Medicine> medicines = new ArrayList<>();
             uk.co.jaspalsvoice.jv.models.Medicine medicine = new uk.co.jaspalsvoice.jv.models.Medicine();
             medicine.setName(params[0]);
             medicine.setDosage(params[1]);
             medicine.setReason(params[2]);
             medicine.setFrequency(params[3]);
+            medicine.setRenalDosage(getRenalDosageSelection());
+            medicine.setHepaticDosage(getHepaticDosageSelection());
             medicines.add(medicine);
             application.getDbHelper().insertOrReplaceMedicine(medicines, false, 0);
             return medicine;
@@ -95,7 +131,7 @@ public class AddMedicineActivity extends BaseActivity {
 
         @Override
         protected void onPostExecute(uk.co.jaspalsvoice.jv.models.Medicine medicine) {
-            if (medicine != null){
+            if (medicine != null) {
                 showToast(getString(R.string.medicine_add_success_message), Toast.LENGTH_SHORT);
                 launchMedicinesActivity();
             }
@@ -112,4 +148,5 @@ public class AddMedicineActivity extends BaseActivity {
         startActivity(intent);
         finish();
     }
+
 }

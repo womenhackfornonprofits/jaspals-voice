@@ -54,7 +54,7 @@ public class YesNoCardView extends CardView {
     }
 
     private void init(final Context context) {
-        preferences = ((JvApplication)context.getApplicationContext()).getPreferences();
+        preferences = ((JvApplication) context.getApplicationContext()).getPreferences();
 
         LayoutInflater inflater = LayoutInflater.from(context);
         View root = inflater.inflate(R.layout.yes_no_card_view, this);
@@ -156,7 +156,7 @@ public class YesNoCardView extends CardView {
 
     public void setTitleId(int titleId) {
         this.titleId = titleId;
-        if (titleId == R.string.personal_details_gender){
+        if (titleId == R.string.personal_details_gender) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getContext(), android.R.layout.simple_spinner_item,
                     getResources().getStringArray(R.array.gender_spinner));
@@ -171,7 +171,6 @@ public class YesNoCardView extends CardView {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinnerView.setAdapter(adapter);
         }
-
 
 
         textView.setText(options[0]);
@@ -190,7 +189,11 @@ public class YesNoCardView extends CardView {
         optionalSubtitleView.setVisibility(TextUtils.isEmpty(subtitle) ? GONE : VISIBLE);
         textView.setVisibility(GONE);
         spinnerView.setVisibility(VISIBLE);
-        buttonsView.setVisibility(VISIBLE);
+        if (titleId == R.string.renal_dosage || titleId == R.string.hepatic_dosage){
+            buttonsView.setVisibility(GONE);
+        } else {
+            buttonsView.setVisibility(VISIBLE);
+        }
     }
 
     private void save() {
@@ -212,6 +215,22 @@ public class YesNoCardView extends CardView {
                 preferences.setGender(selection == 0);
         }
     }
+
+    public int getSelection() {
+        return spinnerView.getSelectedItemPosition();
+    }
+
+    public void disableEdit() {
+        spinnerView.setEnabled(false);
+        titleView.setCompoundDrawables(null, null, null, null);
+    }
+
+    public void enableEdit(){
+        spinnerView.setEnabled(true);
+        titleView.setCompoundDrawablesWithIntrinsicBounds(null, null,
+                getResources().getDrawable(R.drawable.ic_action_edit), null);
+    }
+
 
    /* private void getData() {
         switch (titleId) {

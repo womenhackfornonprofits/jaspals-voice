@@ -63,7 +63,11 @@ public class DbHelper {
             DbOpenHelper.COLUMN_M_DOSAGE,
             DbOpenHelper.COLUMN_M_NAME,
             DbOpenHelper.COLUMN_M_REASON,
-            DbOpenHelper.COLUMN_M_FREQUENCY};
+            DbOpenHelper.COLUMN_M_FREQUENCY,
+            DbOpenHelper.COLUMN_M_RENAL,
+            DbOpenHelper.COLUMN_M_HEPATIC
+
+    };
 
     private static final String[] BLOOD_PRESSURE_COLUMN_NAMES = new String[]{
             DbOpenHelper.COLUMN_B_UUID,
@@ -947,6 +951,8 @@ public class DbHelper {
                         medicine.setReason(allMedicines.getString(allMedicines.getColumnIndex(DbOpenHelper.COLUMN_M_REASON)));
                         medicine.setDosage(allMedicines.getString(allMedicines.getColumnIndex(DbOpenHelper.COLUMN_M_DOSAGE)));
                         medicine.setFrequency(allMedicines.getString(allMedicines.getColumnIndex(DbOpenHelper.COLUMN_M_FREQUENCY)));
+                        medicine.setRenalDosage(allMedicines.getInt(allMedicines.getColumnIndex(DbOpenHelper.COLUMN_M_RENAL)));
+                        medicine.setHepaticDosage(allMedicines.getInt(allMedicines.getColumnIndex(DbOpenHelper.COLUMN_M_HEPATIC)));
                         medicines.add(medicine);
                         allMedicines.moveToNext();
                     }

@@ -81,7 +81,7 @@
         android:layout_gravity="center"
         android:textSize="@dimen/text_normal_size"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:text="@string/no_content_bloodpressure"
+        android:text="@string/no_content_height"
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

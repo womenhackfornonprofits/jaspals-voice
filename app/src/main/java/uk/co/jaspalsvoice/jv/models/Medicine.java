@@ -15,6 +15,8 @@ public class Medicine {
     private String dosage;
     private String reason;
     private String frequency;
+    private int renalDosage;
+    private int hepaticDosage;
 
     public ContentValues toContentValues() {
         ContentValues cv = new ContentValues();
@@ -24,6 +26,8 @@ public class Medicine {
         cv.put(DbOpenHelper.COLUMN_M_DOSAGE, getDosage());
         cv.put(DbOpenHelper.COLUMN_M_REASON, getReason());
         cv.put(DbOpenHelper.COLUMN_M_FREQUENCY, getFrequency());
+        cv.put(DbOpenHelper.COLUMN_M_RENAL, getRenalDosage());
+        cv.put(DbOpenHelper.COLUMN_M_HEPATIC, getHepaticDosage());
         return cv;
     }
 
@@ -73,5 +77,21 @@ public class Medicine {
 
     public void setFrequency(String frequency) {
         this.frequency = frequency;
+    }
+
+    public int getRenalDosage() {
+        return renalDosage;
+    }
+
+    public void setRenalDosage(int renalDosage) {
+        this.renalDosage = renalDosage;
+    }
+
+    public int getHepaticDosage() {
+        return hepaticDosage;
+    }
+
+    public void setHepaticDosage(int hepaticDosage) {
+        this.hepaticDosage = hepaticDosage;
     }
 }

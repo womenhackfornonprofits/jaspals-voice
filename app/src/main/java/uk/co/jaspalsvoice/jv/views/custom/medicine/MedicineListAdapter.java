@@ -15,6 +15,7 @@ import java.util.List;
 import uk.co.jaspalsvoice.jv.R;
 import uk.co.jaspalsvoice.jv.activities.MedicinesActivity;
 import uk.co.jaspalsvoice.jv.models.*;
+import uk.co.jaspalsvoice.jv.views.YesNoCardView;
 
 /**
  * Created by Ana on 3/6/2016.
@@ -25,12 +26,16 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final int TYPE_OTHER = 1;
     private Context context;
     private int id;
+    private String[] answers;
+    private boolean isEditMode;
 
     private List<uk.co.jaspalsvoice.jv.models.Medicine> data;
 
     public MedicineListAdapter(Context context, List<uk.co.jaspalsvoice.jv.models.Medicine> data) {
         this.data = data;
         this.context = context;
+        answers = context.getResources().getStringArray(R.array.yes_no_spinner_item);
+
     }
 
     public int getId() {
@@ -52,6 +57,9 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         EditText reasonEdit;
         EditText frequencyEdit;
 
+        YesNoCardView renalCardView;
+        YesNoCardView hepaticCardView;
+
         Button edit;
         boolean editMode;
 
@@ -68,6 +76,16 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             dosageEdit = (EditText) view.findViewById(R.id.edit_value_dosage);
             reasonEdit = (EditText) view.findViewById(R.id.edit_value_reason);
             frequencyEdit = (EditText) view.findViewById(R.id.edit_value_frequency);
+
+            renalCardView = (YesNoCardView) view.findViewById(R.id.renalDosageCard);
+            hepaticCardView = (YesNoCardView) view.findViewById(R.id.hepaticDosageCard);
+
+            renalCardView.setTitle("Renal dosage required");
+            renalCardView.setTitleId(R.string.renal_dosage);
+
+            hepaticCardView.setTitle("Hepatic dosage required");
+            hepaticCardView.setTitleId(R.string.hepatic_dosage);
+
 
             edit = (Button) view.findViewById(R.id.edit);
 
@@ -112,6 +130,9 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             frequencyView.setVisibility(View.VISIBLE);
             frequencyView.setText(frequencyEdit.getText());
 
+            renalCardView.disableEdit();
+            hepaticCardView.disableEdit();
+
             edit.setText("Edit");
         }
 
@@ -127,6 +148,9 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             frequencyEdit.setVisibility(View.VISIBLE);
             frequencyView.setVisibility(View.GONE);
+
+            renalCardView.enableEdit();
+            hepaticCardView.enableEdit();
 
             edit.setText("Save");
         }
@@ -160,7 +184,7 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == TYPE_ITEM) {
             final ViewHolder vHolder = ((ViewHolder) holder);
             final uk.co.jaspalsvoice.jv.models.Medicine medicine = data.get(position);
@@ -175,6 +199,9 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             vHolder.reasonEdit.setText(medicine.getReason());
             vHolder.frequencyEdit.setText(medicine.getFrequency());
 
+            vHolder.renalCardView.setText(medicine.getRenalDosage() == 0 ? answers[0] : answers[1]);
+            vHolder.hepaticCardView.setText(medicine.getHepaticDosage() == 0 ? answers[0] : answers[1]);
+
             vHolder.edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -183,9 +210,12 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     if (vHolder.editMode) {
                         vHolder.showEditMode();
                     } else {
-                        ((MedicinesActivity)context).setId(medicine.getId());
+                        ((MedicinesActivity) context).setId(medicine.getId());
+                        ((MedicinesActivity) context).setRenalDosageId(vHolder.renalCardView.getSelection());
+                        ((MedicinesActivity) context).setHepaticDosageId(vHolder.hepaticCardView.getSelection());
                         saveMedicineData(vHolder.nameEdit.getText().toString(),
-                                vHolder.dosageEdit.getText().toString(), vHolder.reasonEdit.getText().toString(),
+                                vHolder.dosageEdit.getText().toString(),
+                                vHolder.reasonEdit.getText().toString(),
                                 vHolder.frequencyEdit.getText().toString());
                         vHolder.showNonEditMode();
                     }
@@ -204,8 +234,8 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return position == getItemCount() - 1 ? TYPE_OTHER : TYPE_ITEM;
     }*/
 
-    private void saveMedicineData(String... medicineData){
-        ((MedicinesActivity)context).saveMedicineData(medicineData);
+    private void saveMedicineData(String... medicineData) {
+        ((MedicinesActivity) context).saveMedicineData(medicineData);
     }
 
 }

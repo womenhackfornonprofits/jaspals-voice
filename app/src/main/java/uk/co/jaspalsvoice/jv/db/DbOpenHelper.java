@@ -47,6 +47,8 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     public static final String COLUMN_M_DOSAGE = "dosage";
     public static final String COLUMN_M_REASON = "reason";
     public static final String COLUMN_M_FREQUENCY = "frequency";
+    public static final String COLUMN_M_RENAL= "renaldosage";
+    public static final String COLUMN_M_HEPATIC= "hepaticdosage";
 
     // Table, columns
     public static final String TABLE_BLOOD_PRESSURE = "bloodpressuretable";
@@ -151,7 +153,9 @@ public class DbOpenHelper extends SQLiteOpenHelper {
             + COLUMN_M_NAME + " TEXT, "
             + COLUMN_M_DOSAGE + " TEXT, "
             + COLUMN_M_REASON + " TEXT, "
-            + COLUMN_M_FREQUENCY + " TEXT);";
+            + COLUMN_M_FREQUENCY + " TEXT, "
+            + COLUMN_M_RENAL + " INTEGER, "
+            + COLUMN_M_HEPATIC + " INTEGER);";
 
     // Creation statement for TABLE_BLOODPRESSURE
     private static final String CREATE_TABLE_BLOODPRESSURE = "CREATE TABLE "
