@@ -81,10 +81,10 @@ public class GpActivity extends BaseActivity {
         ConsultantCardView mndContact = (ConsultantCardView) findViewById(R.id.mnd_contact);
         mndContact.setTitle(getString(R.string.mnd_contact_title));
         mndContact.setLabel1View(getString(R.string.gp_medical_team_name));
-        mndContact.setLabel2View(getString(R.string.gp_consultant_address));
+       /* mndContact.setLabel2View(getString(R.string.gp_consultant_address));
         mndContact.setLabel3View(getString(R.string.gp_consultant_phone));
         mndContact.setLabel4View(getString(R.string.gp_consultant_email));
-
+*/
         mndContact.setLabel2hView(getString(R.string.gp_hospital_name));
         mndContact.setLabel3hView(getString(R.string.gp_hospital_address));
         mndContact.setLabel4hView(getString(R.string.gp_hospital_phone));

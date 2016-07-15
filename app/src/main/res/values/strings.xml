@@ -22,7 +22,7 @@
     <string name="key_gp">G.P /\nMedical Team</string>
 
     <string name="key_mno_6">"6\nMNO"</string>
-    <string name="key_likes_dislikes">"About Me"</string>
+    <string name="key_likes_dislikes">"\nAbout Me"</string>
 
     <string name="key_pqrs_7">"7\nPQRS"</string>
     <string name="key_diagnosis">Medical Diagnosis</string>
