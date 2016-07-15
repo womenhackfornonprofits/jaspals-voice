@@ -14,7 +14,7 @@ import uk.co.jaspalsvoice.jv.models.SurgicalHistory;
 import uk.co.jaspalsvoice.jv.views.DiagnosisCardView;
 import uk.co.jaspalsvoice.jv.views.SurgicalHistoryCardView;
 
-public class DiagnosesActivity extends AppCompatActivity {
+public class DiagnosesActivity extends BaseActivity {
 
     private DiagnosisCardView diagnosisCardView;
     private int diagnosisId;

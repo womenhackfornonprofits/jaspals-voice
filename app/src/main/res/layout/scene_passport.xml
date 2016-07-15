@@ -54,7 +54,7 @@
                 </FrameLayout>
 
                 <FrameLayout
-                    android:id="@+id/three"
+                    android:id="@+id/eight"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/margin_xx_small"
@@ -73,13 +73,120 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@drawable/medicines" />
+                            android:src="@drawable/gp_medical_team" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="@string/key_medicines"
+                            android:text="@string/key_gp"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/text_normal_size" />
+                    </LinearLayout>
+                </FrameLayout>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+
+                <FrameLayout
+                    android:id="@+id/zero"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_xx_small"
+                    android:layout_weight="1"
+                    android:background="@drawable/key_selector"
+                    android:clickable="true"
+                    android:padding="@dimen/margin_normal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/diagnosis" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/key_diagnosis"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/text_normal_size" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/vitals"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_xx_small"
+                    android:layout_weight="1"
+                    android:background="@drawable/key_selector"
+                    android:clickable="true"
+                    android:padding="@dimen/margin_normal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/diagnosis" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/key_vitals"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/text_normal_size" />
+                    </LinearLayout>
+                </FrameLayout>
+
+
+
+                <FrameLayout
+                    android:visibility="gone"
+                    android:id="@+id/six"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_xx_small"
+                    android:layout_weight="1"
+                    android:background="@drawable/key_selector"
+                    android:clickable="true"
+                    android:padding="@dimen/margin_normal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/food_allergies" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/key_food_allergies"
                             android:textColor="@android:color/white"
                             android:textSize="@dimen/text_normal_size" />
                     </LinearLayout>
@@ -125,7 +232,7 @@
                 </FrameLayout>
 
                 <FrameLayout
-                    android:id="@+id/six"
+                    android:id="@+id/three"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/margin_xx_small"
@@ -144,13 +251,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@drawable/food_allergies" />
+                            android:src="@drawable/medicines" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="@string/key_food_allergies"
+                            android:text="@string/key_medicines"
                             android:textColor="@android:color/white"
                             android:textSize="@dimen/text_normal_size" />
                     </LinearLayout>
@@ -163,37 +270,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
-                <FrameLayout
-                    android:id="@+id/eight"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/margin_xx_small"
-                    android:layout_weight="1"
-                    android:background="@drawable/key_selector"
-                    android:clickable="true"
-                    android:padding="@dimen/margin_normal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/gp_medical_team" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="@string/key_gp"
-                            android:textColor="@android:color/white"
-                            android:textSize="@dimen/text_normal_size" />
-                    </LinearLayout>
-                </FrameLayout>
 
                 <FrameLayout
                     android:id="@+id/nine"
@@ -226,44 +302,7 @@
                             android:textSize="@dimen/text_normal_size" />
                     </LinearLayout>
                 </FrameLayout>
-            </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-                <FrameLayout
-                    android:id="@+id/zero"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/margin_xx_small"
-                    android:layout_weight="1"
-                    android:background="@drawable/key_selector"
-                    android:clickable="true"
-                    android:padding="@dimen/margin_normal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/diagnosis" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="@string/key_diagnosis"
-                            android:textColor="@android:color/white"
-                            android:textSize="@dimen/text_normal_size" />
-                    </LinearLayout>
-                </FrameLayout>
 
                 <FrameLayout
                     android:id="@+id/hash"
@@ -304,37 +343,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
-                <FrameLayout
-                    android:id="@+id/vitals"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/margin_xx_small"
-                    android:layout_weight="1"
-                    android:background="@drawable/key_selector"
-                    android:clickable="true"
-                    android:padding="@dimen/margin_normal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/diagnosis" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="@string/key_vitals"
-                            android:textColor="@android:color/white"
-                            android:textSize="@dimen/text_normal_size" />
-                    </LinearLayout>
-                </FrameLayout>
             </TableRow>
         </TableLayout>
 
