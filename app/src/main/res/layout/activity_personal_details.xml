@@ -28,6 +28,22 @@
             android:layout_width="match_parent"
             android:padding="@dimen/margin_small"/>
 
+        <uk.co.jaspalsvoice.jv.views.EditableCardView
+            android:elevation="@dimen/elevation"
+            android:id="@+id/pd_name_to_be_called"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:padding="@dimen/margin_small"/>
+
+        <uk.co.jaspalsvoice.jv.views.EditableCardView
+            android:elevation="@dimen/elevation"
+            android:id="@+id/pd_dob"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:padding="@dimen/margin_small"/>
+
         <uk.co.jaspalsvoice.jv.views.AddressCardView
             android:elevation="@dimen/elevation"
             android:id="@+id/pd_address"
@@ -52,25 +68,17 @@
             android:layout_width="match_parent"
             android:padding="@dimen/margin_small"/>
 
+        <uk.co.jaspalsvoice.jv.views.EditableCardView
+            android:elevation="@dimen/elevation"
+            android:id="@+id/pd_email"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:padding="@dimen/margin_small"/>
+
         <uk.co.jaspalsvoice.jv.views.YesNoCardView
             android:elevation="@dimen/elevation"
             android:id="@+id/pd_gender"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
-
-        <uk.co.jaspalsvoice.jv.views.EditableCardView
-            android:elevation="@dimen/elevation"
-            android:id="@+id/pd_language_of_carer"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
-
-        <uk.co.jaspalsvoice.jv.views.EditableCardView
-            android:elevation="@dimen/elevation"
-            android:id="@+id/pd_name_to_be_called"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
@@ -86,23 +94,16 @@
 
         <uk.co.jaspalsvoice.jv.views.EditableCardView
             android:elevation="@dimen/elevation"
-            android:id="@+id/pd_email"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
-
-        <uk.co.jaspalsvoice.jv.views.EditableCardView
-            android:elevation="@dimen/elevation"
-            android:id="@+id/pd_dob"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
-
-        <uk.co.jaspalsvoice.jv.views.EditableCardView
-            android:elevation="@dimen/elevation"
             android:id="@+id/pd_main_carer"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:padding="@dimen/margin_small"/>
+
+
+        <uk.co.jaspalsvoice.jv.views.EditableCardView
+            android:elevation="@dimen/elevation"
+            android:id="@+id/pd_language_of_carer"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"

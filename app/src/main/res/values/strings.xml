@@ -41,7 +41,7 @@
     <string name="personal_details">Personal Details</string>
     <string name="personal_details_first_name">First Name</string>
     <string name="personal_details_last_name">Last Name</string>
-    <string name="personal_details_name_to_be_called">Name I would like to be called</string>
+    <string name="personal_details_name_to_be_called">Name I like to go by</string>
     <string name="personal_details_live_with">Who I live with</string>
     <string name="personal_details_email">Email</string>
     <string name="personal_details_dob">D.O.B</string>
@@ -158,6 +158,8 @@
     <string name="surgical_history_title">Surgical History</string>
     <string name="surgical_history_subtitle">Surgery</string>
     <string name="no_content_surgical_history">Currently there are no entries for surgical history. Please click on the + icon above to add a new entry.</string>
+    <string name="renal_dosage">Renal dosage required</string>
+    <string name="hepatic_dosage">Hepatic dosage required</string>
 
 
 </resources>
