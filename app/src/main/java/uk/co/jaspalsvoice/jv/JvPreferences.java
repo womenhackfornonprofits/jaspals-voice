@@ -42,6 +42,10 @@ public class JvPreferences {
     private static final String PERSONAL_DETAILS_EATING_DRINKING = "pd_eating_drinking";
     private static final String FIRST_RUN_STATUS = "first_run";
     private static final String FONT_SIZE = "font_size";
+    private static final String ZIP_CODE = "zip_code";
+    private static final String COUNTRY = "country";
+    private static final String NEXT_OF_KIN = "next_of_kin";
+    private static final String FIRST_LANGUAGE = "first_language";
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -114,9 +118,11 @@ public class JvPreferences {
     public String getStreet() {
         return preferences.getString(PERSONAL_DETAILS_STREET, "");
     }
+
     public String getTown() {
         return preferences.getString(PERSONAL_DETAILS_TOWN, "");
     }
+
     public String getCounty() {
         return preferences.getString(PERSONAL_DETAILS_COUNTY, "");
     }
@@ -239,9 +245,9 @@ public class JvPreferences {
 
     public boolean storeOptions(Boolean[] array, String arrayName) {
 
-        editor.putInt(arrayName +"_size", array.length);
+        editor.putInt(arrayName + "_size", array.length);
 
-        for(int i=0;i<array.length;i++)
+        for (int i = 0; i < array.length; i++)
             editor.putBoolean(arrayName + "_" + i, array[i]);
 
         return editor.commit();
@@ -251,7 +257,7 @@ public class JvPreferences {
 
         int size = preferences.getInt(arrayName + "_size", 0);
         Boolean array[] = new Boolean[size];
-        for(int i=0;i<size;i++)
+        for (int i = 0; i < size; i++)
             array[i] = preferences.getBoolean(arrayName + "_" + i, false);
 
         return array;
@@ -289,12 +295,12 @@ public class JvPreferences {
         return preferences.getBoolean(PERSONAL_DETAILS_EATING_DRINKING, false);
     }
 
-    public void setFirstRunStatus(boolean isFirstRun){
+    public void setFirstRunStatus(boolean isFirstRun) {
         editor.putBoolean(FIRST_RUN_STATUS, isFirstRun).apply();
     }
 
 
-    public boolean isFirstRun(){
+    public boolean isFirstRun() {
         return preferences.getBoolean(FIRST_RUN_STATUS, false);
     }
 
@@ -304,5 +310,37 @@ public class JvPreferences {
 
     public void setFontSize(float fontSize) {
         editor.putFloat(FONT_SIZE, fontSize).apply();
+    }
+
+    public void setZipCode(String zipCode) {
+        editor.putString(ZIP_CODE, zipCode).apply();
+    }
+
+    public String getZipCode() {
+        return preferences.getString(ZIP_CODE, "");
+    }
+
+    public void setCountry(String country) {
+        editor.putString(COUNTRY, country).apply();
+    }
+
+    public String getCountry() {
+        return preferences.getString(COUNTRY, "");
+    }
+
+    public void setNextOfKin(String nextOfKin) {
+        editor.putString(NEXT_OF_KIN, nextOfKin).apply();
+    }
+
+    public String getNextOfKin() {
+        return preferences.getString(NEXT_OF_KIN, "");
+    }
+
+    public void setFirstLanguage(String firstLanguage) {
+        editor.putString(FIRST_LANGUAGE, firstLanguage).apply();
+    }
+
+    public String getFirstLanguage() {
+        return preferences.getString(FIRST_LANGUAGE, "");
     }
 }
