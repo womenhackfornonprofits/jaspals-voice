@@ -53,6 +53,7 @@ import java.util.Set;
 
 import uk.co.jaspalsvoice.jv.activities.AboutMeActivity;
 import uk.co.jaspalsvoice.jv.activities.AllergiesActivity;
+import uk.co.jaspalsvoice.jv.activities.BaseActivity;
 import uk.co.jaspalsvoice.jv.activities.DiagnosesActivity;
 import uk.co.jaspalsvoice.jv.activities.DiagnosisActivity;
 import uk.co.jaspalsvoice.jv.activities.FontSizeActivity;
@@ -70,7 +71,7 @@ import uk.co.jaspalsvoice.jv.task.InitWordsTask;
 import uk.co.jaspalsvoice.jv.task.InsertWordTask;
 import uk.co.jaspalsvoice.jv.task.KeypadListener;
 
-public class MainActivity extends AppCompatActivity implements SuggestionsAdapter.Listener {
+public class MainActivity extends BaseActivity implements SuggestionsAdapter.Listener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 

@@ -36,7 +36,7 @@
 
     <string name="new_line">"\n_"</string>
 
-    <string name="default_text_when_not_specified">Not specified</string>
+    <string name="default_text_when_not_specified"></string>
 
     <string name="personal_details">Personal Details</string>
     <string name="personal_details_first_name">First Name</string>
