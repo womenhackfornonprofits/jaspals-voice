@@ -32,9 +32,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import uk.co.jaspalsvoice.jv.DateUtils;
 import uk.co.jaspalsvoice.jv.JvApplication;
 import uk.co.jaspalsvoice.jv.JvPreferences;
 import uk.co.jaspalsvoice.jv.R;
+import uk.co.jaspalsvoice.jv.activities.VitalsActivity;
 import uk.co.jaspalsvoice.jv.adapters.VitalsBloodPressureAdapter;
 import uk.co.jaspalsvoice.jv.models.Doctor;
 import uk.co.jaspalsvoice.jv.models.VitalsBloodPressure;
@@ -95,6 +97,7 @@ public class VitalsBloodPressureCardView extends CardView {
         addBloodPressureButton.setOnClickListener(mOnClickListener);
         saveButton.setOnClickListener(mOnClickListener);
         cancelButton.setOnClickListener(mOnClickListener);
+        dateEdittext.setOnClickListener(mOnClickListener);
     }
 
     private void initValues(Context context) {
@@ -150,6 +153,10 @@ public class VitalsBloodPressureCardView extends CardView {
                 case R.id.cancelButton:
                     hideAddBPView();
                     showBPList();
+                    break;
+
+                case R.id.dateEditText:
+                    DateUtils.showDatePicker(dateEdittext, ((VitalsActivity)getContext()));
                     break;
             }
 

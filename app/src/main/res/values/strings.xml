@@ -149,7 +149,7 @@
     <string name="type_title">Type</string>
     <string name="food_allergies_subtitle">Allergy</string>
     <string name="environmental_allergies_title">Environmental Allergies</string>
-    <string name="environmental_allergies_subtitle">Environmental Allergies</string>
+    <string name="environmental_allergies_subtitle">Allergy</string>
     <string name="no_content_food_allergies">Currently there are no entries for food allergies. Please click on the + icon above to add a new entry.</string>
     <string name="no_content_environmental_allergies">
         Currently there are no entries for environmental allergies. Please click on the + icon above to add a new entry.</string>
@@ -160,6 +160,8 @@
     <string name="no_content_surgical_history">Currently there are no entries for surgical history. Please click on the + icon above to add a new entry.</string>
     <string name="renal_dosage">Renal dosage required</string>
     <string name="hepatic_dosage">Hepatic dosage required</string>
+    <string name="vitals">Vitals</string>
+    <string name="allergies">Allergies</string>
 
 
 </resources>

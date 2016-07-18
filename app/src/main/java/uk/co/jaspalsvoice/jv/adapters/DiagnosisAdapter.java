@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.jaspalsvoice.jv.DateUtils;
 import uk.co.jaspalsvoice.jv.JvApplication;
 import uk.co.jaspalsvoice.jv.R;
 import uk.co.jaspalsvoice.jv.activities.DiagnosesActivity;
@@ -102,6 +103,13 @@ public class DiagnosisAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             @Override
             public void onClick(View v) {
                 hideEditMode(((DiagnosisViewHolder) holder));
+            }
+        });
+
+        ((DiagnosisViewHolder)holder).dateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DateUtils.showDatePicker(((DiagnosisViewHolder)holder).dateText, ((DiagnosesActivity)context));
             }
         });
     }

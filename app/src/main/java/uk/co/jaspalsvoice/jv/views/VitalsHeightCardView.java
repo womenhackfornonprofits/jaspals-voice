@@ -16,8 +16,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.jaspalsvoice.jv.DateUtils;
 import uk.co.jaspalsvoice.jv.JvApplication;
 import uk.co.jaspalsvoice.jv.R;
+import uk.co.jaspalsvoice.jv.activities.VitalsActivity;
 import uk.co.jaspalsvoice.jv.adapters.VitalsHeightAdapter;
 import uk.co.jaspalsvoice.jv.models.VitalsHeight;
 
@@ -77,6 +79,7 @@ public class VitalsHeightCardView extends CardView {
         addHeightButton.setOnClickListener(mOnClickListener);
         saveButton.setOnClickListener(mOnClickListener);
         cancelButton.setOnClickListener(mOnClickListener);
+        dateEdittext.setOnClickListener(mOnClickListener);
     }
 
     private void initValues(Context context) {
@@ -132,6 +135,10 @@ public class VitalsHeightCardView extends CardView {
                 case R.id.cancelButton:
                     hideAddBPView();
                     showBPList();
+                    break;
+
+                case R.id.dateEditText:
+                    DateUtils.showDatePicker(dateEdittext, ((VitalsActivity)getContext()));
                     break;
             }
 

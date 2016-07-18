@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.jaspalsvoice.jv.DateUtils;
 import uk.co.jaspalsvoice.jv.JvApplication;
 import uk.co.jaspalsvoice.jv.R;
 import uk.co.jaspalsvoice.jv.activities.DiagnosesActivity;
@@ -102,6 +103,14 @@ public class SurgicalHistoryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             @Override
             public void onClick(View v) {
                 hideEditMode(((SurgicalHistoryViewHolder) holder));
+            }
+        });
+
+
+        ((SurgicalHistoryViewHolder)holder).dateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DateUtils.showDatePicker(((SurgicalHistoryViewHolder)holder).dateText, ((DiagnosesActivity)context));
             }
         });
     }

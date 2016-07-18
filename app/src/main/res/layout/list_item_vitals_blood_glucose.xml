@@ -28,6 +28,7 @@
     <EditText
         android:id="@+id/dateEditText"
         android:inputType="date"
+        android:focusable="false"
         android:visibility="gone"
         android:layout_width="0dp"
         android:layout_weight="3"

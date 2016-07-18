@@ -15,6 +15,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.jaspalsvoice.jv.DateUtils;
 import uk.co.jaspalsvoice.jv.JvApplication;
 import uk.co.jaspalsvoice.jv.R;
 import uk.co.jaspalsvoice.jv.activities.VitalsActivity;
@@ -105,6 +106,14 @@ public class VitalsBloodPressureAdapter extends RecyclerView.Adapter<RecyclerVie
                 hideEditMode(((BloodPressureViewHolder) holder));
             }
         });
+
+        ((BloodPressureViewHolder)holder).dateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DateUtils.showDatePicker(((BloodPressureViewHolder)holder).dateText, ((VitalsActivity)context));
+            }
+        });
+
     }
 
     private void updateData(String bloodPressure, String date) {

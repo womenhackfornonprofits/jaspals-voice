@@ -52,9 +52,12 @@
         <activity
             android:name=".activities.FontSizeActivity"
             android:label="@string/change_font_size" />
-        <activity android:name=".activities.VitalsActivity" />
-        <activity android:name=".activities.AllergiesActivity" />
-        <activity android:name=".activities.DiagnosesActivity"></activity>
+        <activity android:name=".activities.VitalsActivity"
+            android:label="@string/vitals"/>
+        <activity android:name=".activities.AllergiesActivity"
+            android:label="@string/allergies"/>
+        <activity android:name=".activities.DiagnosesActivity"
+            android:label="@string/diagnosis"></activity>
     </application>
 
 </manifest>

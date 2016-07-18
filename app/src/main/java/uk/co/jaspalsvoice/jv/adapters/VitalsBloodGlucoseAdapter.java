@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.jaspalsvoice.jv.DateUtils;
 import uk.co.jaspalsvoice.jv.JvApplication;
 import uk.co.jaspalsvoice.jv.R;
 import uk.co.jaspalsvoice.jv.activities.VitalsActivity;
@@ -102,6 +103,13 @@ public class VitalsBloodGlucoseAdapter extends RecyclerView.Adapter<RecyclerView
             @Override
             public void onClick(View v) {
                 hideEditMode(((BloodGlucoseViewHolder) holder));
+            }
+        });
+
+        ((BloodGlucoseViewHolder)holder).dateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DateUtils.showDatePicker(((BloodGlucoseViewHolder)holder).dateText, ((VitalsActivity)context));
             }
         });
     }

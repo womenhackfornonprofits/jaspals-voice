@@ -80,14 +80,32 @@ public class AddTeamMemberActivity extends BaseActivity {
                 !TextUtils.isEmpty(addressEdittext.getText().toString()) &&
                 !TextUtils.isEmpty(phoneNumberEdittext.getText().toString()) &&
                 !TextUtils.isEmpty(emailEdittext.getText().toString())) {
-            new Save().execute(doctorData);
-            typeEdittext.setText("");
-            nameEdittext.setText("");
-            addressEdittext.setText("");
-            phoneNumberEdittext.setText("");
-            emailEdittext.setText("");
+            if (isValidEmail(emailEdittext.getText().toString())) {
+                new Save().execute(doctorData);
+                typeEdittext.setText("");
+                nameEdittext.setText("");
+                addressEdittext.setText("");
+                phoneNumberEdittext.setText("");
+                emailEdittext.setText("");
+            } else {
+                showEmailToast();
+            }
         } else {
             showValidationToast();
+        }
+    }
+
+    private void showEmailToast() {
+        Toast.makeText(this,
+                getResources().getString(R.string.email_validation), Toast.LENGTH_LONG).show();
+    }
+
+
+    private boolean isValidEmail(CharSequence target) {
+        if (target == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
         }
     }
 
