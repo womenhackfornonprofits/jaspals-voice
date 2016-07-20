@@ -58,7 +58,7 @@
             android:padding="@dimen/margin_small"
             app:entries="@array/about_me_sleep_position"/>
 
-        <uk.co.jaspalsvoice.jv.views.YesNoCardView
+        <uk.co.jaspalsvoice.jv.views.EatingDrinkingCardView
             android:elevation="@dimen/elevation"
             android:id="@+id/swallowing_difficulties"
             android:layout_height="wrap_content"

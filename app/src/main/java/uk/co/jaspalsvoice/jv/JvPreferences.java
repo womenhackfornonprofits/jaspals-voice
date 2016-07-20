@@ -46,6 +46,7 @@ public class JvPreferences {
     private static final String COUNTRY = "country";
     private static final String NEXT_OF_KIN = "next_of_kin";
     private static final String FIRST_LANGUAGE = "first_language";
+    private static final String FEEDING_METHOD = "feeding_method";
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -342,5 +343,13 @@ public class JvPreferences {
 
     public String getFirstLanguage() {
         return preferences.getString(FIRST_LANGUAGE, "");
+    }
+
+    public void setFeedingMethod(String feedingMethod) {
+        editor.putString(FEEDING_METHOD, feedingMethod).apply();
+    }
+
+    public String getFeedingMethod() {
+       return preferences.getString(FEEDING_METHOD, "");
     }
 }

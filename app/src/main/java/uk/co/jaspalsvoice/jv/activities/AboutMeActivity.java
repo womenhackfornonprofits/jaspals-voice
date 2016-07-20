@@ -3,6 +3,7 @@ package uk.co.jaspalsvoice.jv.activities;
 import android.os.Bundle;
 
 import uk.co.jaspalsvoice.jv.R;
+import uk.co.jaspalsvoice.jv.views.EatingDrinkingCardView;
 import uk.co.jaspalsvoice.jv.views.YesNoCardView;
 import uk.co.jaspalsvoice.jv.views.tickbox.TickBoxListCardView;
 
@@ -36,11 +37,12 @@ public class AboutMeActivity extends BaseActivity {
         TickBoxListCardView sleepPosition = (TickBoxListCardView) findViewById(R.id.sleep_position);
         sleepPosition.setTitle(getString(R.string.about_me_sleep_position));
 
-        YesNoCardView swallowingDifficulties = (YesNoCardView) findViewById(R.id.swallowing_difficulties);
+        EatingDrinkingCardView swallowingDifficulties = (EatingDrinkingCardView) findViewById(R.id.swallowing_difficulties);
         swallowingDifficulties.setTitle(getString(R.string.about_me_swallowing_difficulties));
         swallowingDifficulties.setTitleId(R.string.about_me_swallowing_difficulties);
         swallowingDifficulties.setSubtitle(getString(R.string.about_me_swallowing_difficulties_subtitle));
         swallowingDifficulties.setText(preferences.getSwallowingAbilitiesStatus() ? answers[0] : answers[1]);
+        swallowingDifficulties.setFeedingMethod(preferences.getFeedingMethod());
 
         YesNoCardView physicalAbilities = (YesNoCardView) findViewById(R.id.physical_abilities);
         physicalAbilities.setTitle(getString(R.string.about_me_physical_abilities));
