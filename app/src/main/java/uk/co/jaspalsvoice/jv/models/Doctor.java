@@ -19,6 +19,7 @@ public class Doctor {
     protected String hospitalName;
     protected String hospitalAddress;
     protected String hospitalPhone;
+    protected String fax;
 
     public ContentValues toContentValues() {
         ContentValues cv = new ContentValues();
@@ -31,6 +32,7 @@ public class Doctor {
         cv.put(DbOpenHelper.COLUMN_MT_HOSPITAL_PHONE, getHospitalPhone());
         cv.put(DbOpenHelper.COLUMN_MT_ADDRESS, getAddress());
         cv.put(DbOpenHelper.COLUMN_MT_PHONE, getPhone());
+        cv.put(DbOpenHelper.COLUMN_MT_FAX, getFax());
         cv.put(DbOpenHelper.COLUMN_MT_EMAIL, getEmail());
         return cv;
     }
@@ -121,5 +123,13 @@ public class Doctor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getFax(){
+        return fax;
+    }
+
+    public void setFax(String fax){
+        this.fax = fax;
     }
 }

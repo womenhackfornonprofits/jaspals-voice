@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,11 +54,20 @@ public class MedicalContactCardView extends CardView {
     private TextView text4View;
     private EditText edit4View;
 
+    private TextView labelf;
+    private TextView textf;
+    private EditText editf;
+
+
     private ViewGroup buttonsView;
     private Button cancelBtn;
     private Button saveBtn;
+    private Button editButton;
+    private LinearLayout mainLayout;
+    View root;
 
     private JvApplication application;
+    private String texttf;
 
     public MedicalContactCardView(Context context) {
         super(context);
@@ -77,7 +87,7 @@ public class MedicalContactCardView extends CardView {
     private void init(final Context context) {
         application = (JvApplication) context.getApplicationContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View root = inflater.inflate(R.layout.medical_contact_card_view, this);
+        root = inflater.inflate(R.layout.medical_contact_card_view, this);
 
         titleView = (TextView) root.findViewById(R.id.title);
 
@@ -97,13 +107,19 @@ public class MedicalContactCardView extends CardView {
         text4View = (TextView) root.findViewById(R.id.text4);
         edit4View = (EditText) root.findViewById(R.id.edit4);
 
+        labelf = (TextView) root.findViewById(R.id.labelf);
+        textf= (TextView) root.findViewById(R.id.textf);
+        editf= (EditText) root.findViewById(R.id.editf);
+
         buttonsView = (ViewGroup) root.findViewById(R.id.buttons);
         cancelBtn = (Button) root.findViewById(R.id.cancel);
         saveBtn = (Button) root.findViewById(R.id.save);
+        editButton = (Button) root.findViewById(R.id.editButton);
+//        mainLayout = (LinearLayout) root.findViewById(R.id.mainLayout);
 
         showDefaultText();
 
-        titleView.setOnClickListener(new OnClickListener() {
+        root.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 editMode = !editMode;
@@ -115,6 +131,20 @@ public class MedicalContactCardView extends CardView {
                 }
             }
         });
+
+        editButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editMode = !editMode;
+
+                if (editMode) {
+                    showEditMode();
+                } else {
+                    showNonEditMode();
+                }
+            }
+        });
+
 
         cancelBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -136,7 +166,8 @@ public class MedicalContactCardView extends CardView {
                 editMode = !editMode;
                 if (TextUtils.isEmpty(edit4View.getText()) || isValidEmail(edit4View.getText())) {
                     new Save().execute(edit1View.getText().toString(), edit2View.getText().toString(),
-                            edit3View.getText().toString(), edit4View.getText().toString());
+                            edit3View.getText().toString(), edit4View.getText().toString(),
+                            editf.getText().toString());
                 } else {
                     showEmailToast();
                 }
@@ -208,6 +239,11 @@ public class MedicalContactCardView extends CardView {
         text4View.setText(text);
     }
 
+    public void setTextf(String text) {
+        this.texttf = text;
+        textf.setText(text);
+    }
+
     public String getText1() {
         return text1;
     }
@@ -240,6 +276,10 @@ public class MedicalContactCardView extends CardView {
         label4View.setText(text);
     }
 
+    public void setLabelFView(String text){
+        labelf.setText(text);
+    }
+
     public void setEditMode(boolean editMode) {
         this.editMode = editMode;
     }
@@ -259,14 +299,16 @@ public class MedicalContactCardView extends CardView {
         text3View.setVisibility(VISIBLE);
         text4View.setVisibility(VISIBLE);
 
+        editf.setVisibility(GONE);
+        textf.setVisibility(VISIBLE);
+
 
         buttonsView.setVisibility(GONE);
         showDefaultText();
-        titleView.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(R.drawable.ic_action_edit), null);
+        editButton.setVisibility(VISIBLE);
     }
 
     private void showEditMode() {
-        titleView.setCompoundDrawables(null, null, null, null);
         text1View.setVisibility(GONE);
         text2View.setVisibility(GONE);
         edit1View.setText(text1View.getText());
@@ -279,7 +321,10 @@ public class MedicalContactCardView extends CardView {
         edit3View.setVisibility(VISIBLE);
         edit4View.setText(text4View.getText());
         edit4View.setVisibility(VISIBLE);
+        editf.setVisibility(VISIBLE);
+        textf.setVisibility(GONE);
         buttonsView.setVisibility(VISIBLE);
+        editButton.setVisibility(GONE);
     }
 
     private void showDefaultText() {
@@ -307,6 +352,7 @@ public class MedicalContactCardView extends CardView {
             doctor.setAddress(params[1]);
             doctor.setPhone(params[2]);
             doctor.setEmail(params[3]);
+            doctor.setFax(params[4]);
             doctor.setType(doctorType);
             doctors.add(doctor);
             application.getDbHelper().insertOrReplaceDoctor(doctors);
@@ -319,6 +365,7 @@ public class MedicalContactCardView extends CardView {
             setText2(doctor.getAddress());
             setText3(doctor.getPhone());
             setText4(doctor.getEmail());
+            setTextf(doctor.getFax());
             showNonEditMode();
         }
     }

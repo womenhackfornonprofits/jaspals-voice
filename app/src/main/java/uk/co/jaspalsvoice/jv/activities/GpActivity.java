@@ -76,6 +76,7 @@ public class GpActivity extends BaseActivity {
         gp.setLabel2View(getString(R.string.gp_medical_team_address));
         gp.setLabel3View(getString(R.string.gp_medical_team_phone));
         gp.setLabel4View(getString(R.string.gp_medical_team_email));
+        gp.setLabelFView(getString(R.string.fax_label));
         setupDoctor(doctors, DoctorType.GP.name(), gp);
 
         ConsultantCardView mndContact = (ConsultantCardView) findViewById(R.id.mnd_contact);
@@ -83,8 +84,9 @@ public class GpActivity extends BaseActivity {
         mndContact.setLabel1View(getString(R.string.gp_medical_team_name));
        /* mndContact.setLabel2View(getString(R.string.gp_consultant_address));
         mndContact.setLabel3View(getString(R.string.gp_consultant_phone));
-        mndContact.setLabel4View(getString(R.string.gp_consultant_email));
+
 */
+        mndContact.setLabel4View(getString(R.string.gp_consultant_email));
         mndContact.setLabel2hView(getString(R.string.gp_hospital_name));
         mndContact.setLabel3hView(getString(R.string.gp_hospital_address));
         mndContact.setLabel4hView(getString(R.string.gp_hospital_phone));
@@ -95,6 +97,7 @@ public class GpActivity extends BaseActivity {
         physiotherapist.setLabel1View(getString(R.string.gp_medical_team_name));
         physiotherapist.setLabel2View(getString(R.string.gp_medical_team_address));
         physiotherapist.setLabel3View(getString(R.string.gp_medical_team_phone));
+        physiotherapist.setLabelFView(getString(R.string.fax_label));
         physiotherapist.setLabel4View(getString(R.string.gp_medical_team_email));
         setupDoctor(doctors, DoctorType.PHYSIOTHERAPIST.name(), physiotherapist);
 
@@ -103,6 +106,7 @@ public class GpActivity extends BaseActivity {
         therapist.setLabel1View(getString(R.string.gp_medical_team_name));
         therapist.setLabel2View(getString(R.string.gp_medical_team_address));
         therapist.setLabel3View(getString(R.string.gp_medical_team_phone));
+        therapist.setLabelFView(getString(R.string.fax_label));
         therapist.setLabel4View(getString(R.string.gp_medical_team_email));
         setupDoctor(doctors, DoctorType.SPEECH_AND_LANGUAGE_THERAPIST.name(), therapist);
 
@@ -111,6 +115,8 @@ public class GpActivity extends BaseActivity {
         carer.setLabel1View(getString(R.string.gp_medical_team_name));
         carer.setLabel2View(getString(R.string.gp_medical_team_address));
         carer.setLabel3View(getString(R.string.gp_medical_team_phone));
+        carer.setLabelFView(getString(R.string.fax_label));
+
         carer.setLabel4View(getString(R.string.gp_medical_team_email));
         setupDoctor(doctors, DoctorType.CARER.name(), carer);
 
@@ -120,6 +126,7 @@ public class GpActivity extends BaseActivity {
         other.setLabel2View(getString(R.string.gp_medical_team_address));
         other.setLabel3View(getString(R.string.gp_medical_team_phone));
         other.setLabel4View(getString(R.string.gp_medical_team_email));
+        other.setLabelFView(getString(R.string.fax_label));
         setupDoctor(doctors, DoctorType.OTHER.name(), other);
 
         /*if (doctors.size() > 6){
@@ -198,6 +205,8 @@ public class GpActivity extends BaseActivity {
             view.setTexth2(doctor.getHospitalName());
             view.setTexth3(doctor.getHospitalAddress());
             view.setTexth4(doctor.getHospitalPhone());
+            view.setTextf(doctor.getFax());
+
         }
         view.setDoctorType(type);
     }
@@ -210,6 +219,7 @@ public class GpActivity extends BaseActivity {
             view.setText2(doctor.getAddress());
             view.setText3(doctor.getPhone());
             view.setText4(doctor.getEmail());
+            view.setTextf(doctor.getFax());
         }
         view.setDoctorType(type);
     }

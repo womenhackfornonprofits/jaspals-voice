@@ -9,7 +9,6 @@
     android:orientation="vertical">
 
     <TextView
-        android:drawableRight="@drawable/ic_action_edit"
         android:id="@+id/title"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -43,6 +42,38 @@
 
     <EditText
         android:id="@+id/edit1"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_small"
+        android:textSize="@dimen/text_normal_size"
+        android:visibility="gone"
+        tools:text="Edit this"/>
+
+    <TextView
+        android:id="@+id/label4"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_small"
+        android:singleLine="false"
+        android:textSize="@dimen/text_normal_size"
+        android:textStyle="bold"
+        tools:text="Text"/>
+
+    <TextView
+        android:id="@+id/text4"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_small"
+        android:singleLine="false"
+        android:textSize="@dimen/text_normal_size"
+        tools:text="Text"/>
+
+    <EditText
+        android:id="@+id/edit4"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_small"
         android:layout_marginTop="@dimen/margin_small"
@@ -216,39 +247,7 @@
         android:visibility="gone"
         tools:text="Edit this"/>
 
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/label4"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:layout_width="match_parent"
-        android:padding="@dimen/margin_small"
-        android:singleLine="false"
-        android:textSize="@dimen/text_normal_size"
-        android:textStyle="bold"
-        tools:text="Text"/>
-
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/text4"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_small"
-        android:layout_width="match_parent"
-        android:padding="@dimen/margin_small"
-        android:singleLine="false"
-        android:textSize="@dimen/text_normal_size"
-        tools:text="Text"/>
-
-    <EditText
-        android:id="@+id/edit4"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_small"
-        android:layout_marginTop="@dimen/margin_small"
-        android:layout_width="match_parent"
-        android:padding="@dimen/margin_small"
-        android:textSize="@dimen/text_normal_size"
-        android:visibility="gone"
-        tools:text="Edit this"/>-->
+   -->
 
     <LinearLayout
         android:id="@+id/buttons"
@@ -276,4 +275,13 @@
             android:layout_width="0dp"
             android:text="Save"/>
     </LinearLayout>
+
+    <Button
+        android:layout_gravity="center"
+        style="@style/DefaultButton"
+        android:id="@+id/editButton"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        android:layout_width="wrap_content"
+        android:text="Edit"/>
 </LinearLayout>

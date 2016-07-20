@@ -46,6 +46,7 @@ public class DbHelper {
             DbOpenHelper.COLUMN_MT_HOSPITAL_PHONE,
             DbOpenHelper.COLUMN_MT_ADDRESS,
             DbOpenHelper.COLUMN_MT_EMAIL,
+            DbOpenHelper.COLUMN_MT_FAX,
             DbOpenHelper.COLUMN_MT_PHONE};
 
     private static final String[] MEDICAL_TEAM_MEMBER_COLUMN_NAMES = new String[]{
@@ -55,6 +56,7 @@ public class DbHelper {
             DbOpenHelper.COLUMN_ME_NAME,
             DbOpenHelper.COLUMN_ME_ADDRESS,
             DbOpenHelper.COLUMN_ME_EMAIL,
+            DbOpenHelper.COLUMN_ME_FAX,
             DbOpenHelper.COLUMN_ME_PHONE};
 
     private static final String[] MEDICINES_COLUMN_NAMES = new String[]{
@@ -153,10 +155,14 @@ public class DbHelper {
                     }
                     Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
                     sqlite.setTransactionSuccessful();
-                    return insertedRows;
-                } finally {
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+                finally {
                     sqlite.endTransaction();
                 }
+                return insertedRows;
+
             }
         });
     }
@@ -580,6 +586,7 @@ public class DbHelper {
                         doctor.setType(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_DOCTOR_TYPE)));
                         doctor.setAddress(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_ADDRESS)));
                         doctor.setPhone(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_PHONE)));
+                        doctor.setFax(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_FAX)));
                         doctor.setEmail(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_MT_EMAIL)));
                         doctors.put(doctor.getType(), doctor);
                         allDoctors.moveToNext();
@@ -614,6 +621,7 @@ public class DbHelper {
                         doctor.setType(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_ME_DOCTOR_TYPE)));
                         doctor.setAddress(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_ME_ADDRESS)));
                         doctor.setPhone(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_ME_PHONE)));
+                        doctor.setFax(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_ME_FAX)));
                         doctor.setEmail(allDoctors.getString(allDoctors.getColumnIndex(DbOpenHelper.COLUMN_ME_EMAIL)));
                         doctors.add(doctor);
                         allDoctors.moveToNext();

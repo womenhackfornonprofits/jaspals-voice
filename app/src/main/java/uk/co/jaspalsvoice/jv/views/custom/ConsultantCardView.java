@@ -46,17 +46,17 @@ public class ConsultantCardView extends CardView {
     private TextView text1View;
     private EditText edit1View;
 
-   /* private TextView label2View;
-    private TextView text2View;
-    private EditText edit2View;
-
-    private TextView label3View;
-    private TextView text3View;
-    private EditText edit3View;
+//    private TextView label2View;
+//    private TextView text2View;
+//    private EditText edit2View;
+//
+//    private TextView label3View;
+//    private TextView text3View;
+//    private EditText edit3View;
 
     private TextView label4View;
     private TextView text4View;
-    private EditText edit4View;*/
+    private EditText edit4View;
 
     private TextView label2hView;
     private TextView text2hView;
@@ -70,11 +70,18 @@ public class ConsultantCardView extends CardView {
     private TextView text4hView;
     private EditText edit4hView;
 
+  /*  private TextView labelf;
+    private TextView textf;
+    private EditText editf;*/
+
     private ViewGroup buttonsView;
     private Button cancelBtn;
     private Button saveBtn;
+    private Button editButton;
+
 
     private JvApplication application;
+    private String texttf;
 
     public ConsultantCardView(Context context) {
         super(context);
@@ -101,18 +108,18 @@ public class ConsultantCardView extends CardView {
         label1View = (TextView) root.findViewById(R.id.label1);
         text1View = (TextView) root.findViewById(R.id.text1);
         edit1View = (EditText) root.findViewById(R.id.edit1);
-
-      /*  label2View = (TextView) root.findViewById(R.id.label2);
-        text2View = (TextView) root.findViewById(R.id.text2);
-        edit2View = (EditText) root.findViewById(R.id.edit2);
-
-        label3View = (TextView) root.findViewById(R.id.label3);
-        text3View = (TextView) root.findViewById(R.id.text3);
-        edit3View = (EditText) root.findViewById(R.id.edit3);
+//
+//        label2View = (TextView) root.findViewById(R.id.label2);
+//        text2View = (TextView) root.findViewById(R.id.text2);
+//        edit2View = (EditText) root.findViewById(R.id.edit2);
+//
+//        label3View = (TextView) root.findViewById(R.id.label3);
+//        text3View = (TextView) root.findViewById(R.id.text3);
+//        edit3View = (EditText) root.findViewById(R.id.edit3);
 
         label4View = (TextView) root.findViewById(R.id.label4);
         text4View = (TextView) root.findViewById(R.id.text4);
-        edit4View = (EditText) root.findViewById(R.id.edit4);*/
+        edit4View = (EditText) root.findViewById(R.id.edit4);
 
         label2hView = (TextView) root.findViewById(R.id.labelh2);
         text2hView = (TextView) root.findViewById(R.id.texth2);
@@ -126,13 +133,19 @@ public class ConsultantCardView extends CardView {
         text4hView = (TextView) root.findViewById(R.id.texth4);
         edit4hView = (EditText) root.findViewById(R.id.edith4);
 
+//        labelf = (TextView) root.findViewById(R.id.labelf);
+//        textf= (TextView) root.findViewById(R.id.textf);
+//        editf= (EditText) root.findViewById(R.id.editf);
+
+
         buttonsView = (ViewGroup) root.findViewById(R.id.buttons);
         cancelBtn = (Button) root.findViewById(R.id.cancel);
         saveBtn = (Button) root.findViewById(R.id.save);
+        editButton = (Button) root.findViewById(R.id.editButton);
 
         showDefaultText();
 
-        titleView.setOnClickListener(new OnClickListener() {
+        root.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 editMode = !editMode;
@@ -144,6 +157,20 @@ public class ConsultantCardView extends CardView {
                 }
             }
         });
+
+        editButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editMode = !editMode;
+
+                if (editMode) {
+                    showEditMode();
+                } else {
+                    showNonEditMode();
+                }
+            }
+        });
+
 
         cancelBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -167,10 +194,12 @@ public class ConsultantCardView extends CardView {
                 text2hView.setText(edit2hView.getText());
                 text3hView.setText(edit3hView.getText());
                 text4hView.setText(edit4hView.getText());
+                text4View.setText(edit4View.getText());
+//                textf.setText(editf.getText().toString());
                 new Save().execute(edit1View.getText().toString(), edit2hView.getText().toString(),
                         edit3hView.getText().toString(), edit4hView.getText().toString(),
                         "",
-                        "", "");
+                        "", edit4View.getText().toString(), "");
 
             }
         });
@@ -238,7 +267,12 @@ public class ConsultantCardView extends CardView {
 
     public void setText4(String text) {
         this.text4 = text;
-//        text4View.setText(text);
+        text4View.setText(text);
+    }
+
+    public void setTextf(String text) {
+        this.texttf = text;
+//        textf.setText(text);
     }
 
     public void setTexth2(String text) {
@@ -285,7 +319,7 @@ public class ConsultantCardView extends CardView {
     }
 
     public void setLabel4View(String text) {
-//        label4View.setText(text);
+        label4View.setText(text);
     }
 
     public void setLabel2hView(String text) {
@@ -315,9 +349,16 @@ public class ConsultantCardView extends CardView {
         text1View.setVisibility(VISIBLE);
     /*    text2View.setVisibility(VISIBLE);
         edit3View.setVisibility(GONE);
-        edit4View.setVisibility(GONE);
         text3View.setVisibility(VISIBLE);
-        text4View.setVisibility(VISIBLE);*/
+       */
+
+
+//        editf.setVisibility(GONE);
+//        textf.setVisibility(VISIBLE);
+
+
+        edit4View.setVisibility(GONE);
+        text4View.setVisibility(VISIBLE);
         edit2hView.setVisibility(GONE);
         text2hView.setVisibility(VISIBLE);
         edit3hView.setVisibility(GONE);
@@ -326,7 +367,7 @@ public class ConsultantCardView extends CardView {
         text4hView.setVisibility(VISIBLE);
         buttonsView.setVisibility(GONE);
         showDefaultText();
-        titleView.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(R.drawable.ic_action_edit), null);
+        editButton.setVisibility(VISIBLE);
     }
 
     private void showEditMode() {
@@ -338,12 +379,13 @@ public class ConsultantCardView extends CardView {
        /* edit2View.setText(text2View.getText());
         edit2View.setVisibility(VISIBLE);
         text3View.setVisibility(GONE);
-        text4View.setVisibility(GONE);
+
         edit3View.setText(text3View.getText());
         edit3View.setVisibility(VISIBLE);
+       */
+        text4View.setVisibility(GONE);
         edit4View.setText(text4View.getText());
-        edit4View.setVisibility(VISIBLE);*/
-
+        edit4View.setVisibility(VISIBLE);
         edit2hView.setText(text2hView.getText());
         edit2hView.setVisibility(VISIBLE);
         edit3hView.setText(text3hView.getText());
@@ -355,6 +397,7 @@ public class ConsultantCardView extends CardView {
         text4hView.setVisibility(GONE);
 
         buttonsView.setVisibility(VISIBLE);
+        editButton.setVisibility(GONE);
     }
 
     private void showDefaultText() {
@@ -393,6 +436,7 @@ public class ConsultantCardView extends CardView {
             doctor.setAddress(params[4]);
             doctor.setPhone(params[5]);
             doctor.setEmail(params[6]);
+            doctor.setFax(params[7]);
             doctor.setType(doctorType);
             doctors.add(doctor);
             application.getDbHelper().insertOrReplaceDoctor(doctors);
@@ -405,6 +449,7 @@ public class ConsultantCardView extends CardView {
             setText2(doctor.getAddress());
             setText3(doctor.getPhone());
             setText4(doctor.getEmail());
+            setTextf(doctor.getFax());
             showNonEditMode();
         }
     }

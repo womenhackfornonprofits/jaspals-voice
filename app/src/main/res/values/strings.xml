@@ -165,6 +165,7 @@
     <string name="dialog_close_button">Close</string>
     <string name="personal_details_first_lang">First Language</string>
     <string name="save_message">Data Saved</string>
+    <string name="fax_label">Fax</string>
 
 
 </resources>

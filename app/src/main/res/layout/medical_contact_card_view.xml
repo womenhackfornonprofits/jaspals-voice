@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@android:color/white"
     android:layout_height="wrap_content"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:orientation="vertical">
 
     <TextView
-        android:drawableRight="@drawable/ic_action_edit"
         android:id="@+id/title"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -117,6 +117,39 @@
         tools:text="Edit this"/>
 
     <TextView
+        android:id="@+id/labelf"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_small"
+        android:singleLine="false"
+        android:textSize="@dimen/text_normal_size"
+        android:textStyle="bold"
+        tools:text="Text"/>
+
+    <TextView
+        android:id="@+id/textf"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_small"
+        android:singleLine="false"
+        android:textSize="@dimen/text_normal_size"
+        tools:text="Text"/>
+
+    <EditText
+        android:id="@+id/editf"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_small"
+        android:textSize="@dimen/text_normal_size"
+        android:visibility="gone"
+        tools:text="Edit this"/>
+
+
+    <TextView
         android:id="@+id/label4"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small"
@@ -174,4 +207,15 @@
             android:layout_width="0dp"
             android:text="Save"/>
     </LinearLayout>
+
+
+    <Button
+        android:layout_gravity="center"
+        style="@style/DefaultButton"
+        android:id="@+id/editButton"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        android:layout_width="wrap_content"
+        android:text="Edit"/>
+
 </LinearLayout>
