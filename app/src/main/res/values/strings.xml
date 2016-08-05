@@ -49,7 +49,7 @@
     <string name="personal_details_carer_tel">Carer Tel</string>
     <string name="personal_details_translator_needed">Do You Need a Translator</string>
 
-    <string name="medicines">Medicines</string>
+    <string name="medicines">Medication</string>
     <string name="medicines_title">How I take my medication</string>
     <string name="medicines_name">Name</string>
     <string name="medicines_dosage">Dosage</string>
@@ -72,24 +72,24 @@
     <string name="gp_medical_team_phone">Phone</string>
     <string name="gp_medical_team_fax">Fax</string>
     <string name="gp_medical_team_email">Email</string>
-    <string name="mnd_contact_title">Consultant Contact</string>
+    <string name="mnd_contact_title">Consultant</string>
     <string name="physiotherapist_title">Physiotherapist</string>
     <string name="therapist_title">Speech and language therapist</string>
     <string name="carer_title">Carer</string>
     <string name="other_medical_title">Other</string>
 
-    <string name="likes_dislikes">Likes/Dislikes</string>
+    <string name="likes_dislikes">About Me</string>
     <string name="likes_dislikes_daily_routine">My Daily Routine</string>
     <string name="likes_dislikes_hobbies">My Interests / Hobbies</string>
     <string name="likes_dislikes_music">Music / Radio Station I listen to</string>
     <string name="likes_dislikes_tv">Television Shows I Enjoy</string>
     <string name="likes_dislikes_other">Other</string>
 
-    <string name="diagnosis">Diagnosis</string>
+    <string name="diagnosis">Medical Diagnosis</string>
     <string name="diagnosis_title">Diagnosis</string>
     <string name="diagnosis_subtitle">Other Medical Conditions e.g Diabetic, Asthma, Depression</string>
 
-    <string name="about_me">About Me</string>
+    <string name="about_me">Personal Care/ Support</string>
     <string name="about_me_sitting_position">Sitting (Position/Pattern)</string>
     <string name="about_me_need_to_use">I Need To Use</string>
     <string name="about_me_breathing">Breathing Difficulties</string>
@@ -148,7 +148,7 @@
     <string name="no_content_height">Currently there are no entries for height. Please click on the + icon above to add a new entry.</string>
     <string name="no_content_weight">Currently there are no entries for weight. Please click on the + icon above to add a new entry.</string>
     <string name="medical_allergies_subtitle">Allergy</string>
-    <string name="type_title">Type</string>
+    <string name="type_title">Type Of Allergy</string>
     <string name="food_allergies_subtitle">Allergy</string>
     <string name="environmental_allergies_title">Environmental Allergies</string>
     <string name="environmental_allergies_subtitle">Allergy</string>
