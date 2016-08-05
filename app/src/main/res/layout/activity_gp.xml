@@ -1,65 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/containerLayout"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_width="match_parent"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
         android:orientation="vertical">
 
         <uk.co.jaspalsvoice.jv.views.custom.MedicalContactCardView
-            android:elevation="@dimen/elevation"
             android:id="@+id/gp_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
+            android:elevation="@dimen/elevation"
+            android:padding="@dimen/margin_small" />
 
         <uk.co.jaspalsvoice.jv.views.custom.ConsultantCardView
-            android:elevation="@dimen/elevation"
             android:id="@+id/mnd_contact"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
+            android:elevation="@dimen/elevation"
+            android:padding="@dimen/margin_small" />
 
         <uk.co.jaspalsvoice.jv.views.custom.MedicalContactCardView
-            android:elevation="@dimen/elevation"
             android:id="@+id/physiotherapist"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
+            android:elevation="@dimen/elevation"
+            android:padding="@dimen/margin_small" />
 
         <uk.co.jaspalsvoice.jv.views.custom.MedicalContactCardView
-            android:elevation="@dimen/elevation"
             android:id="@+id/therapist"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
+            android:elevation="@dimen/elevation"
+            android:padding="@dimen/margin_small" />
 
         <uk.co.jaspalsvoice.jv.views.custom.MedicalContactCardView
-            android:elevation="@dimen/elevation"
             android:id="@+id/carer"
-            android:visibility="gone"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
+            android:elevation="@dimen/elevation"
+            android:padding="@dimen/margin_small"
+            android:visibility="gone" />
 
         <uk.co.jaspalsvoice.jv.views.custom.MedicalContactCardView
-            android:elevation="@dimen/elevation"
             android:id="@+id/other_medical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
+            android:elevation="@dimen/elevation"
+            android:padding="@dimen/margin_small" />
     </LinearLayout>
 </ScrollView>

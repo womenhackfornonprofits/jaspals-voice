@@ -66,11 +66,12 @@
 
     <string name="gp_medical_team">G.P / Medical Team</string>
     <string name="gp_title">GP</string>
-    <string name="gp_medical_team_name">Name:</string>
+    <string name="gp_medical_team_name">Name</string>
     <!--<string name="gp_medical_team_contact_details">Contact Details:</string>-->
-    <string name="gp_medical_team_address">Address:</string>
-    <string name="gp_medical_team_phone">Phone:</string>
-    <string name="gp_medical_team_email">Email:</string>
+    <string name="gp_medical_team_address">Address</string>
+    <string name="gp_medical_team_phone">Phone</string>
+    <string name="gp_medical_team_fax">Fax</string>
+    <string name="gp_medical_team_email">Email</string>
     <string name="mnd_contact_title">Consultant Contact</string>
     <string name="physiotherapist_title">Physiotherapist</string>
     <string name="therapist_title">Speech and language therapist</string>
@@ -117,6 +118,7 @@
     <string name="gp_hospital_name">Hospital Name</string>
     <string name="gp_hospital_address">Hospital Address</string>
     <string name="gp_hospital_phone">Hospital Phone</string>
+    <string name="gp_hospital_fax">Hospital Fax</string>
     <string name="no_content_medicine">There are no medicines to display. Please tap on the \"+\" icon in the top right corner to add a new medicine</string>
     <string name="text_size">Text Size</string>
     <string name="email_validation">Please enter email address in valid format</string>
@@ -167,5 +169,8 @@
     <string name="save_message">Data Saved</string>
     <string name="fax_label">Fax</string>
 
+    <string name="cancel_button">Cancel</string>
+    <string name="save_button">Save</string>
+    <string name="edit_button">Edit</string>
 
 </resources>

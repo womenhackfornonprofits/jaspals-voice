@@ -14,4 +14,8 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="StyledTilEditTextFloatingLabel" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/text_normal_size</item>
+    </style>
 </resources>
