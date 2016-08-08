@@ -18,7 +18,7 @@
         android:paddingTop="@dimen/activity_vertical_margin">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/firdtNameInputLayout"
+            android:id="@+id/firstNameInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
@@ -203,7 +203,7 @@
                 android:layout_marginLeft="4dp"
                 android:fontFamily="roboto-light"
                 android:text="@string/personal_details_gender"
-                android:textSize="18sp" />
+                android:textSize="@dimen/text_normal_size" />
 
             <Spinner
                 android:id="@+id/genderSpinner"
@@ -314,7 +314,7 @@
                 android:layout_marginLeft="4dp"
                 android:fontFamily="roboto-light"
                 android:text="@string/personal_details_translator_needed"
-                android:textSize="18sp" />
+                android:textSize="@dimen/text_normal_size" />
 
             <Spinner
                 android:id="@+id/translatorNeededSpinner"

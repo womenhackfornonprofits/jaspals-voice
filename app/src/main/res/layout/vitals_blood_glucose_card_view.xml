@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
     android:orientation="vertical">
+
 <RelativeLayout
     android:minWidth="@dimen/label_min_width"
     android:padding="@dimen/margin_small"
@@ -19,7 +20,7 @@
         android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_big_size"
+        android:textSize="@dimen/text_normal_size"
         tools:text="@string/vitals_blood_glucose_title" />
 
     <ImageView
@@ -33,34 +34,9 @@
 </RelativeLayout>
 
     <include layout="@layout/divider" />
-
-    <RelativeLayout
+    <include
         android:id="@+id/bpTitleLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minWidth="@dimen/label_min_width"
-        android:padding="@dimen/margin_small">
-
-        <TextView
-            android:id="@+id/bloodGlucoseTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:minWidth="@dimen/label_min_width"
-            android:textSize="@dimen/text_normal_size"
-            tools:text="@string/vitals_blood_glucose_subtitle" />
-
-        <TextView
-            android:gravity="center"
-            android:id="@+id/bpDateTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:minWidth="@dimen/label_min_width"
-            android:textSize="@dimen/text_normal_size"
-            tools:text="@string/date_title" />
-
-    </RelativeLayout>
+        layout="@layout/common_heading_for_list"/>
 
     <include layout="@layout/divider" />
 

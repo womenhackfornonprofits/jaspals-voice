@@ -3,6 +3,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="margin_medium">18dp</dimen>
+    <dimen name="margin_large">26dp</dimen>
+
     <dimen name="button_padding">12dp</dimen>
 
     <dimen name="margin_xx_small">2dp</dimen>

@@ -41,7 +41,6 @@ public class SurgicalHistoryCardView extends CardView {
     private EditText dateEdittext;
     private JvApplication application;
     private TextView titleView;
-    private TextView blodPressureSubtitle, dateSubtitle;
     private TextView noContentView;
 
 
@@ -103,8 +102,10 @@ public class SurgicalHistoryCardView extends CardView {
         surgicalHistoryEdittext = (EditText) addNewSurgicalHistoryView.
                 findViewById(R.id.surgicalHistoryEdittext);
         dateEdittext = (EditText) addNewSurgicalHistoryView.findViewById(R.id.dateEditText);
-        blodPressureSubtitle = (TextView)root.findViewById(R.id.surgicalHistoryTitle);
-        dateSubtitle = (TextView)root.findViewById(R.id.bpDateTitle);
+
+        LinearLayout bpTitleLayout = (LinearLayout) root.findViewById(R.id.bpTitleLayout);
+        TextView blodPressureSubtitle = (TextView)bpTitleLayout.findViewById(R.id.headingFirstField);
+        TextView dateSubtitle = (TextView)root.findViewById(R.id.headingSecondField);
         titleView = (TextView)root.findViewById(R.id.title);
 
 

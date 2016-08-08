@@ -41,7 +41,6 @@ public class VitalsBloodGlucoseCardView extends CardView {
     private EditText dateEdittext;
     private JvApplication application;
     private TextView titleView;
-    private TextView blodPressureSubtitle, dateSubtitle;
     private TextView noContentView;
 
 
@@ -103,8 +102,9 @@ public class VitalsBloodGlucoseCardView extends CardView {
         bloodGlucoseEdittext = (EditText) addNewBloodGlucoseView.
                 findViewById(R.id.bloodGlucoseEdittext);
         dateEdittext = (EditText) addNewBloodGlucoseView.findViewById(R.id.dateEditText);
-        blodPressureSubtitle = (TextView)root.findViewById(R.id.bloodGlucoseTitle);
-        dateSubtitle = (TextView)root.findViewById(R.id.bpDateTitle);
+        LinearLayout bpTitleLayout = (LinearLayout) root.findViewById(R.id.bpTitleLayout);
+        TextView blodPressureSubtitle = (TextView)bpTitleLayout.findViewById(R.id.headingFirstField);
+        TextView dateSubtitle = (TextView)root.findViewById(R.id.headingSecondField);
         titleView = (TextView)root.findViewById(R.id.title);
 
 

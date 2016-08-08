@@ -41,7 +41,6 @@ public class VitalsWeightCardView extends CardView {
     private EditText dateEdittext;
     private JvApplication application;
     private TextView titleView;
-    private TextView blodPressureSubtitle, dateSubtitle;
     private TextView noContentView;
 
 
@@ -103,8 +102,9 @@ public class VitalsWeightCardView extends CardView {
         weightEdittext = (EditText) addNewWeightView.
                 findViewById(R.id.weightEdittext);
         dateEdittext = (EditText) addNewWeightView.findViewById(R.id.dateEditText);
-        blodPressureSubtitle = (TextView)root.findViewById(R.id.weightTitle);
-        dateSubtitle = (TextView)root.findViewById(R.id.bpDateTitle);
+        LinearLayout bpTitleLayout = (LinearLayout) root.findViewById(R.id.bpTitleLayout);
+        TextView blodPressureSubtitle = (TextView)bpTitleLayout.findViewById(R.id.headingFirstField);
+        TextView dateSubtitle = (TextView)root.findViewById(R.id.headingSecondField);
         titleView = (TextView)root.findViewById(R.id.title);
 
 

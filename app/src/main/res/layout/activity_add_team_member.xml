@@ -7,24 +7,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
-        android:stretchColumns="1">
+        android:stretchColumns="1"
+        >
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/type" />
+                android:text="@string/type"
+                android:textSize="@dimen/text_normal_size"
+                />
 
             <EditText
                 android:id="@+id/typeEdittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textSize="@dimen/text_normal_size"
+                />
 
             <TextView
                 android:id="@+id/typeTextView"
@@ -32,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/default_text_when_not_specified"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:textSize="@dimen/text_normal_size"/>
 
         </TableRow>
 
@@ -45,14 +52,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/medicines_name" />
+                android:text="@string/medicines_name"
+                android:textSize="@dimen/text_normal_size"/>
 
             <EditText
                 android:id="@+id/nameEdittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textSize="@dimen/text_normal_size"
+                />
 
             <TextView
                 android:id="@+id/show_value_name"
@@ -60,7 +70,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/default_text_when_not_specified"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:textSize="@dimen/text_normal_size"/>
 
         </TableRow>
 
@@ -72,14 +83,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/address_title" />
+                android:text="@string/address_title"
+                android:textSize="@dimen/text_normal_size"/>
 
             <EditText
                 android:id="@+id/addressEdittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textSize="@dimen/text_normal_size"/>
 
             <TextView
                 android:id="@+id/show_value_dosage"
@@ -87,7 +100,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/default_text_when_not_specified"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:textSize="@dimen/text_normal_size"
+                />
 
         </TableRow>
 
@@ -99,14 +114,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/gp_medical_team_phone" />
+                android:text="@string/gp_medical_team_phone"
+                android:textSize="@dimen/text_normal_size"
+                />
 
             <EditText
                 android:id="@+id/phoneEdittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:textSize="@dimen/text_normal_size"/>
 
             <TextView
                 android:id="@+id/show_value_reason"
@@ -114,7 +132,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/default_text_when_not_specified"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:textSize="@dimen/text_normal_size"/>
 
         </TableRow>
 
@@ -126,14 +145,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/gp_medical_team_email" />
+                android:text="@string/gp_medical_team_email"
+                android:textSize="@dimen/text_normal_size"
+                />
 
             <EditText
                 android:id="@+id/emailEdittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/text_normal_size"
+                />
 
             <TextView
                 android:id="@+id/show_value_frequency"
@@ -141,16 +164,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/default_text_when_not_specified"
-                android:visibility="gone" />
-
+                android:visibility="gone"
+                android:textSize="@dimen/text_normal_size"
+                />
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
             <Button
                 android:id="@+id/saveButton"
+                style="@style/DefaultButton"
                 android:layout_height="wrap_content"
                 android:layout_span="2"
                 android:text="@string/save" />

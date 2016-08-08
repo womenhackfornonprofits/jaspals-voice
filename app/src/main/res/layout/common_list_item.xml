@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/commonListItemLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/commonListContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="@dimen/margin_small">
+
+        <EditText
+            android:id="@+id/editFirstField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/separatorForFirstData"
+            android:inputType="text"
+            android:minWidth="100dp"
+            android:textSize="@dimen/text_normal_size" />
+
+        <TextView
+            android:id="@+id/dataFirstField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/separatorForFirstData"
+            android:inputType="text"
+            android:minWidth="100dp"
+            android:textSize="@dimen/text_normal_size" />
+
+        <View
+            android:id="@+id/separatorForFirstData"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/dataSecondField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/separatorForFirstData"
+            android:minWidth="100dp"
+            android:textSize="@dimen/text_normal_size" />
+
+        <EditText
+            android:id="@+id/editSecondField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/separatorForFirstData"
+            android:inputType="text"
+            android:minWidth="100dp"
+            android:textSize="@dimen/text_normal_size" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/imageRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/separatorForImage"
+                android:src="@drawable/ic_done_grey_600_24dp" />
+
+            <View
+                android:id="@+id/separatorForImage"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/imageCross"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/separatorForImage"
+                android:src="@drawable/ic_close_grey_600_24dp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imageEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_action_edit"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

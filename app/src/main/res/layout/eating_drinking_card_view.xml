@@ -72,16 +72,12 @@
 
         <Button
             android:id="@+id/cancel"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            style="@style/StyleButton"
             android:text="Cancel"/>
 
         <Button
             android:id="@+id/save"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            style="@style/StyleButton"
             android:text="Save"/>
     </LinearLayout>
 </LinearLayout>

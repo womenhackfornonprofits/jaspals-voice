@@ -39,7 +39,6 @@ public class MedicalAllergiesCardView extends CardView {
     private EditText dateEdittext;
     private JvApplication application;
     private TextView titleView;
-    private TextView blodPressureSubtitle, dateSubtitle;
     private TextView noContentView;
 
 
@@ -100,11 +99,12 @@ public class MedicalAllergiesCardView extends CardView {
         medicalAllergiesEdittext = (EditText) addNewMedicalAllergiesView.
                 findViewById(R.id.medicalAllergiesEdittext);
         dateEdittext = (EditText) addNewMedicalAllergiesView.findViewById(R.id.typeEditText);
-        blodPressureSubtitle = (TextView)root.findViewById(R.id.medicalAllergiesTitle);
-        dateSubtitle = (TextView)root.findViewById(R.id.bpDateTitle);
+
+        LinearLayout bpTitleLayout = (LinearLayout) root.findViewById(R.id.bpTitleLayout);
+        TextView blodPressureSubtitle = (TextView)bpTitleLayout.findViewById(R.id.headingFirstField);
+        TextView dateSubtitle = (TextView)root.findViewById(R.id.headingSecondField);
+
         titleView = (TextView)root.findViewById(R.id.title);
-
-
         titleView.setText(getResources().getString(R.string.medical_allergies_title));
         blodPressureSubtitle.setText(getResources().getString(R.string.medical_allergies_subtitle));
         dateSubtitle.setText(getResources().getString(R.string.type_title));

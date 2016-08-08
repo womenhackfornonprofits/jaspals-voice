@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/message"
-        android:textSize="@dimen/text_small_size"
+        android:textSize="@dimen/text_normal_size"
         android:layout_alignParentTop="true"
         android:textColor="@android:color/black"
         android:text="@string/change_font_message"

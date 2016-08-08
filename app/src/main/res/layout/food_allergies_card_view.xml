@@ -1,66 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
     android:orientation="vertical">
-<RelativeLayout
-    android:minWidth="@dimen/label_min_width"
-    android:padding="@dimen/margin_small"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_alignParentLeft="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/text_big_size"
-        tools:text="@string/food_allergies_title" />
-
-    <ImageView
-        android:src="@drawable/ic_add_box_grey_600_24dp"
-        android:layout_alignParentRight="true"
-        android:id="@+id/addFoodAllergiesButton"
-        android:layout_width="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_height="wrap_content" />
-
-</RelativeLayout>
-
-    <include layout="@layout/divider" />
 
     <RelativeLayout
-        android:id="@+id/bpTitleLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minWidth="@dimen/label_min_width"
         android:padding="@dimen/margin_small">
 
         <TextView
-            android:id="@+id/foodAllergiesTitle"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:minWidth="@dimen/label_min_width"
             android:textSize="@dimen/text_normal_size"
-            tools:text="@string/food_allergies_subtitle" />
+            tools:text="@string/food_allergies_title" />
 
-        <TextView
-            android:gravity="center"
-            android:id="@+id/bpDateTitle"
+        <ImageView
+            android:id="@+id/addFoodAllergiesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:minWidth="@dimen/label_min_width"
-            android:textSize="@dimen/text_normal_size"
-            tools:text="@string/type_title" />
-
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_add_box_grey_600_24dp" />
     </RelativeLayout>
+
+    <include layout="@layout/divider" />
+
+    <include
+        android:id="@+id/bpTitleLayout"
+        layout="@layout/common_heading_for_list"
+        />
 
     <include layout="@layout/divider" />
 
@@ -69,20 +45,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:visibility="visible"
-        android:padding="10dp" />
+        android:padding="5dp"
+        android:visibility="visible" />
 
     <include
         android:id="@+id/addNewFoodAllergies"
-        layout="@layout/view_add_new_food_allergy"/>
+        layout="@layout/view_add_new_food_allergy" />
 
     <TextView
         android:id="@+id/noContentView"
-        android:layout_gravity="center"
-        android:textSize="@dimen/text_normal_size"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:text="@string/no_content_food_allergies"
-        android:gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:gravity="center"
+        android:text="@string/no_content_food_allergies"
+        android:textSize="@dimen/text_normal_size" />
 </LinearLayout>

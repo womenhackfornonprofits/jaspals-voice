@@ -28,6 +28,7 @@
         android:padding="@dimen/margin_small"
         android:singleLine="false"
         android:visibility="gone"
+        android:textSize="@dimen/text_normal_size"
         tools:text="Text"/>
 
     <TextView
@@ -38,6 +39,7 @@
         android:layout_width="match_parent"
         android:padding="@dimen/margin_small"
         android:singleLine="false"
+        android:textSize="@dimen/text_normal_size"
         tools:text="Text"/>
 
     <Spinner
@@ -60,16 +62,12 @@
 
         <Button
             android:id="@+id/cancel"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            style="@style/StyleButton"
             android:text="Cancel"/>
 
         <Button
             android:id="@+id/save"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            style="@style/StyleButton"
             android:text="Save"/>
     </LinearLayout>
 </LinearLayout>
