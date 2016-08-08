@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/mainLayout"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
+        android:orientation="vertical"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
@@ -19,13 +20,13 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/firdtNameInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/firstNameEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="First Name"
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_first_name"
                 android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
@@ -33,14 +34,14 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/lastNameInputLayout"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_height="wrap_content">
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/lastNameEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Last Name"
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_last_name"
                 android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
@@ -48,30 +49,30 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/preferredNameLayout"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_height="wrap_content">
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/preferredNameEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Name I like to go by "
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_name_to_be_called"
                 android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/dobLayout"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/dobEdittext"
+                style="@style/EditTextStyle"
                 android:focusable="false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Date of Birth"
+                android:hint="@string/personal_details_birth"
                 android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
@@ -79,74 +80,74 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/streetLayout"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_height="wrap_content">
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/streetEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Street Address"
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_street"
                 android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/townLayout"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/townEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Town Address"
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_Town"
                 android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/countyLayout"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/countyEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="County/State/Province"
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_country_state_Province"
                 android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/zipCodeLayout"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/zipCodeEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="ZIP/Postal Code"
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_ZIP"
                 android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/countryLayout"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/countryEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Country"
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_Country"
                 android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
@@ -154,14 +155,14 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/homeTelephoneLayout"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_height="wrap_content">
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/homeTelephoneEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Home Telephone"
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_home_tel"
                 android:inputType="phone" />
 
         </android.support.design.widget.TextInputLayout>
@@ -169,29 +170,29 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/mobileNumberLayout"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_height="wrap_content">
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/mobileNumberEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Mobile Number"
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_mobile"
                 android:inputType="phone" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/emailLayout"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/emailEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_email"
                 android:inputType="textEmailAddress" />
 
         </android.support.design.widget.TextInputLayout>
@@ -199,9 +200,10 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/genderLayout"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <TextView
                 android:id="@+id/genderLabel"
@@ -209,7 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:fontFamily="roboto-light"
-                android:text="Gender"
+                android:text="@string/personal_details_gender"
                 android:textSize="18sp" />
 
             <Spinner
@@ -221,29 +223,29 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/nextOfKinLayout"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/nextOfKinEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Next of Kin"
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_Next_of_kin"
                 android:inputType="textEmailAddress" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/liveWithLayout"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/liveWithEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/EditTextStyle"
                 android:hint="@string/personal_details_live_with"
                 android:inputType="textEmailAddress" />
 
@@ -251,14 +253,14 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/mainCarerLayout"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/mainCarerEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/EditTextStyle"
                 android:hint="@string/personal_details_main_carer"
                 android:inputType="textEmailAddress" />
 
@@ -267,53 +269,52 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/carerLanguageLayout"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_height="wrap_content">
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/carerLanguageEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/personal_details_carer_language"
-                android:inputType="textEmailAddress" />
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_carer_language" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/carerTelLayout"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/carerTelEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/EditTextStyle"
                 android:hint="@string/personal_details_carer_tel"
-                android:inputType="textEmailAddress" />
+                android:inputType="phone" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/firstLanguageLayout"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_height="wrap_content">
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <EditText
                 android:id="@+id/firstLanguageEdittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/personal_details_first_lang"
-                android:inputType="textEmailAddress" />
+                style="@style/EditTextStyle"
+                android:hint="@string/personal_details_first_lang" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/translatorNeededLayout"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_height="wrap_content">
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
             <TextView
                 android:id="@+id/translatorNeededLabel"
@@ -333,26 +334,26 @@
 
         <LinearLayout
             android:id="@+id/buttons"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:padding="@dimen/margin_small"
             android:visibility="gone">
 
             <Button
                 android:id="@+id/cancel"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_width="0dp"
-                android:text="Cancel"/>
+                android:text="@string/cancel_button" />
 
             <Button
                 android:id="@+id/save"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_width="0dp"
-                android:text="Save"/>
+                android:text="@string/save_button" />
         </LinearLayout>
 
 

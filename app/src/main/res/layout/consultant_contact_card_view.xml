@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/consultantContactLayout"
     android:layout_width="match_parent"
@@ -20,7 +21,7 @@
 
     <include layout="@layout/divider" />
 
-    <android.support.design.widget.TextInputLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/NameInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,13 +30,12 @@
 
         <EditText
             android:id="@+id/edit1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/EditTextStyle"
             android:hint="@string/gp_medical_team_name" />
 
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/cunsultantEmailLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,14 +43,12 @@
 
         <EditText
             android:id="@+id/edit2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/gp_consultant_email"
-            android:singleLine="true" />
+            style="@style/EditTextStyle"
+            android:hint="@string/gp_consultant_email" />
 
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/hospitalNameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,13 +56,12 @@
 
         <EditText
             android:id="@+id/edith1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/EditTextStyle"
             android:hint="@string/gp_hospital_name" />
 
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/hospitalAddressLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -72,12 +69,12 @@
 
         <EditText
             android:id="@+id/edith2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/gp_hospital_address" />
+            style="@style/EditTextStyle"
+            android:hint="@string/gp_hospital_address"
+            android:singleLine="false" />
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/hospitalPhoneLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -85,12 +82,11 @@
 
         <EditText
             android:id="@+id/edith3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/EditTextStyle"
             android:hint="@string/gp_hospital_phone" />
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/faxInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -98,8 +94,7 @@
 
         <EditText
             android:id="@+id/edith4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/EditTextStyle"
             android:hint="@string/gp_hospital_fax" />
     </android.support.design.widget.TextInputLayout>
 

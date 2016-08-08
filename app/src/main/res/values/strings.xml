@@ -45,9 +45,21 @@
     <string name="personal_details_live_with">Who I live with</string>
     <string name="personal_details_email">Email</string>
     <string name="personal_details_dob">D.O.B</string>
+    <string name="personal_details_birth">Date Of Birth</string>
+    <string name="personal_details_street">Street Address</string>
+    <string name="personal_details_Town">Town Address</string>
+    <string name="personal_details_country_state_Province"> Country/State/Province</string>
+    <string name="personal_details_ZIP">ZIP/Postal Code</string>
+    <string name="personal_details_Country">Country</string>
     <string name="personal_details_main_carer">Main Carer</string>
     <string name="personal_details_carer_tel">Carer Tel</string>
     <string name="personal_details_translator_needed">Do You Need a Translator</string>
+    <string name="personal_details_home_tel">Home Telephone</string>
+    <string name="personal_details_mobile">Mobile Number</string>
+    <string name="personal_details_gender">Gender</string>
+    <string name="personal_details_carer_language">Language of Carer</string>
+    <string name="personal_details_Next_of_kin">Next of Kin</string>
+    <string name="personal_details_first_lang">First Language</string>
 
     <string name="medicines">Medication</string>
     <string name="medicines_title">How I take my medication</string>
@@ -110,10 +122,8 @@
     <string name="street_title">Street</string>
     <string name="town_title">Town</string>
     <string name="county_title">County</string>
-    <string name="personal_details_home_tel">Home Telephone</string>
-    <string name="personal_details_mobile">Mobile</string>
-    <string name="personal_details_gender">Gender</string>
-    <string name="personal_details_carer_language">Language of Carer</string>
+
+
     <string name="type">Type:</string>
     <string name="gp_hospital_name">Hospital Name</string>
     <string name="gp_hospital_address">Hospital Address</string>
@@ -165,7 +175,7 @@
     <string name="vitals">Vitals</string>
     <string name="allergies">Allergies</string>
     <string name="dialog_close_button">Close</string>
-    <string name="personal_details_first_lang">First Language</string>
+
     <string name="save_message">Data Saved</string>
     <string name="fax_label">Fax</string>
 
