@@ -25,9 +25,8 @@
 
             <EditText
                 android:id="@+id/firstNameEdittext"
-                style="@style/EditTextStyle"
-                android:hint="@string/personal_details_first_name"
-                android:inputType="text" />
+                style="@style/SingleLineEditTextStyle"
+                android:hint="@string/personal_details_first_name" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -40,9 +39,8 @@
 
             <EditText
                 android:id="@+id/lastNameEdittext"
-                style="@style/EditTextStyle"
-                android:hint="@string/personal_details_last_name"
-                android:inputType="text" />
+                style="@style/SingleLineEditTextStyle"
+                android:hint="@string/personal_details_last_name" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -55,9 +53,8 @@
 
             <EditText
                 android:id="@+id/preferredNameEdittext"
-                style="@style/EditTextStyle"
-                android:hint="@string/personal_details_name_to_be_called"
-                android:inputType="text" />
+                style="@style/SingleLineEditTextStyle"
+                android:hint="@string/personal_details_name_to_be_called" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -70,10 +67,9 @@
 
             <EditText
                 android:id="@+id/dobEdittext"
-                style="@style/EditTextStyle"
+                style="@style/SingleLineEditTextStyle"
                 android:focusable="false"
-                android:hint="@string/personal_details_birth"
-                android:inputType="text" />
+                android:hint="@string/personal_details_birth" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -86,9 +82,8 @@
 
             <EditText
                 android:id="@+id/streetEdittext"
-                style="@style/EditTextStyle"
-                android:hint="@string/personal_details_street"
-                android:inputType="text" />
+                style="@style/SingleLineEditTextStyle"
+                android:hint="@string/personal_details_street" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -101,9 +96,8 @@
 
             <EditText
                 android:id="@+id/townEdittext"
-                style="@style/EditTextStyle"
-                android:hint="@string/personal_details_Town"
-                android:inputType="text" />
+                style="@style/SingleLineEditTextStyle"
+                android:hint="@string/personal_details_Town" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -116,9 +110,8 @@
 
             <EditText
                 android:id="@+id/countyEdittext"
-                style="@style/EditTextStyle"
-                android:hint="@string/personal_details_country_state_Province"
-                android:inputType="text" />
+                style="@style/SingleLineEditTextStyle"
+                android:hint="@string/personal_details_country_state_Province" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -131,9 +124,8 @@
 
             <EditText
                 android:id="@+id/zipCodeEdittext"
-                style="@style/EditTextStyle"
-                android:hint="@string/personal_details_ZIP"
-                android:inputType="text" />
+                style="@style/SingleLineEditTextStyle"
+                android:hint="@string/personal_details_ZIP" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -146,9 +138,8 @@
 
             <EditText
                 android:id="@+id/countryEdittext"
-                style="@style/EditTextStyle"
-                android:hint="@string/personal_details_Country"
-                android:inputType="text" />
+                style="@style/SingleLineEditTextStyle"
+                android:hint="@string/personal_details_Country" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -161,7 +152,7 @@
 
             <EditText
                 android:id="@+id/homeTelephoneEdittext"
-                style="@style/EditTextStyle"
+                style="@style/SingleLineEditTextStyle"
                 android:hint="@string/personal_details_home_tel"
                 android:inputType="phone" />
 
@@ -176,7 +167,7 @@
 
             <EditText
                 android:id="@+id/mobileNumberEdittext"
-                style="@style/EditTextStyle"
+                style="@style/SingleLineEditTextStyle"
                 android:hint="@string/personal_details_mobile"
                 android:inputType="phone" />
 
@@ -191,7 +182,7 @@
 
             <EditText
                 android:id="@+id/emailEdittext"
-                style="@style/EditTextStyle"
+                style="@style/SingleLineEditTextStyle"
                 android:hint="@string/personal_details_email"
                 android:inputType="textEmailAddress" />
 
@@ -230,7 +221,7 @@
 
             <EditText
                 android:id="@+id/nextOfKinEdittext"
-                style="@style/EditTextStyle"
+                style="@style/SingleLineEditTextStyle"
                 android:hint="@string/personal_details_Next_of_kin"
                 android:inputType="textEmailAddress" />
 
@@ -245,7 +236,7 @@
 
             <EditText
                 android:id="@+id/liveWithEdittext"
-                style="@style/EditTextStyle"
+                style="@style/SingleLineEditTextStyle"
                 android:hint="@string/personal_details_live_with"
                 android:inputType="textEmailAddress" />
 
@@ -260,7 +251,7 @@
 
             <EditText
                 android:id="@+id/mainCarerEdittext"
-                style="@style/EditTextStyle"
+                style="@style/SingleLineEditTextStyle"
                 android:hint="@string/personal_details_main_carer"
                 android:inputType="textEmailAddress" />
 
@@ -275,7 +266,7 @@
 
             <EditText
                 android:id="@+id/carerLanguageEdittext"
-                style="@style/EditTextStyle"
+                style="@style/SingleLineEditTextStyle"
                 android:hint="@string/personal_details_carer_language" />
 
         </android.support.design.widget.TextInputLayout>
@@ -289,7 +280,7 @@
 
             <EditText
                 android:id="@+id/carerTelEdittext"
-                style="@style/EditTextStyle"
+                style="@style/SingleLineEditTextStyle"
                 android:hint="@string/personal_details_carer_tel"
                 android:inputType="phone" />
 
@@ -304,7 +295,7 @@
 
             <EditText
                 android:id="@+id/firstLanguageEdittext"
-                style="@style/EditTextStyle"
+                style="@style/SingleLineEditTextStyle"
                 android:hint="@string/personal_details_first_lang" />
 
         </android.support.design.widget.TextInputLayout>
@@ -343,16 +334,12 @@
 
             <Button
                 android:id="@+id/cancel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                style="@style/StyleButton"
                 android:text="@string/cancel_button" />
 
             <Button
                 android:id="@+id/save"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                style="@style/StyleButton"
                 android:text="@string/save_button" />
         </LinearLayout>
 

@@ -29,7 +29,7 @@
 
         <EditText
             android:id="@+id/edit1"
-            style="@style/EditTextStyle"
+            style="@style/SingleLineEditTextStyle"
             android:hint="@string/gp_medical_team_name" />
 
     </android.support.design.widget.TextInputLayout>
@@ -43,8 +43,7 @@
         <EditText
             android:id="@+id/edit2"
             style="@style/EditTextStyle"
-            android:hint="@string/gp_medical_team_address"
-            android:singleLine="false" />
+            android:hint="@string/gp_medical_team_address" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -56,7 +55,7 @@
 
         <EditText
             android:id="@+id/edit3"
-            style="@style/EditTextStyle"
+            style="@style/SingleLineEditTextStyle"
             android:hint="@string/gp_medical_team_phone" />
 
     </android.support.design.widget.TextInputLayout>
@@ -69,7 +68,7 @@
 
         <EditText
             android:id="@+id/edit4"
-            style="@style/EditTextStyle"
+            style="@style/SingleLineEditTextStyle"
             android:hint="@string/gp_medical_team_email" />
     </android.support.design.widget.TextInputLayout>
 
@@ -81,7 +80,7 @@
 
         <EditText
             android:id="@+id/edit5"
-            style="@style/EditTextStyle"
+            style="@style/SingleLineEditTextStyle"
             android:hint="@string/gp_medical_team_fax" />
     </android.support.design.widget.TextInputLayout>
 
@@ -95,20 +94,12 @@
 
         <Button
             android:id="@+id/cancel"
-            style="@style/DefaultButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_small"
-            android:layout_weight="1"
+            style="@style/StyleButton"
             android:text="@string/cancel_button" />
 
         <Button
             android:id="@+id/save"
-            style="@style/DefaultButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_small"
-            android:layout_weight="1"
+            style="@style/StyleButton"
             android:text="@string/save_button" />
     </LinearLayout>
 

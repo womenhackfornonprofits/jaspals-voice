@@ -1,56 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <LinearLayout
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mainLayoutAboutMe"
         android:layout_width="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
 
-        <uk.co.jaspalsvoice.jv.views.EditableCardView
-            android:elevation="@dimen/elevation"
-            android:id="@+id/daily_routine"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/dailyRoutine"
             android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
-
-        <uk.co.jaspalsvoice.jv.views.EditableCardView
-            android:elevation="@dimen/elevation"
-            android:id="@+id/hobbies"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
-        <uk.co.jaspalsvoice.jv.views.EditableCardView
-            android:elevation="@dimen/elevation"
+            <EditText
+                android:id="@+id/editDailyRoutine"
+                style="@style/EditTextStyle"
+                android:hint="@string/likes_dislikes_daily_routine" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/interestHobbies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
+
+            <EditText
+                android:id="@+id/editInterstHobbies"
+                style="@style/EditTextStyle"
+                android:hint="@string/likes_dislikes_hobbies" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:id="@+id/music"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
-
-        <uk.co.jaspalsvoice.jv.views.EditableCardView
-            android:elevation="@dimen/elevation"
-            android:id="@+id/tv"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
-        <uk.co.jaspalsvoice.jv.views.EditableCardView
-            android:elevation="@dimen/elevation"
+            <EditText
+                android:id="@+id/editMusic"
+                style="@style/EditTextStyle"
+                android:hint="@string/likes_dislikes_music" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/television"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
+
+            <EditText
+                android:id="@+id/editTelevision"
+                style="@style/EditTextStyle"
+                android:hint="@string/likes_dislikes_tv" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:id="@+id/other"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
+            <EditText
+                android:id="@+id/editOther"
+                style="@style/EditTextStyle"
+                android:hint="@string/likes_dislikes_other" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin_small"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/cancel"
+                style="@style/StyleButton"
+                android:text="@string/cancel_button" />
+
+            <Button
+                android:id="@+id/save"
+                style="@style/StyleButton"
+                android:text="@string/save_button" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
