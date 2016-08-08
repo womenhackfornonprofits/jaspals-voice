@@ -96,17 +96,17 @@ public class SurgicalHistoryCardView extends CardView {
                 (new LinearLayoutManager(surgicalHistoryRecyclerView.getContext()));
         addSurgicalHistoryButton = (ImageView) root.findViewById(R.id.addSurgicalHistoryButton);
         addNewSurgicalHistoryView = (LinearLayout) root.findViewById(R.id.addNewSurgicalHistory);
+        addNewSurgicalHistoryView.setVisibility(GONE);
         saveLayout = (LinearLayout) addNewSurgicalHistoryView.findViewById(R.id.saveLayout);
         saveButton = (ImageView) saveLayout.findViewById(R.id.saveButton);
         cancelButton = (ImageView) saveLayout.findViewById(R.id.cancelButton);
-        surgicalHistoryEdittext = (EditText) addNewSurgicalHistoryView.
-                findViewById(R.id.surgicalHistoryEdittext);
-        dateEdittext = (EditText) addNewSurgicalHistoryView.findViewById(R.id.dateEditText);
-
+        surgicalHistoryEdittext = (EditText) addNewSurgicalHistoryView.findViewById(R.id.editFirstField);
+        dateEdittext = (EditText) addNewSurgicalHistoryView.findViewById(R.id.editSecondField);
+        dateEdittext.setFocusable(false);
         LinearLayout bpTitleLayout = (LinearLayout) root.findViewById(R.id.bpTitleLayout);
-        TextView blodPressureSubtitle = (TextView)bpTitleLayout.findViewById(R.id.headingFirstField);
-        TextView dateSubtitle = (TextView)root.findViewById(R.id.headingSecondField);
-        titleView = (TextView)root.findViewById(R.id.title);
+        TextView blodPressureSubtitle = (TextView) bpTitleLayout.findViewById(R.id.headingFirstField);
+        TextView dateSubtitle = (TextView) root.findViewById(R.id.headingSecondField);
+        titleView = (TextView) root.findViewById(R.id.title);
 
 
         titleView.setText(getResources().getString(R.string.surgical_history_title));
@@ -122,6 +122,9 @@ public class SurgicalHistoryCardView extends CardView {
             switch (v.getId()) {
 
                 case R.id.addSurgicalHistoryButton:
+                    surgicalHistoryEdittext.setText("");
+                    dateEdittext.setText("");
+                    hideNoContentView();
                     hideBPList();
                     showAddBPView();
                     break;
@@ -138,8 +141,8 @@ public class SurgicalHistoryCardView extends CardView {
                     showBPList();
                     break;
 
-                case R.id.dateEditText:
-                    DateUtils.showDatePicker(dateEdittext, ((DiagnosesActivity)getContext()));
+                case R.id.editSecondField:
+                    DateUtils.showDatePicker(dateEdittext, ((DiagnosesActivity) getContext()));
                     break;
             }
 
@@ -178,7 +181,7 @@ public class SurgicalHistoryCardView extends CardView {
         surgicalHistoryRecyclerView.setAdapter(adapter);
         showBPList();
         adapter.notifyDataSetChanged();
-        if (surgicalHistory.size() == 0){
+        if (surgicalHistory.size() == 0) {
             showNoContentView();
         } else {
             hideNoContentView();

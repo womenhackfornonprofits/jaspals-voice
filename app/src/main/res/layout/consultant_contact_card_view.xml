@@ -25,7 +25,7 @@
         android:id="@+id/NameInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
         <EditText
@@ -39,6 +39,7 @@
         android:id="@+id/cunsultantEmailLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
         <EditText
@@ -52,6 +53,7 @@
         android:id="@+id/hospitalNameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
         <EditText
@@ -65,6 +67,7 @@
         android:id="@+id/hospitalAddressLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
         <EditText
@@ -77,6 +80,7 @@
         android:id="@+id/hospitalPhoneLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
         <EditText
@@ -89,6 +93,7 @@
         android:id="@+id/faxInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
         <EditText

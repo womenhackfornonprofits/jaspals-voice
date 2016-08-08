@@ -43,11 +43,11 @@ public class MedicalAllergiesAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         public MedicalAllergiesViewHolder(View itemView) {
             super(itemView);
-            medicalAllergiesEdittext = (EditText) itemView.findViewById(R.id.medicalAllergiesEdittext);
-            typeText = (EditText) itemView.findViewById(R.id.typeEditText);
+            medicalAllergiesEdittext = (EditText) itemView.findViewById(R.id.editFirstField);
+            typeText = (EditText) itemView.findViewById(R.id.editSecondField);
             editButton = (ImageView) itemView.findViewById(R.id.editButton);
-            medicalAllergiesTextView = (TextView) itemView.findViewById(R.id.medicalAllergiesTextView);
-            typeTextView = (TextView) itemView.findViewById(R.id.typeTextView);
+            medicalAllergiesTextView = (TextView) itemView.findViewById(R.id.dataFirstField);
+            typeTextView = (TextView) itemView.findViewById(R.id.dataSecondField);
             editLayout = (LinearLayout) itemView.findViewById(R.id.saveLayout);
             saveButton = (ImageView) editLayout.findViewById(R.id.saveButton);
             cancelButton = (ImageView) editLayout.findViewById(R.id.cancelButton);
@@ -57,7 +57,7 @@ public class MedicalAllergiesAdapter extends RecyclerView.Adapter<RecyclerView.V
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).
-                inflate(R.layout.list_item_medical_allergies, parent, false);
+                inflate(R.layout.common_list_item, parent, false);
         return new MedicalAllergiesViewHolder(view);
     }
 
@@ -104,6 +104,7 @@ public class MedicalAllergiesAdapter extends RecyclerView.Adapter<RecyclerView.V
                 hideEditMode(((MedicalAllergiesViewHolder) holder));
             }
         });
+        hideEditMode((MedicalAllergiesViewHolder)holder);
     }
 
     private void uptypeData(String medicalAllergies, String type) {

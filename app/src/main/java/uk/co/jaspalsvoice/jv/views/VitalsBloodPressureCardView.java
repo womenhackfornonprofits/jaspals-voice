@@ -28,6 +28,7 @@ import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -114,12 +115,14 @@ public class VitalsBloodPressureCardView extends CardView {
                 (new LinearLayoutManager(bloodPressureRecyclerView.getContext()));
         addBloodPressureButton = (ImageView) root.findViewById(R.id.addBloodPressureButton);
         addNewBloodPressureView = (LinearLayout) root.findViewById(R.id.addNewBloodPressure);
+        addNewBloodPressureView.setVisibility(GONE);
         saveLayout = (LinearLayout) addNewBloodPressureView.findViewById(R.id.saveLayout);
         saveButton = (ImageView) saveLayout.findViewById(R.id.saveButton);
         cancelButton = (ImageView) saveLayout.findViewById(R.id.cancelButton);
         bloodPressureEdittext = (EditText) addNewBloodPressureView.
-                findViewById(R.id.bloodPressureEdittext);
-        dateEdittext = (EditText) addNewBloodPressureView.findViewById(R.id.dateEditText);
+                findViewById(R.id.editFirstField);
+        dateEdittext = (EditText) addNewBloodPressureView.findViewById(R.id.editSecondField);
+        dateEdittext.setFocusable(false);
         LinearLayout bpTitleLayout = (LinearLayout) root.findViewById(R.id.bpTitleLayout);
         TextView blodPressureSubtitle = (TextView)bpTitleLayout.findViewById(R.id.headingFirstField);
         TextView dateSubtitle = (TextView)root.findViewById(R.id.headingSecondField);
@@ -138,6 +141,9 @@ public class VitalsBloodPressureCardView extends CardView {
             switch (v.getId()) {
 
                 case R.id.addBloodPressureButton:
+                    bloodPressureEdittext.setText("");
+                    dateEdittext.setText("");
+                    hideNoContentView();
                     hideBPList();
                     showAddBPView();
                     break;
@@ -154,7 +160,7 @@ public class VitalsBloodPressureCardView extends CardView {
                     showBPList();
                     break;
 
-                case R.id.dateEditText:
+                case R.id.editSecondField:
                     DateUtils.showDatePicker(dateEdittext, ((VitalsActivity)getContext()));
                     break;
             }

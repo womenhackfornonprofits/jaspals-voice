@@ -39,6 +39,7 @@
                     android:layout_weight="1"
                     android:text="@string/default_text_when_not_specified"
                     android:visibility="gone"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/text_normal_size"/>
 
             </TableRow>
@@ -70,6 +71,7 @@
                     android:layout_weight="1"
                     android:text="@string/default_text_when_not_specified"
                     android:visibility="gone"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/text_normal_size"/>
 
             </TableRow>
@@ -102,6 +104,7 @@
                     android:layout_weight="1"
                     android:text="@string/default_text_when_not_specified"
                     android:visibility="gone"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/text_normal_size"/>
 
             </TableRow>
@@ -133,6 +136,7 @@
                     android:layout_weight="1"
                     android:text="@string/default_text_when_not_specified"
                     android:visibility="gone"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/text_normal_size"/>
 
             </TableRow>

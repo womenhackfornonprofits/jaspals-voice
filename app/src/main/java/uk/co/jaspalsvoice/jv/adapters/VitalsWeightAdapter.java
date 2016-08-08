@@ -44,11 +44,12 @@ public class VitalsWeightAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         public WeightViewHolder(View itemView) {
             super(itemView);
-            weightEdittext = (EditText) itemView.findViewById(R.id.weightEdittext);
-            dateText = (EditText) itemView.findViewById(R.id.dateEditText);
+            weightEdittext = (EditText) itemView.findViewById(R.id.editFirstField);
+            dateText = (EditText) itemView.findViewById(R.id.editSecondField);
+            dateText.setFocusable(false);
             editButton = (ImageView) itemView.findViewById(R.id.editButton);
-            weightTextView = (TextView) itemView.findViewById(R.id.weightTextView);
-            dateTextView = (TextView) itemView.findViewById(R.id.dateTextView);
+            weightTextView = (TextView) itemView.findViewById(R.id.dataFirstField);
+            dateTextView = (TextView) itemView.findViewById(R.id.dataSecondField);
             editLayout = (LinearLayout) itemView.findViewById(R.id.saveLayout);
             saveButton = (ImageView) editLayout.findViewById(R.id.saveButton);
             cancelButton = (ImageView) editLayout.findViewById(R.id.cancelButton);
@@ -58,7 +59,7 @@ public class VitalsWeightAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).
-                inflate(R.layout.list_item_vitals_weight, parent, false);
+                inflate(R.layout.common_list_item, parent, false);
         return new WeightViewHolder(view);
     }
 
@@ -112,6 +113,7 @@ public class VitalsWeightAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 DateUtils.showDatePicker(((WeightViewHolder)holder).dateText, ((VitalsActivity)context));
             }
         });
+        hideEditMode(((WeightViewHolder)holder));
     }
 
     private void updateData(String weight, String date) {

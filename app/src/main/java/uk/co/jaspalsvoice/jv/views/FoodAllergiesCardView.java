@@ -93,12 +93,13 @@ public class FoodAllergiesCardView extends CardView {
                 (new LinearLayoutManager(foodAllergiesRecyclerView.getContext()));
         addFoodAllergiesButton = (ImageView) root.findViewById(R.id.addFoodAllergiesButton);
         addNewFoodAllergiesView = (LinearLayout) root.findViewById(R.id.addNewFoodAllergies);
+        addNewFoodAllergiesView.setVisibility(GONE);
         saveLayout = (LinearLayout) addNewFoodAllergiesView.findViewById(R.id.saveLayout);
         saveButton = (ImageView) saveLayout.findViewById(R.id.saveButton);
         cancelButton = (ImageView) saveLayout.findViewById(R.id.cancelButton);
         foodAllergiesEdittext = (EditText) addNewFoodAllergiesView.
-                findViewById(R.id.foodAllergiesEdittext);
-        dateEdittext = (EditText) addNewFoodAllergiesView.findViewById(R.id.typeEditText);
+                findViewById(R.id.editFirstField);
+        dateEdittext = (EditText) addNewFoodAllergiesView.findViewById(R.id.editSecondField);
         LinearLayout bpTitleLayout = (LinearLayout) root.findViewById(R.id.bpTitleLayout);
         TextView blodPressureSubtitle = (TextView)bpTitleLayout.findViewById(R.id.headingFirstField);
         TextView dateSubtitle = (TextView)root.findViewById(R.id.headingSecondField);
@@ -116,6 +117,9 @@ public class FoodAllergiesCardView extends CardView {
             switch (v.getId()) {
 
                 case R.id.addFoodAllergiesButton:
+                    foodAllergiesEdittext.setText("");
+                    dateEdittext.setText("");
+                    hideNoContentView();
                     hideBPList();
                     showAddBPView();
                     break;

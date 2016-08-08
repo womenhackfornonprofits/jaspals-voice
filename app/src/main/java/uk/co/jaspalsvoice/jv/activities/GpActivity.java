@@ -35,8 +35,10 @@ public class GpActivity extends BaseActivity {
 
         setContentView(R.layout.activity_gp);
 
-        new MedicalTeam().execute();
-        new MedicalTeamMember().execute();
+//        new MedicalTeam().execute();
+        setupUI(((JvApplication) getApplication()).getDbHelper().readAllDoctors());
+        setupTeamMemberUI(((JvApplication) getApplication()).getDbHelper().readAllTeamMembers());
+//        new MedicalTeamMember().execute();
     }
 
     private void initViews() {
@@ -51,6 +53,7 @@ public class GpActivity extends BaseActivity {
     private class MedicalTeam extends AsyncTask<Void, Void, Map<String, Doctor>> {
         @Override
         protected Map<String, Doctor> doInBackground(Void... params) {
+
             return ((JvApplication) getApplication()).getDbHelper().readAllDoctors();
         }
 

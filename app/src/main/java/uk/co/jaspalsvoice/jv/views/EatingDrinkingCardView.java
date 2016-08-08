@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -26,7 +27,7 @@ public class EatingDrinkingCardView extends CardView {
     private String text;
     private boolean editMode;
     private int titleId;
-
+    LinearLayout eatingDrinkingMainLayout;
     private String[] options;
 
     private TextView titleView;
@@ -60,7 +61,7 @@ public class EatingDrinkingCardView extends CardView {
 
         LayoutInflater inflater = LayoutInflater.from(context);
         View root = inflater.inflate(R.layout.eating_drinking_card_view, this);
-
+        eatingDrinkingMainLayout=(LinearLayout)root.findViewById(R.id.eatingDrinkingMainLayout);
         titleView = (TextView) root.findViewById(R.id.title);
         optionalSubtitleView = (TextView) root.findViewById(R.id.subtitle);
         textView = (TextView) root.findViewById(R.id.text);
@@ -69,6 +70,7 @@ public class EatingDrinkingCardView extends CardView {
         cancelBtn = (Button) root.findViewById(R.id.cancel);
         saveBtn = (Button) root.findViewById(R.id.save);
         feedingMethod = (EditText) root.findViewById(R.id.feedingMethodEdittext);
+        feedingMethod.setFocusable(false);
 
         //options = getResources().getStringArray(R.array.yes_no_spinner_item);
 //        textView.setText(options[0]);
@@ -100,6 +102,13 @@ public class EatingDrinkingCardView extends CardView {
                 setText(spinnerView.getSelectedItem().toString());
                 showNonEditMode();
                 save();
+                feedingMethod.clearFocus();
+            }
+        });
+        feedingMethod.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buttonsView.setVisibility(VISIBLE);
             }
         });
 
@@ -214,6 +223,7 @@ public class EatingDrinkingCardView extends CardView {
             case R.string.about_me_swallowing_difficulties:
                 preferences.setSwallowingAbilitiesStatus(selection == 0);
                 preferences.setFeedingMethod(feedingMethod.getText().toString());
+                eatingDrinkingMainLayout.requestFocus();
                 break;
             case R.string.personal_details_gender:
                 preferences.setGender(selection == 0);

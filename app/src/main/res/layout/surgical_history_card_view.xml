@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:textSize="@dimen/text_normal_size"
+            android:textStyle="bold"
             tools:text="@string/vitals_blood_pressure_title" />
 
         <ImageView
@@ -46,12 +47,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:padding="10dp"
+        android:padding="5dp"
         android:visibility="visible" />
-
-    <include
-        android:id="@+id/addNewSurgicalHistory"
-        layout="@layout/view_add_new_surgical_history" />
 
     <TextView
         android:id="@+id/noContentView"
@@ -62,4 +59,8 @@
         android:gravity="center"
         android:text="@string/no_content_surgical_history"
         android:textSize="@dimen/text_normal_size" />
+    <include
+        android:id="@+id/addNewSurgicalHistory"
+        layout="@layout/common_list_item" />
+
 </LinearLayout>

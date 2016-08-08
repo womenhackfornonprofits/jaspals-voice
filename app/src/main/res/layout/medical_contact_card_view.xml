@@ -24,7 +24,7 @@
         android:id="@+id/NameInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
         <EditText
@@ -38,6 +38,7 @@
         android:id="@+id/AddressInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
         <EditText
@@ -51,6 +52,7 @@
         android:id="@+id/PhoneInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
         <EditText
@@ -64,6 +66,7 @@
         android:id="@+id/eMailInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
         <EditText
@@ -76,6 +79,7 @@
         android:id="@+id/FaxInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
         <EditText

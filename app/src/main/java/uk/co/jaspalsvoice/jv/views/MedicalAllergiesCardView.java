@@ -93,12 +93,13 @@ public class MedicalAllergiesCardView extends CardView {
                 (new LinearLayoutManager(medicalAllergiesRecyclerView.getContext()));
         addMedicalAllergiesButton = (ImageView) root.findViewById(R.id.addMedicalAllergiesButton);
         addNewMedicalAllergiesView = (LinearLayout) root.findViewById(R.id.addNewMedicalAllergies);
+        addNewMedicalAllergiesView.setVisibility(GONE);
         saveLayout = (LinearLayout) addNewMedicalAllergiesView.findViewById(R.id.saveLayout);
         saveButton = (ImageView) saveLayout.findViewById(R.id.saveButton);
         cancelButton = (ImageView) saveLayout.findViewById(R.id.cancelButton);
         medicalAllergiesEdittext = (EditText) addNewMedicalAllergiesView.
-                findViewById(R.id.medicalAllergiesEdittext);
-        dateEdittext = (EditText) addNewMedicalAllergiesView.findViewById(R.id.typeEditText);
+                findViewById(R.id.editFirstField);
+        dateEdittext = (EditText) addNewMedicalAllergiesView.findViewById(R.id.editSecondField);
 
         LinearLayout bpTitleLayout = (LinearLayout) root.findViewById(R.id.bpTitleLayout);
         TextView blodPressureSubtitle = (TextView)bpTitleLayout.findViewById(R.id.headingFirstField);
@@ -118,6 +119,9 @@ public class MedicalAllergiesCardView extends CardView {
             switch (v.getId()) {
 
                 case R.id.addMedicalAllergiesButton:
+                    medicalAllergiesEdittext.setText("");
+                    dateEdittext.setText("");
+                    hideNoContentView();
                     hideBPList();
                     showAddBPView();
                     break;

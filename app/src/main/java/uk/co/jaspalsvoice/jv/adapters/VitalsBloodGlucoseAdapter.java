@@ -44,11 +44,12 @@ public class VitalsBloodGlucoseAdapter extends RecyclerView.Adapter<RecyclerView
 
         public BloodGlucoseViewHolder(View itemView) {
             super(itemView);
-            bloodGlucoseEdittext = (EditText) itemView.findViewById(R.id.bloodGlucoseEdittext);
-            dateText = (EditText) itemView.findViewById(R.id.dateEditText);
+            bloodGlucoseEdittext = (EditText) itemView.findViewById(R.id.editFirstField);
+            dateText = (EditText) itemView.findViewById(R.id.editSecondField);
+            dateText.setFocusable(false);
             editButton = (ImageView) itemView.findViewById(R.id.editButton);
-            bloodGlucoseTextView = (TextView) itemView.findViewById(R.id.bloodGlucoseTextView);
-            dateTextView = (TextView) itemView.findViewById(R.id.dateTextView);
+            bloodGlucoseTextView = (TextView) itemView.findViewById(R.id.dataFirstField);
+            dateTextView = (TextView) itemView.findViewById(R.id.dataSecondField);
             editLayout = (LinearLayout) itemView.findViewById(R.id.saveLayout);
             saveButton = (ImageView) editLayout.findViewById(R.id.saveButton);
             cancelButton = (ImageView) editLayout.findViewById(R.id.cancelButton);
@@ -58,7 +59,7 @@ public class VitalsBloodGlucoseAdapter extends RecyclerView.Adapter<RecyclerView
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).
-                inflate(R.layout.list_item_vitals_blood_glucose, parent, false);
+                inflate(R.layout.common_list_item, parent, false);
         return new BloodGlucoseViewHolder(view);
     }
 
@@ -112,6 +113,7 @@ public class VitalsBloodGlucoseAdapter extends RecyclerView.Adapter<RecyclerView
                 DateUtils.showDatePicker(((BloodGlucoseViewHolder)holder).dateText, ((VitalsActivity)context));
             }
         });
+        hideEditMode(((BloodGlucoseViewHolder)holder));
     }
 
     private void updateData(String bloodGlucose, String date) {

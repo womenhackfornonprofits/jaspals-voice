@@ -20,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_normal_size"
+        android:textStyle="bold"
         tools:text="@string/vitals_blood_pressure_title" />
 
     <ImageView
@@ -45,11 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:visibility="visible"
-        android:padding="10dp" />
-
-    <include
-        android:id="@+id/addNewWeight"
-        layout="@layout/view_add_new_weight"/>
+        android:padding="5dp" />
 
     <TextView
         android:id="@+id/noContentView"
@@ -60,4 +57,9 @@
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+
+    <include
+        android:id="@+id/addNewWeight"
+        layout="@layout/common_list_item"/>
 </LinearLayout>

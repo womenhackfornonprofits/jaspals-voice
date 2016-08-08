@@ -96,12 +96,14 @@ public class VitalsWeightCardView extends CardView {
                 (new LinearLayoutManager(weightRecyclerView.getContext()));
         addWeightButton = (ImageView) root.findViewById(R.id.addWeightButton);
         addNewWeightView = (LinearLayout) root.findViewById(R.id.addNewWeight);
+        addNewWeightView.setVisibility(GONE);
         saveLayout = (LinearLayout) addNewWeightView.findViewById(R.id.saveLayout);
         saveButton = (ImageView) saveLayout.findViewById(R.id.saveButton);
         cancelButton = (ImageView) saveLayout.findViewById(R.id.cancelButton);
         weightEdittext = (EditText) addNewWeightView.
-                findViewById(R.id.weightEdittext);
-        dateEdittext = (EditText) addNewWeightView.findViewById(R.id.dateEditText);
+                findViewById(R.id.editFirstField);
+        dateEdittext = (EditText) addNewWeightView.findViewById(R.id.editSecondField);
+        dateEdittext.setFocusable(false);
         LinearLayout bpTitleLayout = (LinearLayout) root.findViewById(R.id.bpTitleLayout);
         TextView blodPressureSubtitle = (TextView)bpTitleLayout.findViewById(R.id.headingFirstField);
         TextView dateSubtitle = (TextView)root.findViewById(R.id.headingSecondField);
@@ -121,6 +123,9 @@ public class VitalsWeightCardView extends CardView {
             switch (v.getId()) {
 
                 case R.id.addWeightButton:
+                    weightEdittext.setText("");
+                    dateEdittext.setText("");
+                    hideNoContentView();
                     hideBPList();
                     showAddBPView();
                     break;
@@ -137,7 +142,7 @@ public class VitalsWeightCardView extends CardView {
                     showBPList();
                     break;
 
-                case R.id.dateEditText:
+                case R.id.editSecondField:
                     DateUtils.showDatePicker(dateEdittext, ((VitalsActivity)getContext()));
                     break;
             }

@@ -43,11 +43,11 @@ public class FoodAllergiesAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         public FoodAllergiesViewHolder(View itemView) {
             super(itemView);
-            foodAllergiesEdittext = (EditText) itemView.findViewById(R.id.foodAllergiesEdittext);
-            typeText = (EditText) itemView.findViewById(R.id.typeEditText);
+            foodAllergiesEdittext = (EditText) itemView.findViewById(R.id.editFirstField);
+            typeText = (EditText) itemView.findViewById(R.id.editSecondField);
             editButton = (ImageView) itemView.findViewById(R.id.editButton);
-            foodAllergiesTextView = (TextView) itemView.findViewById(R.id.foodAllergiesTextView);
-            typeTextView = (TextView) itemView.findViewById(R.id.typeTextView);
+            foodAllergiesTextView = (TextView) itemView.findViewById(R.id.dataFirstField);
+            typeTextView = (TextView) itemView.findViewById(R.id.dataSecondField);
             editLayout = (LinearLayout) itemView.findViewById(R.id.saveLayout);
             saveButton = (ImageView) editLayout.findViewById(R.id.saveButton);
             cancelButton = (ImageView) editLayout.findViewById(R.id.cancelButton);
@@ -57,7 +57,7 @@ public class FoodAllergiesAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).
-                inflate(R.layout.list_item_food_allergies, parent, false);
+                inflate(R.layout.common_list_item, parent, false);
         return new FoodAllergiesViewHolder(view);
     }
 
@@ -101,9 +101,10 @@ public class FoodAllergiesAdapter extends RecyclerView.Adapter<RecyclerView.View
         ((FoodAllergiesViewHolder) holder).cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hideEditMode(((FoodAllergiesViewHolder) holder));
+                hideEditMode((FoodAllergiesViewHolder) holder);
             }
         });
+        hideEditMode((FoodAllergiesViewHolder)holder);
     }
 
     private void uptypeData(String foodAllergies, String type) {

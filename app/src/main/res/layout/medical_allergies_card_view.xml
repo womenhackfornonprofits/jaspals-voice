@@ -20,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_normal_size"
+        android:textStyle="bold"
         tools:text="@string/medical_allergies_title" />
 
     <ImageView
@@ -48,10 +49,6 @@
         android:visibility="visible"
         android:padding="5dp" />
 
-    <include
-        android:id="@+id/addNewMedicalAllergies"
-        layout="@layout/view_add_new_medical_allergy"/>
-
     <TextView
         android:id="@+id/noContentView"
         android:layout_gravity="center"
@@ -61,4 +58,8 @@
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <include
+        android:id="@+id/addNewMedicalAllergies"
+        layout="@layout/common_list_item"/>
+
 </LinearLayout>

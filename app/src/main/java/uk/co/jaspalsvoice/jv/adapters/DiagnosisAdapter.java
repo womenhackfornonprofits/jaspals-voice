@@ -44,11 +44,12 @@ public class DiagnosisAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         public DiagnosisViewHolder(View itemView) {
             super(itemView);
-            diagnosisEdittext = (EditText) itemView.findViewById(R.id.diagnosisEdittext);
-            dateText = (EditText) itemView.findViewById(R.id.dateEditText);
+            diagnosisEdittext = (EditText) itemView.findViewById(R.id.editFirstField);
+            dateText = (EditText) itemView.findViewById(R.id.editSecondField);
+            dateText.setFocusable(false);
             editButton = (ImageView) itemView.findViewById(R.id.editButton);
-            diagnosisTextView = (TextView) itemView.findViewById(R.id.diagnosisTextView);
-            dateTextView = (TextView) itemView.findViewById(R.id.dateTextView);
+            diagnosisTextView = (TextView) itemView.findViewById(R.id.dataFirstField);
+            dateTextView = (TextView) itemView.findViewById(R.id.dataSecondField);
             editLayout = (LinearLayout) itemView.findViewById(R.id.saveLayout);
             saveButton = (ImageView) editLayout.findViewById(R.id.saveButton);
             cancelButton = (ImageView) editLayout.findViewById(R.id.cancelButton);
@@ -58,7 +59,7 @@ public class DiagnosisAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).
-                inflate(R.layout.list_item_diagnosis, parent, false);
+                inflate(R.layout.common_list_item, parent, false);
         return new DiagnosisViewHolder(view);
     }
 
@@ -102,6 +103,7 @@ public class DiagnosisAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         ((DiagnosisViewHolder) holder).cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 hideEditMode(((DiagnosisViewHolder) holder));
             }
         });
@@ -112,6 +114,7 @@ public class DiagnosisAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 DateUtils.showDatePicker(((DiagnosisViewHolder)holder).dateText, ((DiagnosesActivity)context));
             }
         });
+        hideEditMode(((DiagnosisViewHolder) holder));
     }
 
     private void updateData(String diagnosis, String date) {

@@ -198,7 +198,7 @@
 
             <TextView
                 android:id="@+id/genderLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:fontFamily="roboto-light"
@@ -208,7 +208,10 @@
             <Spinner
                 android:id="@+id/genderSpinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                style="@style/textForSpinner"/>
+            <include layout="@layout/divider_dark" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -319,7 +322,9 @@
             <Spinner
                 android:id="@+id/translatorNeededSpinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"/>
+            <include layout="@layout/divider_dark" />
 
         </android.support.design.widget.TextInputLayout>
 

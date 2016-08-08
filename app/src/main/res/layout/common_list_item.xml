@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/commonListItemLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <RelativeLayout
@@ -30,12 +30,13 @@
             android:layout_toLeftOf="@+id/separatorForFirstData"
             android:inputType="text"
             android:minWidth="100dp"
-            android:textSize="@dimen/text_normal_size" />
+            android:textSize="@dimen/text_normal_size"
+            android:visibility="gone" />
 
         <View
             android:id="@+id/separatorForFirstData"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_centerInParent="true" />
 
         <TextView
@@ -45,7 +46,8 @@
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/separatorForFirstData"
             android:minWidth="100dp"
-            android:textSize="@dimen/text_normal_size" />
+            android:textSize="@dimen/text_normal_size"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/editSecondField"
@@ -53,51 +55,45 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/separatorForFirstData"
-            android:inputType="text"
             android:minWidth="100dp"
             android:textSize="@dimen/text_normal_size" />
 
     </RelativeLayout>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/saveLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible">
+            android:visibility="visible">
 
             <ImageView
-                android:id="@+id/imageRight"
+                android:id="@+id/saveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/separatorForImage"
+                android:padding="4dp"
                 android:src="@drawable/ic_done_grey_600_24dp" />
 
-            <View
-                android:id="@+id/separatorForImage"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true" />
-
             <ImageView
-                android:id="@+id/imageCross"
+                android:id="@+id/cancelButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_toRightOf="@id/separatorForImage"
+                android:padding="4dp"
                 android:src="@drawable/ic_close_grey_600_24dp" />
-        </RelativeLayout>
+        </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageEdit"
+            android:id="@+id/editButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:padding="4dp"
             android:src="@drawable/ic_action_edit"
             android:visibility="gone" />
-    </FrameLayout>
+    </RelativeLayout>
 
 </LinearLayout>

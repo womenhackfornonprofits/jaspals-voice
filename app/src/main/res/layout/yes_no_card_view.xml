@@ -40,6 +40,7 @@
         android:padding="@dimen/margin_small"
         android:singleLine="false"
         android:textSize="@dimen/text_normal_size"
+        android:textColor="@color/colorPrimaryDark"
         tools:text="Text"/>
 
     <Spinner

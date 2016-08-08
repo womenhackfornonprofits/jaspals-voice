@@ -41,7 +41,6 @@ public class DiagnosisCardView extends CardView {
     private EditText dateEdittext;
     private JvApplication application;
     private TextView titleView;
-    private TextView blodPressureSubtitle, dateSubtitle;
     private TextView noContentView;
 
 
@@ -98,16 +97,19 @@ public class DiagnosisCardView extends CardView {
                 (new LinearLayoutManager(diagnosisRecyclerView.getContext()));
         addDiagnosisButton = (ImageView) root.findViewById(R.id.addDiagnosisButton);
         addNewDiagnosisView = (LinearLayout) root.findViewById(R.id.addNewDiagnosis);
+        addNewDiagnosisView.setVisibility(GONE);
         saveLayout = (LinearLayout) addNewDiagnosisView.findViewById(R.id.saveLayout);
         saveButton = (ImageView) saveLayout.findViewById(R.id.saveButton);
         cancelButton = (ImageView) saveLayout.findViewById(R.id.cancelButton);
-        diagnosisEdittext = (EditText) addNewDiagnosisView.
-                findViewById(R.id.diagnosisEdittext);
-        dateEdittext = (EditText) addNewDiagnosisView.findViewById(R.id.dateEditText);
-        blodPressureSubtitle = (TextView)root.findViewById(R.id.diagnosisTitle);
-        dateSubtitle = (TextView)root.findViewById(R.id.bpDateTitle);
-        titleView = (TextView)root.findViewById(R.id.title);
 
+        diagnosisEdittext = (EditText) addNewDiagnosisView.findViewById(R.id.editFirstField);
+        dateEdittext = (EditText) addNewDiagnosisView.findViewById(R.id.editSecondField);
+        dateEdittext.setFocusable(false);
+        LinearLayout bpTitleLayout = (LinearLayout) root.findViewById(R.id.bpTitleLayout);
+        TextView blodPressureSubtitle = (TextView)bpTitleLayout.findViewById(R.id.headingFirstField);
+        TextView dateSubtitle = (TextView)root.findViewById(R.id.headingSecondField);
+
+        titleView = (TextView)root.findViewById(R.id.title);
 
         titleView.setText(getResources().getString(R.string.diagnosis_title));
         blodPressureSubtitle.setText(getResources().getString(R.string.diagnosis_title));
@@ -122,6 +124,9 @@ public class DiagnosisCardView extends CardView {
             switch (v.getId()) {
 
                 case R.id.addDiagnosisButton:
+                    diagnosisEdittext.setText("");
+                    dateEdittext.setText("");
+                    hideNoContentView();
                     hideBPList();
                     showAddBPView();
                     break;
@@ -138,8 +143,8 @@ public class DiagnosisCardView extends CardView {
                     showBPList();
                     break;
 
-                case R.id.dateEditText:
-                    DateUtils.showDatePicker(dateEdittext, ((DiagnosesActivity)getContext()));
+                case R.id.editSecondField:
+                    DateUtils.showDatePicker(dateEdittext,((DiagnosesActivity)getContext()));
                     break;
             }
 

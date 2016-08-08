@@ -45,11 +45,12 @@ public class VitalsBloodPressureAdapter extends RecyclerView.Adapter<RecyclerVie
 
         public BloodPressureViewHolder(View itemView) {
             super(itemView);
-            bloodPressureEdittext = (EditText) itemView.findViewById(R.id.bloodPressureEdittext);
-            dateText = (EditText) itemView.findViewById(R.id.dateEditText);
+            bloodPressureEdittext = (EditText) itemView.findViewById(R.id.editFirstField);
+            dateText = (EditText) itemView.findViewById(R.id.editSecondField);
+            dateText.setFocusable(false);
             editButton = (ImageView) itemView.findViewById(R.id.editButton);
-            bloodPressureTextView = (TextView) itemView.findViewById(R.id.bloodPressureTextView);
-            dateTextView = (TextView) itemView.findViewById(R.id.dateTextView);
+            bloodPressureTextView = (TextView) itemView.findViewById(R.id.dataFirstField);
+            dateTextView = (TextView) itemView.findViewById(R.id.dataSecondField);
             editLayout = (LinearLayout) itemView.findViewById(R.id.saveLayout);
             saveButton = (ImageView) editLayout.findViewById(R.id.saveButton);
             cancelButton = (ImageView) editLayout.findViewById(R.id.cancelButton);
@@ -59,7 +60,7 @@ public class VitalsBloodPressureAdapter extends RecyclerView.Adapter<RecyclerVie
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).
-                inflate(R.layout.list_item_vitals_blood_pressure, parent, false);
+                inflate(R.layout.common_list_item, parent, false);
         return new BloodPressureViewHolder(view);
     }
 
@@ -113,7 +114,7 @@ public class VitalsBloodPressureAdapter extends RecyclerView.Adapter<RecyclerVie
                 DateUtils.showDatePicker(((BloodPressureViewHolder)holder).dateText, ((VitalsActivity)context));
             }
         });
-
+        hideEditMode(((BloodPressureViewHolder)holder));
     }
 
     private void updateData(String bloodPressure, String date) {

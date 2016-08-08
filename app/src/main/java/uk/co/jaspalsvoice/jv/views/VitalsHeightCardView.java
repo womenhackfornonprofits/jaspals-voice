@@ -96,12 +96,14 @@ public class VitalsHeightCardView extends CardView {
                 (new LinearLayoutManager(heightRecyclerView.getContext()));
         addHeightButton = (ImageView) root.findViewById(R.id.addHeightButton);
         addNewHeightView = (LinearLayout) root.findViewById(R.id.addNewHeight);
+        addNewHeightView.setVisibility(GONE);
         saveLayout = (LinearLayout) addNewHeightView.findViewById(R.id.saveLayout);
         saveButton = (ImageView) saveLayout.findViewById(R.id.saveButton);
         cancelButton = (ImageView) saveLayout.findViewById(R.id.cancelButton);
         heightEdittext = (EditText) addNewHeightView.
-                findViewById(R.id.heightEdittext);
-        dateEdittext = (EditText) addNewHeightView.findViewById(R.id.dateEditText);
+                findViewById(R.id.editFirstField);
+        dateEdittext = (EditText) addNewHeightView.findViewById(R.id.editSecondField);
+        dateEdittext.setFocusable(false);
         LinearLayout bpTitleLayout = (LinearLayout) root.findViewById(R.id.bpTitleLayout);
         TextView blodPressureSubtitle = (TextView)bpTitleLayout.findViewById(R.id.headingFirstField);
         TextView dateSubtitle = (TextView)root.findViewById(R.id.headingSecondField);
@@ -121,6 +123,9 @@ public class VitalsHeightCardView extends CardView {
             switch (v.getId()) {
 
                 case R.id.addHeightButton:
+                    heightEdittext.setText("");
+                    dateEdittext.setText("");
+                    hideNoContentView();
                     hideBPList();
                     showAddBPView();
                     break;
@@ -137,7 +142,7 @@ public class VitalsHeightCardView extends CardView {
                     showBPList();
                     break;
 
-                case R.id.dateEditText:
+                case R.id.editSecondField:
                     DateUtils.showDatePicker(dateEdittext, ((VitalsActivity)getContext()));
                     break;
             }

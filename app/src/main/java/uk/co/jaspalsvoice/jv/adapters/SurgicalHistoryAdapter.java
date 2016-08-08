@@ -44,11 +44,12 @@ public class SurgicalHistoryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         public SurgicalHistoryViewHolder(View itemView) {
             super(itemView);
-            surgicalHistoryEdittext = (EditText) itemView.findViewById(R.id.surgicalHistoryEdittext);
-            dateText = (EditText) itemView.findViewById(R.id.dateEditText);
+            surgicalHistoryEdittext = (EditText) itemView.findViewById(R.id.editFirstField);
+            dateText = (EditText) itemView.findViewById(R.id.editSecondField);
+            dateText.setFocusable(false);
             editButton = (ImageView) itemView.findViewById(R.id.editButton);
-            surgicalHistoryTextView = (TextView) itemView.findViewById(R.id.surgicalHistoryTextView);
-            dateTextView = (TextView) itemView.findViewById(R.id.dateTextView);
+            surgicalHistoryTextView = (TextView) itemView.findViewById(R.id.dataFirstField);
+            dateTextView = (TextView) itemView.findViewById(R.id.dataSecondField);
             editLayout = (LinearLayout) itemView.findViewById(R.id.saveLayout);
             saveButton = (ImageView) editLayout.findViewById(R.id.saveButton);
             cancelButton = (ImageView) editLayout.findViewById(R.id.cancelButton);
@@ -58,7 +59,7 @@ public class SurgicalHistoryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).
-                inflate(R.layout.list_item_surgical_history, parent, false);
+                inflate(R.layout.common_list_item, parent, false);
         return new SurgicalHistoryViewHolder(view);
     }
 
@@ -113,6 +114,7 @@ public class SurgicalHistoryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 DateUtils.showDatePicker(((SurgicalHistoryViewHolder)holder).dateText, ((DiagnosesActivity)context));
             }
         });
+        hideEditMode((SurgicalHistoryViewHolder)holder);
     }
 
     private void updateData(String surgicalHistory, String date) {

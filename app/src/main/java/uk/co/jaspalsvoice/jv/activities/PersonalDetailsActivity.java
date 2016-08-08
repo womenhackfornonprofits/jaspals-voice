@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Date;
@@ -118,6 +119,7 @@ public class PersonalDetailsActivity extends BaseActivity {
         postalCode.setText(preferences.getZipCode());
         country.setText(preferences.getCountry());
         genderSpinner.setSelection(preferences.getGender() ? 0 : 1);
+
         translatorNeededSpinner.setSelection(preferences.getPersonalDetailsNeedTranslator() ? 0 : 1);
         nextOfKin.setText(preferences.getNextOfKin());
         firstLang.setText(preferences.getFirstLanguage());
@@ -154,15 +156,15 @@ public class PersonalDetailsActivity extends BaseActivity {
     private void initSpinners() {
 
         ArrayAdapter<String> genderAdapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item,
+                this,R.layout.spinner_item,
                 getResources().getStringArray(R.array.gender_spinner));
-        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        genderAdapter.setDropDownViewResource(R.layout.spinner_item);
         genderSpinner.setAdapter(genderAdapter);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item,
+                this,R.layout.spinner_item,
                 getResources().getStringArray(R.array.yes_no_spinner_item));
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
         translatorNeededSpinner.setAdapter(adapter);
 
     }

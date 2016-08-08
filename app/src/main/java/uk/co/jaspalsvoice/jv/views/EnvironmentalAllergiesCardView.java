@@ -93,12 +93,12 @@ public class EnvironmentalAllergiesCardView extends CardView {
                 (new LinearLayoutManager(environmentalAllergiesRecyclerView.getContext()));
         addEnvironmentalAllergiesButton = (ImageView) root.findViewById(R.id.addEnvironmentalAllergiesButton);
         addNewEnvironmentalAllergiesView = (LinearLayout) root.findViewById(R.id.addNewEnvironmentalAllergies);
+        addNewEnvironmentalAllergiesView.setVisibility(GONE);
         saveLayout = (LinearLayout) addNewEnvironmentalAllergiesView.findViewById(R.id.saveLayout);
         saveButton = (ImageView) saveLayout.findViewById(R.id.saveButton);
         cancelButton = (ImageView) saveLayout.findViewById(R.id.cancelButton);
-        environmentalAllergiesEdittext = (EditText) addNewEnvironmentalAllergiesView.
-                findViewById(R.id.environmentalAllergiesEdittext);
-        dateEdittext = (EditText) addNewEnvironmentalAllergiesView.findViewById(R.id.typeEditText);
+        environmentalAllergiesEdittext = (EditText) addNewEnvironmentalAllergiesView.findViewById(R.id.editFirstField);
+        dateEdittext = (EditText) addNewEnvironmentalAllergiesView.findViewById(R.id.editSecondField);
         LinearLayout bpTitleLayout = (LinearLayout) root.findViewById(R.id.bpTitleLayout);
         TextView blodPressureSubtitle = (TextView)bpTitleLayout.findViewById(R.id.headingFirstField);
         TextView dateSubtitle = (TextView)root.findViewById(R.id.headingSecondField);
@@ -118,6 +118,9 @@ public class EnvironmentalAllergiesCardView extends CardView {
             switch (v.getId()) {
 
                 case R.id.addEnvironmentalAllergiesButton:
+                    environmentalAllergiesEdittext.setText("");
+                    dateEdittext.setText("");
+                    hideNoContentView();
                     hideBPList();
                     showAddBPView();
                     break;

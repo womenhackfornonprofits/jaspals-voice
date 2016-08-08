@@ -44,11 +44,12 @@ public class VitalsHeightAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         public HeightViewHolder(View itemView) {
             super(itemView);
-            heightEdittext = (EditText) itemView.findViewById(R.id.heightEdittext);
-            dateText = (EditText) itemView.findViewById(R.id.dateEditText);
+            heightEdittext = (EditText) itemView.findViewById(R.id.editFirstField);
+            dateText = (EditText) itemView.findViewById(R.id.editSecondField);
+            dateText.setFocusable(false);
             editButton = (ImageView) itemView.findViewById(R.id.editButton);
-            heightTextView = (TextView) itemView.findViewById(R.id.heightTextView);
-            dateTextView = (TextView) itemView.findViewById(R.id.dateTextView);
+            heightTextView = (TextView) itemView.findViewById(R.id.dataFirstField);
+            dateTextView = (TextView) itemView.findViewById(R.id.dataSecondField);
             editLayout = (LinearLayout) itemView.findViewById(R.id.saveLayout);
             saveButton = (ImageView) editLayout.findViewById(R.id.saveButton);
             cancelButton = (ImageView) editLayout.findViewById(R.id.cancelButton);
@@ -58,7 +59,7 @@ public class VitalsHeightAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).
-                inflate(R.layout.list_item_vitals_height, parent, false);
+                inflate(R.layout.common_list_item, parent, false);
         return new HeightViewHolder(view);
     }
 
@@ -112,6 +113,7 @@ public class VitalsHeightAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 DateUtils.showDatePicker(((HeightViewHolder)holder).dateText, ((VitalsActivity)context));
             }
         });
+        hideEditMode(((HeightViewHolder)holder));
     }
 
     private void updateData(String height, String date) {

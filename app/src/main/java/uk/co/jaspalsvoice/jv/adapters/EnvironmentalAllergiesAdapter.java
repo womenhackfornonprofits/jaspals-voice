@@ -43,11 +43,11 @@ public class EnvironmentalAllergiesAdapter extends RecyclerView.Adapter<Recycler
 
         public EnvironmentalAllergiesViewHolder(View itemView) {
             super(itemView);
-            environmentalAllergiesEdittext = (EditText) itemView.findViewById(R.id.environmentalAllergiesEdittext);
-            typeText = (EditText) itemView.findViewById(R.id.typeEditText);
+            environmentalAllergiesEdittext = (EditText) itemView.findViewById(R.id.editFirstField);
+            typeText = (EditText) itemView.findViewById(R.id.editSecondField);
             editButton = (ImageView) itemView.findViewById(R.id.editButton);
-            environmentalAllergiesTextView = (TextView) itemView.findViewById(R.id.environmentalAllergiesTextView);
-            typeTextView = (TextView) itemView.findViewById(R.id.typeTextView);
+            environmentalAllergiesTextView = (TextView) itemView.findViewById(R.id.dataFirstField);
+            typeTextView = (TextView) itemView.findViewById(R.id.dataSecondField);
             editLayout = (LinearLayout) itemView.findViewById(R.id.saveLayout);
             saveButton = (ImageView) editLayout.findViewById(R.id.saveButton);
             cancelButton = (ImageView) editLayout.findViewById(R.id.cancelButton);
@@ -57,7 +57,7 @@ public class EnvironmentalAllergiesAdapter extends RecyclerView.Adapter<Recycler
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).
-                inflate(R.layout.list_item_environmental_allergies, parent, false);
+                inflate(R.layout.common_list_item, parent, false);
         return new EnvironmentalAllergiesViewHolder(view);
     }
 
@@ -104,6 +104,7 @@ public class EnvironmentalAllergiesAdapter extends RecyclerView.Adapter<Recycler
                 hideEditMode(((EnvironmentalAllergiesViewHolder) holder));
             }
         });
+        hideEditMode(((EnvironmentalAllergiesViewHolder)holder));
     }
 
     private void uptypeData(String environmentalAllergies, String type) {
