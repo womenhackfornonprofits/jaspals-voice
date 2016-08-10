@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:visibility="visible"
-        android:padding="5dp" />
+        android:padding="@dimen/margin_xx_small" />
 
     <TextView
         android:id="@+id/noContentView"

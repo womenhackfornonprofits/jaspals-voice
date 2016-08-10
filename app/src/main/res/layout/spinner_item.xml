@@ -5,4 +5,5 @@
     android:layout_height="wrap_content"
     android:textSize="@dimen/text_normal_size"
     android:textColor="@color/colorPrimaryDark"
+    android:padding="@dimen/margin_x_small"
     />

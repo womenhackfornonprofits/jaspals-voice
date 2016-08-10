@@ -18,13 +18,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/separatorForFirstHeading"
-            android:inputType="text"
             android:minWidth="100dp"
             android:textSize="@dimen/text_normal_size" />
 
         <View
             android:id="@+id/separatorForFirstHeading"
-            android:layout_width="0dp"
+            android:layout_width="4dp"
             android:layout_height="0dp"
             android:layout_centerInParent="true" />
 

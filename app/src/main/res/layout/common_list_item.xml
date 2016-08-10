@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/separatorForFirstData"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:minWidth="100dp"
             android:textSize="@dimen/text_normal_size" />
 
@@ -28,14 +28,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/separatorForFirstData"
-            android:inputType="text"
             android:minWidth="100dp"
             android:textSize="@dimen/text_normal_size"
             android:visibility="gone" />
 
         <View
             android:id="@+id/separatorForFirstData"
-            android:layout_width="0dp"
+            android:layout_width="4dp"
             android:layout_height="0dp"
             android:layout_centerInParent="true" />
 
@@ -55,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/separatorForFirstData"
+            android:inputType="textMultiLine"
             android:minWidth="100dp"
             android:textSize="@dimen/text_normal_size" />
 
