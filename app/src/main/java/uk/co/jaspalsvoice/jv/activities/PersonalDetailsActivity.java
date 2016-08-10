@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,6 +74,7 @@ public class PersonalDetailsActivity extends BaseActivity {
                 } else {
                     CommonUtils.showEmailToast(PersonalDetailsActivity.this);
                 }
+                mainLayout.requestFocus();
             }
         });
 
@@ -88,6 +90,7 @@ public class PersonalDetailsActivity extends BaseActivity {
         dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonsLayout.setVisibility(View.VISIBLE);
                 DateUtils.showDatePicker(dob, PersonalDetailsActivity.this);
             }
         });
@@ -100,6 +103,38 @@ public class PersonalDetailsActivity extends BaseActivity {
                 } else {
                     buttonsLayout.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+        genderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if ((preferences.getGender() && position == 0)
+                        || (!preferences.getGender() && position == 1)) {
+                    buttonsLayout.setVisibility(View.GONE);
+                } else {
+                    buttonsLayout.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        translatorNeededSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if ((preferences.getPersonalDetailsNeedTranslator() && position == 0)
+                        || (!preferences.getPersonalDetailsNeedTranslator() && position == 1)) {
+                    buttonsLayout.setVisibility(View.GONE);
+                } else {
+                    buttonsLayout.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
     }
