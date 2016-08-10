@@ -70,7 +70,6 @@ public class EatingDrinkingCardView extends CardView {
         cancelBtn = (Button) root.findViewById(R.id.cancel);
         saveBtn = (Button) root.findViewById(R.id.save);
         feedingMethod = (EditText) root.findViewById(R.id.feedingMethodEdittext);
-        feedingMethod.setFocusable(false);
 
         //options = getResources().getStringArray(R.array.yes_no_spinner_item);
 //        textView.setText(options[0]);
@@ -93,6 +92,8 @@ public class EatingDrinkingCardView extends CardView {
             public void onClick(View v) {
                 setSpinner(text);
                 showNonEditMode();
+                feedingMethod.setText(preferences.getFeedingMethod());
+                feedingMethod.clearFocus();
             }
         });
 
@@ -105,10 +106,13 @@ public class EatingDrinkingCardView extends CardView {
                 feedingMethod.clearFocus();
             }
         });
-        feedingMethod.setOnClickListener(new OnClickListener() {
+
+        feedingMethod.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
-            public void onClick(View v) {
-                buttonsView.setVisibility(VISIBLE);
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    buttonsView.setVisibility(VISIBLE);
+                }
             }
         });
 

@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import uk.co.jaspalsvoice.jv.JvPreferences;
 import uk.co.jaspalsvoice.jv.R;
 import uk.co.jaspalsvoice.jv.activities.BaseActivity;
 
@@ -31,7 +30,6 @@ public class TickBoxListCardView extends CardView {
     private ViewGroup buttonsView;
     private Button cancelBtn;
     private Button saveBtn;
-
     private TickBoxListAdapter adapter;
 
     public TickBoxListCardView(Context context) {
@@ -70,12 +68,11 @@ public class TickBoxListCardView extends CardView {
         buttonsView = (ViewGroup) root.findViewById(R.id.buttons);
         cancelBtn = (Button) root.findViewById(R.id.cancel);
         saveBtn = (Button) root.findViewById(R.id.save);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setHasFixedSize(true);
         recyclerView.setMinimumHeight(computeMinHeight());
 
-        titleView.setOnClickListener(new OnClickListener() {
+        root.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 editMode = !editMode;
@@ -92,6 +89,7 @@ public class TickBoxListCardView extends CardView {
             @Override
             public void onClick(View v) {
                 showNonEditMode();
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -100,48 +98,21 @@ public class TickBoxListCardView extends CardView {
             public void onClick(View v) {
                 showNonEditMode();
                 save();
+                adapter.notifyDataSetChanged();
             }
         });
     }
 
     private void save() {
-        if (title.equals(getResources().getString(R.string.about_me_sitting_position))){
-            BaseActivity.preferences.storeOptions(adapter.getOptionsArray(),getResources().
-                    getString(R.string.about_me_sitting_position));
-        } else if (title.equals(getResources().getString(R.string.about_me_need_to_use))){
-            BaseActivity.preferences.storeOptions(adapter.getOptionsArray(),getResources().
-                    getString(R.string.about_me_need_to_use));
-        } else if (title.equals(getResources().getString(R.string.about_me_breathing_when))){
-            BaseActivity.preferences.storeOptions(adapter.getOptionsArray(),getResources().
-                    getString(R.string.about_me_breathing_when));
-        } else if (title.equals(getResources().getString(R.string.about_me_sleep_position))){
-            BaseActivity.preferences.storeOptions(adapter.getOptionsArray(),getResources().
-                    getString(R.string.about_me_sleep_position));
-        } else if (title.equals(getResources().getString(R.string.about_me_transfer_to))){
-            BaseActivity.preferences.storeOptions(adapter.getOptionsArray(),getResources().
-                    getString(R.string.about_me_transfer_to));
-        }
+        BaseActivity.preferences.storeOptions(adapter.getOptionsArray(), title, adapter.getOtherData());
     }
 
-    private void getData(){
+    private void getData() {
         if (title != null) {
-            if (title.equals(getResources().getString(R.string.about_me_sitting_position))) {
-                adapter = new TickBoxListAdapter(data, BaseActivity.preferences.loadOptions(
-                        getResources().getString(R.string.about_me_sitting_position)));
-            } else if (title.equals(getResources().getString(R.string.about_me_need_to_use))) {
-                adapter = new TickBoxListAdapter(data, BaseActivity.preferences.loadOptions(
-                        getResources().getString(R.string.about_me_need_to_use)));
-            } else if (title.equals(getResources().getString(R.string.about_me_breathing_when))) {
-                adapter = new TickBoxListAdapter(data, BaseActivity.preferences.loadOptions(
-                        getResources().getString(R.string.about_me_breathing_when)));
-            } else if (title.equals(getResources().getString(R.string.about_me_sleep_position))) {
-                adapter = new TickBoxListAdapter(data, BaseActivity.preferences.loadOptions(
-                        getResources().getString(R.string.about_me_sleep_position)));
-            } else if (title.equals(getResources().getString(R.string.about_me_transfer_to))) {
-                adapter = new TickBoxListAdapter(data, BaseActivity.preferences.loadOptions(
-                        getResources().getString(R.string.about_me_transfer_to)));
-            }
+            adapter = new TickBoxListAdapter(data, BaseActivity.preferences.loadOptions(title),
+                    BaseActivity.preferences.getOtherData(title));
             if (adapter != null) {
+                adapter.setCardView(this);
                 recyclerView.setAdapter(adapter);
             }
         }
@@ -169,12 +140,10 @@ public class TickBoxListCardView extends CardView {
         overlayView.setVisibility(VISIBLE);
         recyclerView.setVisibility(VISIBLE);
         buttonsView.setVisibility(GONE);
-        titleView.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(R.drawable.ic_action_edit), null);
     }
 
-    private void showEditMode() {
+    public void showEditMode() {
         overlayView.setVisibility(GONE);
-        titleView.setCompoundDrawables(null, null, null, null);
         recyclerView.setVisibility(VISIBLE);
         buttonsView.setVisibility(VISIBLE);
     }

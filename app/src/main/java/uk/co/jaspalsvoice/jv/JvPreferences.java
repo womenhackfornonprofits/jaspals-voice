@@ -244,24 +244,29 @@ public class JvPreferences {
         return preferences.getString(CARER_LANG, "");
     }
 
-    public boolean storeOptions(Boolean[] array, String arrayName) {
+    public boolean storeOptions(boolean[] array, String arrayName, String otherData) {
 
         editor.putInt(arrayName + "_size", array.length);
 
         for (int i = 0; i < array.length; i++)
             editor.putBoolean(arrayName + "_" + i, array[i]);
 
+        editor.putString(arrayName + "_other", otherData);
         return editor.commit();
     }
 
-    public Boolean[] loadOptions(String arrayName) {
+    public boolean[] loadOptions(String arrayName) {
 
         int size = preferences.getInt(arrayName + "_size", 0);
-        Boolean array[] = new Boolean[size];
+        boolean array[] = new boolean[size];
         for (int i = 0; i < size; i++)
             array[i] = preferences.getBoolean(arrayName + "_" + i, false);
 
         return array;
+    }
+
+    public String getOtherData(String type) {
+        return preferences.getString(type + "_other", "");
     }
 
     public void setBreathingDifficultiesStatus(boolean isBreathingDifficult) {

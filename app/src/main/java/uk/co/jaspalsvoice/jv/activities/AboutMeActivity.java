@@ -1,6 +1,7 @@
 package uk.co.jaspalsvoice.jv.activities;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 import uk.co.jaspalsvoice.jv.R;
 import uk.co.jaspalsvoice.jv.views.EatingDrinkingCardView;
@@ -53,6 +54,8 @@ public class AboutMeActivity extends BaseActivity {
 
         TickBoxListCardView transferTo = (TickBoxListCardView) findViewById(R.id.transfer_to);
         transferTo.setTitle(getString(R.string.about_me_transfer_to));
+        LinearLayout personalCareLayout=(LinearLayout)findViewById(R.id.personalCareLayout);
+        personalCareLayout.requestFocus();
 
     }
 }

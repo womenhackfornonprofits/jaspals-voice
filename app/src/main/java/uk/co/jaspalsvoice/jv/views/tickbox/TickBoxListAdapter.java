@@ -16,47 +16,50 @@ public class TickBoxListAdapter extends RecyclerView.Adapter<TickBoxListAdapter.
 
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_OTHER = 1;
-    private Boolean[] optionsArray;
-
+    private boolean[] optionsArray;
+    private boolean[] newOptionsArray;
     private String[] data;
+    private TickBoxListCardView cardView;
+    private EditText otherEditTextView;
+    private String otherData;
 
-    public TickBoxListAdapter(String[] data, Boolean[] optionsArray) {
+    public TickBoxListAdapter(String[] data, boolean[] optionsArray, String otherData) {
         this.data = data;
         if (optionsArray.length > 0) {
             this.optionsArray = optionsArray;
         } else {
-            this.optionsArray = new Boolean[data.length];
+            this.optionsArray = new boolean[data.length];
             for (int position = 0; position < this.optionsArray.length; position++){
                 this.optionsArray[position] = false;
             }
         }
+        this.otherData = otherData;
+        this.newOptionsArray = new boolean[data.length];
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public void setCardView(TickBoxListCardView cardView) {
+        this.cardView = cardView;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public CheckedTextView checkedTextView;
 
         public ViewHolder(View view) {
             super(view);
             checkedTextView = (CheckedTextView) view.findViewById(R.id.item);
-            checkedTextView.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    ((CheckedTextView) v).toggle();
-                }
-            });
         }
     }
 
-    public static class OtherViewHolder extends ViewHolder {
-        public EditText otherEditTextView;
-
+    public class OtherViewHolder extends ViewHolder {
         public OtherViewHolder(View view) {
             super(view);
             otherEditTextView = (EditText) view.findViewById(R.id.other);
-            checkedTextView.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    CheckedTextView checkedView = (CheckedTextView) v;
-                    checkedView.toggle();
-                    otherEditTextView.setVisibility(checkedView.isChecked() ? View.VISIBLE : View.INVISIBLE);
+            otherEditTextView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (hasFocus) {
+                        cardView.showEditMode();
+                    }
                 }
             });
         }
@@ -80,19 +83,41 @@ public class TickBoxListAdapter extends RecyclerView.Adapter<TickBoxListAdapter.
         holder.checkedTextView.setText(data[position]);
         if (optionsArray != null && optionsArray.length > 0){
             holder.checkedTextView.setChecked(optionsArray[position]);
+            newOptionsArray[position] = optionsArray[position];
         }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (optionsArray != null && optionsArray.length > 0){
-                    holder.checkedTextView.setChecked(!optionsArray[position]);
-                    optionsArray[position] = holder.checkedTextView.isChecked();
-                } else {
-                    holder.checkedTextView.setChecked(true);
-                }
-                optionsArray[position] = holder.checkedTextView.isChecked();
+
+        if (holder instanceof OtherViewHolder) {
+            final OtherViewHolder otherViewHolder = (OtherViewHolder) holder;
+            if (otherViewHolder.checkedTextView.isChecked()) {
+                otherEditTextView.setVisibility(View.VISIBLE);
+                otherEditTextView.setText(otherData);
+            } else {
+                otherEditTextView.setVisibility(View.INVISIBLE);
+                otherEditTextView.setText("");
             }
-        });
+            otherViewHolder.checkedTextView.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    CheckedTextView checkedView = (CheckedTextView) v;
+                    checkedView.toggle();
+                    otherEditTextView.setVisibility(checkedView.isChecked() ? View.VISIBLE : View.INVISIBLE);
+                    cardView.showEditMode();
+                    newOptionsArray[position] = checkedView.isChecked();
+                    if (!otherViewHolder.checkedTextView.isChecked()) {
+                        otherEditTextView.setText("");
+                    }
+                }
+            });
+        } else {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CheckedTextView checkedView = (CheckedTextView) v;
+                    checkedView.toggle();
+                    cardView.showEditMode();
+                    newOptionsArray[position] = checkedView.isChecked();
+                }
+            });
+        }
     }
 
     @Override
@@ -105,7 +130,19 @@ public class TickBoxListAdapter extends RecyclerView.Adapter<TickBoxListAdapter.
         return position == getItemCount() - 1 ? TYPE_OTHER : TYPE_ITEM;
     }
 
-    public Boolean[] getOptionsArray(){
+    public boolean[] getOptionsArray(){
+        optionsArray = newOptionsArray;
+        newOptionsArray = new boolean[data.length];
+
         return optionsArray;
+    }
+
+    public String getOtherData() {
+        if (otherEditTextView != null) {
+            otherData = otherEditTextView.getText().toString().trim();
+            return otherData;
+        } else {
+            return "";
+        }
     }
 }
