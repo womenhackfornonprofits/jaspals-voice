@@ -24,6 +24,8 @@
         android:id="@+id/NameInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
         android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
@@ -38,6 +40,8 @@
         android:id="@+id/AddressInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
         android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
@@ -52,6 +56,8 @@
         android:id="@+id/PhoneInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
         android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
@@ -66,6 +72,8 @@
         android:id="@+id/eMailInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
         android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
@@ -79,6 +87,8 @@
         android:id="@+id/FaxInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
         android:layout_marginTop="10dp"
         app:hintTextAppearance="@style/StyledTilEditTextFloatingLabel">
 
@@ -106,15 +116,5 @@
             style="@style/StyleButton"
             android:text="@string/save_button" />
     </LinearLayout>
-
-
-    <Button
-        android:id="@+id/editButton"
-        style="@style/DefaultButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/margin_small"
-        android:text="@string/edit_button" />
 
 </LinearLayout>

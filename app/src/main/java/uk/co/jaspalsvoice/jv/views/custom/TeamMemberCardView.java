@@ -44,7 +44,6 @@ public class TeamMemberCardView extends CardView {
     private EditText edit3View;
     private EditText edit4View;
     private ViewGroup buttonsView;
-    private Button editButton;
     private JvApplication application;
     private Context mContext;
 
@@ -82,7 +81,6 @@ public class TeamMemberCardView extends CardView {
         buttonsView = (ViewGroup) root.findViewById(R.id.buttons);
         Button cancelBtn = (Button) root.findViewById(R.id.cancel);
         Button saveBtn = (Button) root.findViewById(R.id.save);
-        editButton = (Button) root.findViewById(R.id.editButton);
         registerFocusListener();
 
         root.setOnClickListener(new OnClickListener() {
@@ -97,21 +95,6 @@ public class TeamMemberCardView extends CardView {
                 }
             }
         });
-
-        editButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editMode = !editMode;
-
-                if (editMode) {
-                    edit1View.requestFocus();
-                    showEditMode();
-                } else {
-                    showNonEditMode();
-                }
-            }
-        });
-
         cancelBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,7 +134,6 @@ public class TeamMemberCardView extends CardView {
         public void onFocusChange(View v, boolean hasFocus) {
             if (hasFocus) {
                 buttonsView.setVisibility(VISIBLE);
-                editButton.setVisibility(GONE);
             }
         }
     };
@@ -231,12 +213,10 @@ public class TeamMemberCardView extends CardView {
             ((GpActivity) mContext).removeEditFocus();
         }
         buttonsView.setVisibility(GONE);
-        editButton.setVisibility(VISIBLE);
     }
 
     private void showEditMode() {
         buttonsView.setVisibility(VISIBLE);
-        editButton.setVisibility(GONE);
     }
 
     private class Save extends AsyncTask<String, Void, Doctor> {

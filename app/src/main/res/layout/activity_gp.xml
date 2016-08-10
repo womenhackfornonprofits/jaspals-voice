@@ -19,7 +19,7 @@
             android:id="@+id/gp_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/margin_large"
             android:elevation="@dimen/elevation"
             android:padding="@dimen/margin_small" />
 
@@ -27,7 +27,7 @@
             android:id="@+id/mnd_contact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/margin_large"
             android:elevation="@dimen/elevation"
             android:padding="@dimen/margin_small" />
 
@@ -35,7 +35,7 @@
             android:id="@+id/physiotherapist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/margin_large"
             android:elevation="@dimen/elevation"
             android:padding="@dimen/margin_small" />
 
@@ -43,7 +43,7 @@
             android:id="@+id/therapist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/margin_large"
             android:elevation="@dimen/elevation"
             android:padding="@dimen/margin_small" />
 
@@ -51,7 +51,7 @@
             android:id="@+id/carer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/margin_large"
             android:elevation="@dimen/elevation"
             android:padding="@dimen/margin_small"
             android:visibility="gone" />
@@ -60,7 +60,7 @@
             android:id="@+id/other_medical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/margin_large"
             android:elevation="@dimen/elevation"
             android:padding="@dimen/margin_small" />
     </LinearLayout>

@@ -48,7 +48,6 @@ public class ConsultantCardView extends CardView {
     private EditText edith4View;
 
     private ViewGroup buttonsView;
-    private Button editButton;
     private Context mContext;
 
     private JvApplication application;
@@ -85,7 +84,6 @@ public class ConsultantCardView extends CardView {
         buttonsView = (ViewGroup) root.findViewById(R.id.buttons);
         Button cancelBtn = (Button) buttonsView.findViewById(R.id.cancel);
         Button saveBtn = (Button) buttonsView.findViewById(R.id.save);
-        editButton = (Button) root.findViewById(R.id.editButton);
 
         registerFocusListener();
 
@@ -101,22 +99,6 @@ public class ConsultantCardView extends CardView {
                 }
             }
         });
-
-        editButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editMode = !editMode;
-
-                if (editMode) {
-                    edit1View.requestFocus();
-                    showEditMode();
-                } else {
-                    showNonEditMode();
-                }
-            }
-        });
-
-
         cancelBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,7 +145,6 @@ public class ConsultantCardView extends CardView {
         public void onFocusChange(View v, boolean hasFocus) {
             if (hasFocus) {
                 buttonsView.setVisibility(VISIBLE);
-                editButton.setVisibility(GONE);
             }
         }
     };
@@ -251,7 +232,6 @@ public class ConsultantCardView extends CardView {
 
     private void showNonEditMode() {
         buttonsView.setVisibility(GONE);
-        editButton.setVisibility(VISIBLE);
 
         if (mContext instanceof GpActivity) {
             ((GpActivity) mContext).removeEditFocus();
@@ -260,7 +240,7 @@ public class ConsultantCardView extends CardView {
 
     private void showEditMode() {
         buttonsView.setVisibility(VISIBLE);
-        editButton.setVisibility(GONE);
+
     }
 
     private class Save extends AsyncTask<String, Void, Doctor> {
