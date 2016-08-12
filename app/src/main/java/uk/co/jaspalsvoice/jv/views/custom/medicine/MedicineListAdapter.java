@@ -80,6 +80,9 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             renalCardView = (YesNoCardView) view.findViewById(R.id.renalDosageCard);
             hepaticCardView = (YesNoCardView) view.findViewById(R.id.hepaticDosageCard);
 
+            renalCardView.disableTitle(false);
+            hepaticCardView.disableTitle(false);
+
             renalCardView.setTitle("Renal dosage required");
             renalCardView.setTitleId(R.string.renal_dosage);
 
@@ -109,11 +112,6 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
 
         private void showNonEditMode() {
-
-           /* saveMedicineData(nameEdit.getText().toString(),
-                    dosageEdit.getText().toString(), reasonEdit.getText().toString(),
-                    frequencyEdit.getText().toString());*/
-
             nameEdit.setVisibility(View.GONE);
             nameView.setVisibility(View.VISIBLE);
             nameView.setText(nameEdit.getText());
@@ -130,9 +128,11 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             frequencyView.setVisibility(View.VISIBLE);
             frequencyView.setText(frequencyEdit.getText());
 
-            renalCardView.disableEdit();
-            hepaticCardView.disableEdit();
+            renalCardView.showNonEditMode();
+            renalCardView.disableTitle(true);
 
+            hepaticCardView.showNonEditMode();
+            hepaticCardView.disableTitle(true);
             edit.setText("Edit");
         }
 
@@ -149,8 +149,8 @@ public class MedicineListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             frequencyEdit.setVisibility(View.VISIBLE);
             frequencyView.setVisibility(View.GONE);
 
-            renalCardView.enableEdit();
-            hepaticCardView.enableEdit();
+            renalCardView.showEditMode();
+            hepaticCardView.showEditMode();
 
             edit.setText("Save");
         }

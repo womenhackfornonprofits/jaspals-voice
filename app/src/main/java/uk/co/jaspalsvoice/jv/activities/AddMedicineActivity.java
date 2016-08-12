@@ -83,14 +83,15 @@ public class AddMedicineActivity extends BaseActivity {
         renalCardView.setTitle(getResources().
                 getString(R.string.renal_dosage));
         renalCardView.setTitleId(R.string.renal_dosage);
+        renalCardView.showEditMode();
+        renalCardView.disableTitle(false);
 
         hepaticCardView.setTitle(getResources().
                 getString(R.string.hepatic_dosage));
         hepaticCardView.setTitleId(R.string.hepatic_dosage);
+        hepaticCardView.showEditMode();
+        hepaticCardView.disableTitle(false);
     }
-
-
-
 
     public void saveMedicineData(String... medicineData) {
         new Save().execute(medicineData);

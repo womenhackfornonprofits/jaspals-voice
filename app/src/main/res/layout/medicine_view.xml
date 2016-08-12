@@ -1,177 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:stretchColumns="1">
+    android:layout_marginBottom="@dimen/margin_large"
+    android:elevation="@dimen/elevation">
 
-    <TableRow
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_small"
+        android:stretchColumns="1">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/medicines_name"
-            android:textSize="@dimen/text_normal_size" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/edit_value_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:inputType="text"
-            android:textSize="@dimen/text_normal_size" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/medicines_name"
+                android:textSize="@dimen/text_normal_size" />
 
-        <TextView
-            android:id="@+id/show_value_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/default_text_when_not_specified"
-            android:textSize="@dimen/text_normal_size"
-            android:visibility="gone" />
+            <EditText
+                android:id="@+id/edit_value_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="text"
+                android:textSize="@dimen/text_normal_size" />
 
-    </TableRow>
+            <TextView
+                android:id="@+id/show_value_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/default_text_when_not_specified"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_normal_size"
+                android:visibility="gone" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        </TableRow>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/medicines_dosage"
-            android:textSize="@dimen/text_normal_size" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/edit_value_dosage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:inputType="text"
-            android:textSize="@dimen/text_normal_size" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/medicines_dosage"
+                android:textSize="@dimen/text_normal_size" />
 
-        <TextView
-            android:id="@+id/show_value_dosage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/default_text_when_not_specified"
-            android:textSize="@dimen/text_normal_size"
-            android:visibility="gone" />
+            <EditText
+                android:id="@+id/edit_value_dosage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="text"
+                android:textSize="@dimen/text_normal_size" />
 
-    </TableRow>
+            <TextView
+                android:id="@+id/show_value_dosage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/default_text_when_not_specified"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_normal_size"
+                android:visibility="gone" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        </TableRow>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/medicines_reason"
-            android:textSize="@dimen/text_normal_size" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/edit_value_reason"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:inputType="text"
-            android:textSize="@dimen/text_normal_size" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/medicines_reason"
+                android:textSize="@dimen/text_normal_size" />
 
-        <TextView
-            android:id="@+id/show_value_reason"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/default_text_when_not_specified"
-            android:textSize="@dimen/text_normal_size"
-            android:visibility="gone" />
+            <EditText
+                android:id="@+id/edit_value_reason"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="text"
+                android:textSize="@dimen/text_normal_size" />
 
-    </TableRow>
+            <TextView
+                android:id="@+id/show_value_reason"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/default_text_when_not_specified"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_normal_size"
+                android:visibility="gone" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        </TableRow>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/medicines_frequency"
-            android:textSize="@dimen/text_normal_size" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/edit_value_frequency"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:inputType="text"
-            android:textSize="@dimen/text_normal_size" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/medicines_frequency"
+                android:textSize="@dimen/text_normal_size" />
 
-        <TextView
-            android:id="@+id/show_value_frequency"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/default_text_when_not_specified"
-            android:textSize="@dimen/text_normal_size"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:visibility="gone" />
+            <EditText
+                android:id="@+id/edit_value_frequency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="text"
+                android:textSize="@dimen/text_normal_size" />
 
-    </TableRow>
+            <TextView
+                android:id="@+id/show_value_frequency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_weight="1"
+                android:text="@string/default_text_when_not_specified"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_normal_size"
+                android:visibility="gone" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        </TableRow>
 
-        <uk.co.jaspalsvoice.jv.views.YesNoCardView
-            android:id="@+id/renalDosageCard"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_weight="1"
-            android:elevation="@dimen/elevation"
-            android:padding="@dimen/margin_small" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </TableRow>
+            <uk.co.jaspalsvoice.jv.views.YesNoCardView
+                android:id="@+id/renalDosageCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_weight="1"
+                android:elevation="@dimen/elevation" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        </TableRow>
 
-        <uk.co.jaspalsvoice.jv.views.YesNoCardView
-            android:id="@+id/hepaticDosageCard"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_weight="1"
-            android:elevation="@dimen/elevation"
-            android:padding="@dimen/margin_small" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </TableRow>
+            <uk.co.jaspalsvoice.jv.views.YesNoCardView
+                android:id="@+id/hepaticDosageCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_weight="1"
+                android:elevation="@dimen/elevation" />
+
+        </TableRow>
 
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/edit"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_span="2"
-            android:text="@string/medicines_edit" />
-    </TableRow>
+            <Button
+                android:id="@+id/edit"
+                style="@style/DefaultButton"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_span="2"
+                android:text="@string/medicines_edit" />
+        </TableRow>
 
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        layout="@layout/divider" />
-
-</TableLayout>
+    </TableLayout>
+</android.support.v7.widget.CardView>

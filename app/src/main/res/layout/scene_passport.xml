@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:fillViewport="true"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -30,7 +30,10 @@
                     android:layout_weight="1"
                     android:background="@drawable/key_selector"
                     android:clickable="true"
-                    android:padding="@dimen/margin_normal">
+                    android:paddingBottom="@dimen/margin_x_small"
+                    android:paddingLeft="@dimen/margin_normal"
+                    android:paddingRight="@dimen/margin_normal"
+                    android:paddingTop="@dimen/margin_x_small">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -62,7 +65,10 @@
                     android:layout_weight="1"
                     android:background="@drawable/key_selector"
                     android:clickable="true"
-                    android:padding="@dimen/margin_normal">
+                    android:paddingBottom="@dimen/margin_x_small"
+                    android:paddingLeft="@dimen/margin_normal"
+                    android:paddingRight="@dimen/margin_normal"
+                    android:paddingTop="@dimen/margin_x_small">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -102,7 +108,10 @@
                     android:layout_weight="1"
                     android:background="@drawable/key_selector"
                     android:clickable="true"
-                    android:padding="@dimen/margin_normal">
+                    android:paddingBottom="@dimen/margin_x_small"
+                    android:paddingLeft="@dimen/margin_normal"
+                    android:paddingRight="@dimen/margin_normal"
+                    android:paddingTop="@dimen/margin_x_small">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -134,7 +143,10 @@
                     android:layout_weight="1"
                     android:background="@drawable/key_selector"
                     android:clickable="true"
-                    android:padding="@dimen/margin_normal">
+                    android:paddingBottom="@dimen/margin_x_small"
+                    android:paddingLeft="@dimen/margin_normal"
+                    android:paddingRight="@dimen/margin_normal"
+                    android:paddingTop="@dimen/margin_x_small">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -159,9 +171,7 @@
                 </FrameLayout>
 
 
-
                 <FrameLayout
-                    android:visibility="gone"
                     android:id="@+id/six"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -169,7 +179,11 @@
                     android:layout_weight="1"
                     android:background="@drawable/key_selector"
                     android:clickable="true"
-                    android:padding="@dimen/margin_normal">
+                    android:paddingBottom="@dimen/margin_x_small"
+                    android:paddingLeft="@dimen/margin_normal"
+                    android:paddingRight="@dimen/margin_normal"
+                    android:paddingTop="@dimen/margin_x_small"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -208,7 +222,10 @@
                     android:layout_weight="1"
                     android:background="@drawable/key_selector"
                     android:clickable="true"
-                    android:padding="@dimen/margin_normal">
+                    android:paddingBottom="@dimen/margin_x_small"
+                    android:paddingLeft="@dimen/margin_normal"
+                    android:paddingRight="@dimen/margin_normal"
+                    android:paddingTop="@dimen/margin_x_small">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -240,7 +257,10 @@
                     android:layout_weight="1"
                     android:background="@drawable/key_selector"
                     android:clickable="true"
-                    android:padding="@dimen/margin_normal">
+                    android:paddingBottom="@dimen/margin_x_small"
+                    android:paddingLeft="@dimen/margin_normal"
+                    android:paddingRight="@dimen/margin_normal"
+                    android:paddingTop="@dimen/margin_x_small">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -280,7 +300,10 @@
                     android:layout_weight="1"
                     android:background="@drawable/key_selector"
                     android:clickable="true"
-                    android:padding="@dimen/margin_normal">
+                    android:paddingBottom="@dimen/margin_x_small"
+                    android:paddingLeft="@dimen/margin_normal"
+                    android:paddingRight="@dimen/margin_normal"
+                    android:paddingTop="@dimen/margin_x_small">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -313,7 +336,10 @@
                     android:layout_weight="1"
                     android:background="@drawable/key_selector"
                     android:clickable="true"
-                    android:padding="@dimen/margin_normal">
+                    android:paddingBottom="@dimen/margin_x_small"
+                    android:paddingLeft="@dimen/margin_normal"
+                    android:paddingRight="@dimen/margin_normal"
+                    android:paddingTop="@dimen/margin_x_small">
 
                     <LinearLayout
                         android:layout_width="match_parent"

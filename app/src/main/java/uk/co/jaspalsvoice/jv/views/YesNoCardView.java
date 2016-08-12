@@ -86,6 +86,7 @@ public class YesNoCardView extends CardView {
         cancelBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                editMode = !editMode;
                 setSpinner(text);
                 showNonEditMode();
             }
@@ -94,6 +95,7 @@ public class YesNoCardView extends CardView {
         saveBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                editMode = !editMode;
                 setText(spinnerView.getSelectedItem().toString());
                 showNonEditMode();
                 save();
@@ -142,18 +144,6 @@ public class YesNoCardView extends CardView {
         }
     }
 
-    public void setEditMode(boolean editMode) {
-        this.editMode = editMode;
-    }
-
-    public boolean isEditMode() {
-        return editMode;
-    }
-
-    public int getTitleId() {
-        return titleId;
-    }
-
     public void setTitleId(int titleId) {
         this.titleId = titleId;
         if (titleId == R.string.personal_details_gender) {
@@ -176,7 +166,7 @@ public class YesNoCardView extends CardView {
         textView.setText(options[0]);
     }
 
-    private void showNonEditMode() {
+    public void showNonEditMode() {
         spinnerView.setVisibility(GONE);
         buttonsView.setVisibility(GONE);
         textView.setVisibility(VISIBLE);
@@ -184,11 +174,12 @@ public class YesNoCardView extends CardView {
         titleView.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(R.drawable.ic_action_edit), null);
     }
 
-    private void showEditMode() {
+    public void showEditMode() {
         titleView.setCompoundDrawables(null, null, null, null);
         optionalSubtitleView.setVisibility(TextUtils.isEmpty(subtitle) ? GONE : VISIBLE);
         textView.setVisibility(GONE);
         spinnerView.setVisibility(VISIBLE);
+        setSpinner(textView.getText().toString());
         if (titleId == R.string.renal_dosage || titleId == R.string.hepatic_dosage){
             buttonsView.setVisibility(GONE);
         } else {
@@ -220,17 +211,14 @@ public class YesNoCardView extends CardView {
         return spinnerView.getSelectedItemPosition();
     }
 
-    public void disableEdit() {
-        spinnerView.setEnabled(false);
+    public void disableTitle(boolean setData) {
         titleView.setCompoundDrawables(null, null, null, null);
+        titleView.setClickable(false);
+        titleView.setFocusable(false);
+        if (setData) {
+            textView.setText((String) spinnerView.getSelectedItem());
+        }
     }
-
-    public void enableEdit(){
-        spinnerView.setEnabled(true);
-        titleView.setCompoundDrawablesWithIntrinsicBounds(null, null,
-                getResources().getDrawable(R.drawable.ic_action_edit), null);
-    }
-
 
    /* private void getData() {
         switch (titleId) {
