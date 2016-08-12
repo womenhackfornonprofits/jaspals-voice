@@ -5,11 +5,11 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "uk.co.jaspalsvoice.jv"
+        applicationId "uk.co.medivoice.jv"
         minSdkVersion 19
         targetSdkVersion 23
-        versionCode 8
-        versionName "0.15"
+        versionCode 1
+        versionName "1.0.0"
     }
 
     signingConfigs {
