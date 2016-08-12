@@ -28,89 +28,6 @@
         android:singleLine="false"
         android:textSize="@dimen/text_big_size"/>
 
-
-    <!--<LinearLayout-->
-        <!--android:background="@drawable/bg_layout_suggestion"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="@dimen/margin_xx_small"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:visibility="gone">-->
-
-        <!--<TextView-->
-            <!--android:background="@drawable/suggestion_selector"-->
-            <!--android:clickable="true"-->
-            <!--android:gravity="center"-->
-            <!--android:id="@+id/suggestions_0"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:padding="@dimen/margin_x_small"-->
-            <!--android:singleLine="true"-->
-            <!--android:text="@string/no_suggestion"-->
-            <!--android:textColor="@color/colorPrimaryDark"-->
-            <!--android:textSize="@dimen/text_x_small_size"-->
-            <!--android:textStyle="bold"/>-->
-
-        <!--<View-->
-            <!--android:background="@color/colorPrimary_40"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_width="1dp"/>-->
-
-        <!--<TextView-->
-            <!--android:background="@drawable/suggestion_selector"-->
-            <!--android:clickable="true"-->
-            <!--android:gravity="center"-->
-            <!--android:id="@+id/suggestions_1"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:padding="@dimen/margin_x_small"-->
-            <!--android:singleLine="true"-->
-            <!--android:text="@string/no_suggestion"-->
-            <!--android:textColor="@color/colorPrimary"-->
-            <!--android:textSize="@dimen/text_x_small_size"/>-->
-
-        <!--<View-->
-            <!--android:background="@color/colorPrimary_40"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_width="1dp"/>-->
-
-        <!--<TextView-->
-            <!--android:background="@drawable/suggestion_selector"-->
-            <!--android:clickable="true"-->
-            <!--android:gravity="center"-->
-            <!--android:id="@+id/suggestions_2"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:padding="@dimen/margin_x_small"-->
-            <!--android:singleLine="true"-->
-            <!--android:text="@string/no_suggestion"-->
-            <!--android:textColor="@color/colorPrimary"-->
-            <!--android:textSize="@dimen/text_x_small_size"/>-->
-
-        <!--<View-->
-            <!--android:background="@color/colorPrimary_40"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_width="1dp"/>-->
-
-        <!--<TextView-->
-            <!--android:background="@drawable/suggestion_selector"-->
-            <!--android:clickable="true"-->
-            <!--android:gravity="center"-->
-            <!--android:id="@+id/suggestions_3"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:padding="@dimen/margin_x_small"-->
-            <!--android:singleLine="true"-->
-            <!--android:text="@string/no_suggestion"-->
-            <!--android:textColor="@color/colorPrimary"-->
-            <!--android:textSize="@dimen/text_x_small_size"/>-->
-
-    <!--</LinearLayout>-->
-
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -342,21 +259,23 @@
                 android:textStyle="bold"/>
 
             <FrameLayout
-                android:background="@drawable/clear_button_selector"
+                android:background="@android:color/holo_green_dark"
                 android:clickable="true"
                 android:id="@+id/hash"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/margin_xx_small"
                 android:layout_weight="1"
                 android:layout_width="0dp">
-
-                <ImageView
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:paddingBottom="@dimen/button_padding"
-                    android:paddingTop="@dimen/button_padding"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/flip"/>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_small_size"
+                    android:textColor="@android:color/white"
+                    android:text="@string/medi_records"/>
             </FrameLayout>
         </TableRow>
     </TableLayout>
