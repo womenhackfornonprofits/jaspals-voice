@@ -110,8 +110,7 @@
                 <EditText
                     android:id="@+id/nhsEdittext"
                     style="@style/SingleLineEditTextStyle"
-                    android:hint="@string/personal_details_nhs"
-                    android:inputType="phone" />
+                    android:hint="@string/personal_details_nhs" />
 
             </android.support.design.widget.TextInputLayout>
 
