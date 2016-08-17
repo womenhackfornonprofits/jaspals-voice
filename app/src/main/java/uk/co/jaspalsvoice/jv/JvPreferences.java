@@ -15,6 +15,7 @@ public class JvPreferences {
     private static final String PERSONAL_DETAILS_LIVE_WITH = "pd_live_with";
     private static final String PERSONAL_DETAILS_EMAIL = "pd_email";
     private static final String PERSONAL_DETAILS_DATE_OF_BIRTH = "pd_dob";
+    private static final String PERSONAL_DETAILS_NHS = "pd_nhs";
     private static final String PERSONAL_DETAILS_MAIN_CARER = "pd_main_carer";
     private static final String PERSONAL_DETAILS_CARER_TEL = "pd_carer_tel";
     private static final String PERSONAL_DETAILS_NEED_TRANSLATOR = "pd_need_translator";
@@ -102,6 +103,14 @@ public class JvPreferences {
 
     public void setPersonalDetailsDateOfBirth(String dob) {
         editor.putString(PERSONAL_DETAILS_DATE_OF_BIRTH, dob).apply();
+    }
+
+    public String getPersonalDetailsNHS() {
+        return preferences.getString(PERSONAL_DETAILS_NHS, "");
+    }
+
+    public void setPersonalDetailsNHS(String nhs) {
+        editor.putString(PERSONAL_DETAILS_NHS, nhs).apply();
     }
 
     public String getPersonalDetailsMainCarer() {
@@ -355,6 +364,6 @@ public class JvPreferences {
     }
 
     public String getFeedingMethod() {
-       return preferences.getString(FEEDING_METHOD, "");
+        return preferences.getString(FEEDING_METHOD, "");
     }
 }

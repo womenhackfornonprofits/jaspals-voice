@@ -46,6 +46,7 @@
     <string name="personal_details_email">Email</string>
     <string name="personal_details_dob">D.O.B</string>
     <string name="personal_details_birth">Date Of Birth</string>
+    <string name="personal_details_nhs">NHS/Health Number</string>
     <string name="personal_details_street">Street Address</string>
     <string name="personal_details_Town">Town Address</string>
     <string name="personal_details_country_state_Province"> Country/State/Province</string>

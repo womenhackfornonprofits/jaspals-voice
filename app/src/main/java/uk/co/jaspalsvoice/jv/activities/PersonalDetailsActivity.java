@@ -32,6 +32,7 @@ public class PersonalDetailsActivity extends BaseActivity {
     EditText lastName;
     EditText preferredName;
     EditText dob;
+    EditText nhs;
     EditText streetAddress;
     EditText townAddress;
     EditText state;
@@ -146,6 +147,7 @@ public class PersonalDetailsActivity extends BaseActivity {
         liveWith.setText(preferences.getPersonalDetailsLiveWith());
         email.setText(preferences.getPersonalDetailsEmail());
         dob.setText(preferences.getPersonalDetailsDateOfBirth());
+        nhs.setText(preferences.getPersonalDetailsNHS());
         mainCarer.setText(preferences.getPersonalDetailsMainCarer());
         carerTel.setText(preferences.getPersonalDetailsCarerTel());
         homeTelephone.setText(preferences.getPersonalDetailHomeTel());
@@ -170,6 +172,7 @@ public class PersonalDetailsActivity extends BaseActivity {
         preferences.setPersonalDetailsLiveWith(liveWith.getText().toString());
         preferences.setPersonalDetailsEmail(email.getText().toString());
         preferences.setPersonalDetailsDateOfBirth(dob.getText().toString());
+        preferences.setPersonalDetailsNHS(nhs.getText().toString());
         preferences.setPersonalDetailsMainCarer(mainCarer.getText().toString());
         preferences.setPersonalDetailsCarerTel(carerTel.getText().toString());
         preferences.setHomeTelephone(homeTelephone.getText().toString());
@@ -191,13 +194,13 @@ public class PersonalDetailsActivity extends BaseActivity {
     private void initSpinners() {
 
         ArrayAdapter<String> genderAdapter = new ArrayAdapter<String>(
-                this,R.layout.spinner_item,
+                this, R.layout.spinner_item,
                 getResources().getStringArray(R.array.gender_spinner));
         genderAdapter.setDropDownViewResource(R.layout.spinner_item);
         genderSpinner.setAdapter(genderAdapter);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this,R.layout.spinner_item,
+                this, R.layout.spinner_item,
                 getResources().getStringArray(R.array.yes_no_spinner_item));
         adapter.setDropDownViewResource(R.layout.spinner_item);
         translatorNeededSpinner.setAdapter(adapter);
@@ -209,6 +212,7 @@ public class PersonalDetailsActivity extends BaseActivity {
         lastName = (EditText) findViewById(R.id.lastNameEdittext);
         preferredName = (EditText) findViewById(R.id.preferredNameEdittext);
         dob = (EditText) findViewById(R.id.dobEdittext);
+        nhs = (EditText) findViewById(R.id.nhsEdittext);
         streetAddress = (EditText) findViewById(R.id.streetEdittext);
         townAddress = (EditText) findViewById(R.id.townEdittext);
         state = (EditText) findViewById(R.id.countyEdittext);
