@@ -152,7 +152,7 @@
                 <EditText
                     android:id="@+id/countyEdittext"
                     style="@style/SingleLineEditTextStyle"
-                    android:hint="@string/personal_details_country_state_Province" />
+                    android:hint="@string/personal_details_county_state_Province" />
 
             </android.support.design.widget.TextInputLayout>
 

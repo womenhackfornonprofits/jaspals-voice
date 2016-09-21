@@ -49,7 +49,7 @@
     <string name="personal_details_nhs">NHS/Health Number</string>
     <string name="personal_details_street">Street Address</string>
     <string name="personal_details_Town">Town Address</string>
-    <string name="personal_details_country_state_Province"> Country/State/Province</string>
+    <string name="personal_details_county_state_Province"> County/State/Province</string>
     <string name="personal_details_ZIP">ZIP/Postal Code</string>
     <string name="personal_details_Country">Country</string>
     <string name="personal_details_main_carer">Main Carer</string>

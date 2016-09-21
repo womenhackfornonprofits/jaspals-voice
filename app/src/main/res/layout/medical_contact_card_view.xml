@@ -48,6 +48,9 @@
         <EditText
             android:id="@+id/edit2"
             style="@style/EditTextStyle"
+            android:minLines="1"
+            android:inputType="textMultiLine"
+            android:layout_height="wrap_content"
             android:hint="@string/gp_medical_team_address" />
 
     </android.support.design.widget.TextInputLayout>

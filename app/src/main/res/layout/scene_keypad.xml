@@ -28,6 +28,16 @@
         android:singleLine="false"
         android:textSize="@dimen/text_big_size"/>
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:layout_gravity="right"
+        android:src="@drawable/ic_action_av_volume_down"
+        android:id="@+id/text_to_speech"
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true" />
+
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"

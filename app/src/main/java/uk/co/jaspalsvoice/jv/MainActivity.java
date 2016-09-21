@@ -8,10 +8,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.Settings;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.text.Editable;
 import android.text.InputType;
@@ -35,9 +34,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,6 +49,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -55,12 +57,10 @@ import uk.co.jaspalsvoice.jv.activities.AboutMeActivity;
 import uk.co.jaspalsvoice.jv.activities.AllergiesActivity;
 import uk.co.jaspalsvoice.jv.activities.BaseActivity;
 import uk.co.jaspalsvoice.jv.activities.DiagnosesActivity;
-import uk.co.jaspalsvoice.jv.activities.DiagnosisActivity;
 import uk.co.jaspalsvoice.jv.activities.FontSizeActivity;
 import uk.co.jaspalsvoice.jv.activities.FoodAllergiesActivity;
 import uk.co.jaspalsvoice.jv.activities.GpActivity;
 import uk.co.jaspalsvoice.jv.activities.LikesDislikesActivity;
-import uk.co.jaspalsvoice.jv.activities.MedicalAllergiesActivity;
 import uk.co.jaspalsvoice.jv.activities.MedicinesActivity;
 import uk.co.jaspalsvoice.jv.activities.PersonalDetailsActivity;
 import uk.co.jaspalsvoice.jv.activities.VitalsActivity;
@@ -90,6 +90,8 @@ public class MainActivity extends BaseActivity implements SuggestionsAdapter.Lis
 
     private TextView currentTextCaseView;
     private EditText messageTextView;
+    private TextToSpeech textToSpeech;
+    private ImageButton ttsTextView;
     private int messageTextViewLocation[] = new int[2];
 
     private Layout messageTextLayout;
@@ -351,6 +353,17 @@ public class MainActivity extends BaseActivity implements SuggestionsAdapter.Lis
         }
     };
 
+    private View.OnClickListener ttsListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            String toSpeak = messageTextView.getText().toString();
+            Toast.makeText(getApplicationContext(), toSpeak,Toast.LENGTH_SHORT).show();
+            textToSpeech.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
+        }
+
+    };
+
     private static HashMap<Integer, Set<Character>> keyboard;
     private static Map<Character, Integer> charMapping;
 
@@ -543,6 +556,16 @@ public class MainActivity extends BaseActivity implements SuggestionsAdapter.Lis
         Configuration configuration = getResources().getConfiguration();
         configuration.fontScale = preferences.getFontSize(); //0.85 small size, 1 normal size, 1,15 big etc
 
+        //initiate the text-to-speech engine
+        textToSpeech =new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(Locale.UK);
+                }
+            }
+        });
+
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         metrics.scaledDensity = configuration.fontScale * metrics.density;
@@ -718,6 +741,8 @@ public class MainActivity extends BaseActivity implements SuggestionsAdapter.Lis
 
         currentTextCaseView = (TextView) keypadScene.getSceneRoot().findViewById(R.id.text_case);
         messageTextView = (EditText) keypadScene.getSceneRoot().findViewById(R.id.message_text);
+        ttsTextView = (ImageButton) keypadScene.getSceneRoot().findViewById(R.id.text_to_speech);
+        ttsTextView.setOnClickListener(ttsListener);
 
         messageTextView.setTextIsSelectable(true);
         messageTextView.setCursorVisible(true);
