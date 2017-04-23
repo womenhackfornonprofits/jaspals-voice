@@ -58,6 +58,9 @@
             android:label="@string/allergies"/>
         <activity android:name=".activities.DiagnosesActivity"
             android:label="@string/diagnosis"></activity>
+        <activity
+            android:name=".activities.TermsAndConditionsActivity"
+            android:label="@string/terms_and_conditions"></activity>
     </application>
 
 </manifest>

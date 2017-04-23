@@ -1,5 +1,7 @@
 package uk.co.jaspalsvoice.jv;
 
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -9,8 +11,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.speech.tts.TextToSpeech;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.ShareActionProvider;
 import android.text.Editable;
 import android.text.InputType;
@@ -63,6 +67,7 @@ import uk.co.jaspalsvoice.jv.activities.GpActivity;
 import uk.co.jaspalsvoice.jv.activities.LikesDislikesActivity;
 import uk.co.jaspalsvoice.jv.activities.MedicinesActivity;
 import uk.co.jaspalsvoice.jv.activities.PersonalDetailsActivity;
+import uk.co.jaspalsvoice.jv.activities.TermsAndConditionsActivity;
 import uk.co.jaspalsvoice.jv.activities.VitalsActivity;
 import uk.co.jaspalsvoice.jv.db.DatabaseHelper;
 import uk.co.jaspalsvoice.jv.task.FetchWordsTask;
@@ -117,35 +122,6 @@ public class MainActivity extends BaseActivity implements SuggestionsAdapter.Lis
 //            suggestions3View.setText(text.size() >= 4 ? text.get(3) : defaultSuggestion);
         }
     };
-
-    /*@Override
-    public View findViewById(int id) {
-        View view= super.findViewById(id);
-        if (view instanceof TextView){
-            *//*float a = ((TextView) view).getTextSize();
-            a += 120;*//*
-            ((TextView) view).setTextSize(200);
-        }
-        return view;
-    }*/
-
-    /*  private View.OnClickListener onSuggestionListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            String currentText = messageTextView.getText().toString();
-            String suggestion = ((TextView) v).getText().toString();
-            // Don't do any replacement if we have the default suggestion.
-            if (!defaultSuggestion.equals(suggestion)) {
-                if (t9Enabled) {
-                    ((T9Handler) currentHandler).replaceWordWith(currentText, suggestion);
-                } else {
-                    ((KeypadHandler) currentHandler).replaceWordWith(currentText, suggestion);
-                }
-            }
-        }
-    };
-*/
-
 
     private View.OnClickListener onSuggestionListener = new View.OnClickListener() {
         @Override
@@ -613,6 +589,10 @@ public class MainActivity extends BaseActivity implements SuggestionsAdapter.Lis
         defaultSuggestion = getString(R.string.no_suggestion);
         shareIntent.setType("text/plain");
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setHomeButtonEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
+
         if (t9Enabled) {
             currentHandler = new T9Handler(ContextCompat.getColor(this, R.color.colorAccent_40));
             ((T9Handler) currentHandler).setListener(keyPadListener);
@@ -633,6 +613,20 @@ public class MainActivity extends BaseActivity implements SuggestionsAdapter.Lis
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
+        MenuItem appInfoItem = menu.findItem(R.id.menu_app_info);
+        appInfoItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent appInfoIntent = new Intent(MainActivity.this, TermsAndConditionsActivity.class);
+
+                //hack so that the back button works correctly
+                //todo find a better fix
+                isPassportScene = true;
+
+                startActivity(appInfoIntent);
+                return false;
+            }
+        });
         MenuItem item = menu.findItem(R.id.menu_text_share);
         shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
         MenuItem textSizeItem = menu.findItem(R.id.menu_text_font);
@@ -640,6 +634,11 @@ public class MainActivity extends BaseActivity implements SuggestionsAdapter.Lis
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Intent intent = new Intent(MainActivity.this, FontSizeActivity.class);
+
+                //hack so that the back button works correctly
+                //todo find a better fix
+                isPassportScene = true;
+
                 startActivity(intent);
                 return false;
             }

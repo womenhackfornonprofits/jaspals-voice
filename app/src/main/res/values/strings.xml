@@ -186,4 +186,40 @@
     <string name="edit_button">Edit</string>
 
     <string name="medi_records">Medical\nRecords</string>
+
+    <string name="terms_and_conditions">App information</string>
+    <string name="terms_and_conditions_text">
+        Medivoice is developed and owned by Jaspal’s Voice Limited for further information please go to www.Jaspalsvoice.co.uk
+    \n\n
+        Medivoice was developed following android app development methodology by an ISO9000-2001 certified company.
+    \n\n
+        We endeavour to develop this app so it is intuitive to use and is error free. If you have any comments or feedback please email info@jaspalsvoice.co.uk. We aim to respond within 3 days.
+    \n\n
+        Medivoice was tested and validated by patients with neurological conditions eg Parkinsons, MND as well as carers, GPs, disease support groups, consultants and speech and language therapists.
+    \n\n
+        Testimonials by the professionals :-
+    \n\n
+        “Hi Susan, everyone who has seen it is impressed. I also showed it to a patient who was having difficulty with existing methods.” Professor Ammar Al-Chalabi, Professor of Neurology Kings College London.
+    \n\n
+        “Your communication app is inspiring” Jan Clarke, MND Clinical Nurse Specialist
+    \n\n
+        “Medivoice can make a difference in people’s lives”, Helen Paterson, Speech and Language Therapist
+    \n\n
+        “Medivoice saves me time and provides the information I need accurately and quickly”, Dr Harpreet Aurora, GP
+    \n\n
+        <u>Glossary of terms</u>
+    \n\n
+        Blood pressure – Two numbers indicating heart performance e.g. 120/80
+     \n Blood Glucose – One number that measures the amount of sugar in the blood. Ideal range 70-100 mg/dL
+     \n Environmental allergy – An adverse reaction to the environment e.g. cat or pollen
+     \n Food allergy – An adverse reaction to food e.g. Peanuts
+     \n Hepatic dosage – maximum dosage limit for patients with liver problems
+     \n Medical allergy – An adverse reaction to medication– e.g. Penicillin,
+     \n NHS number – a ten digit number assigned to users of the NHS system
+     \n Renal dosage - maximum dosage limit for patients with kidney problems
+    \n\n
+        Jaspal’s Voice takes no responsibility or liability for social media content generated via the Medivoice app.
+
+
+</string>
 </resources>

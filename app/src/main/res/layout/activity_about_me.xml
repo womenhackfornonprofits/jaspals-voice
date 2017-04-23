@@ -22,69 +22,77 @@
             android:id="@+id/sitting_position"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:padding="@dimen/margin_small"
-            app:entries="@array/about_me_sitting_position_item"/>
+            app:entries="@array/about_me_sitting_position_item"
+            android:layout_weight="1" />
 
         <uk.co.jaspalsvoice.jv.views.tickbox.TickBoxListCardView
             android:elevation="@dimen/elevation"
             android:id="@+id/need_to_use"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
             android:padding="@dimen/margin_small"
-            app:entries="@array/about_me_need_to_use"/>
+            app:entries="@array/about_me_need_to_use"
+            android:layout_weight="1" />
 
         <uk.co.jaspalsvoice.jv.views.YesNoCardView
             android:elevation="@dimen/elevation"
             android:id="@+id/breathing"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
+            android:padding="@dimen/margin_small"
+            android:layout_weight="1" />
 
         <uk.co.jaspalsvoice.jv.views.tickbox.TickBoxListCardView
             android:elevation="@dimen/elevation"
             android:id="@+id/breathing_when"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
             android:padding="@dimen/margin_small"
-            app:entries="@array/about_me_breathing_when"/>
+            app:entries="@array/about_me_breathing_when"
+            android:layout_weight="1" />
 
         <uk.co.jaspalsvoice.jv.views.tickbox.TickBoxListCardView
             android:elevation="@dimen/elevation"
             android:id="@+id/sleep_position"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
             android:padding="@dimen/margin_small"
-            app:entries="@array/about_me_sleep_position"/>
+            app:entries="@array/about_me_sleep_position"
+            android:layout_weight="1" />
 
         <uk.co.jaspalsvoice.jv.views.EatingDrinkingCardView
             android:elevation="@dimen/elevation"
             android:id="@+id/swallowing_difficulties"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
+            android:padding="@dimen/margin_small"
+            android:layout_weight="1" />
 
         <uk.co.jaspalsvoice.jv.views.YesNoCardView
             android:elevation="@dimen/elevation"
             android:id="@+id/physical_abilities"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
-            android:padding="@dimen/margin_small"/>
+            android:padding="@dimen/margin_small"
+            android:layout_weight="1" />
 
         <uk.co.jaspalsvoice.jv.views.tickbox.TickBoxListCardView
             android:elevation="@dimen/elevation"
             android:id="@+id/transfer_to"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
             android:padding="@dimen/margin_small"
-            app:entries="@array/about_me_transfer_to"/>
+            app:entries="@array/about_me_transfer_to"
+            android:layout_weight="1" />
 
     </LinearLayout>
 </ScrollView>
