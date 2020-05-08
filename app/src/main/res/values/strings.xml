@@ -153,12 +153,15 @@
     <string name="no_content_bloodpressure">Currently there are no entries for blood pressure. Please click on the + icon above to add a new entry.</string>
     <string name="vitals_blood_glucose_title">Blood Glucose</string>
     <string name="vitals_blood_glucose_subtitle">Blood Glucose</string>
+    <string name="vitals_oxygen_level_title">Oxygen Level</string>
+    <string name="vitals_oxygen_level_subtitle">Oxygen Level</string>
     <string name="vitals_height_title">Height</string>
     <string name="vitals_height_subtitle">Height</string>
     <string name="vitals_weight_title">Weight</string>
     <string name="vitals_weight_subtitle">Weight</string>
     <string name="no_content_height">Currently there are no entries for height. Please click on the + icon above to add a new entry.</string>
     <string name="no_content_weight">Currently there are no entries for weight. Please click on the + icon above to add a new entry.</string>
+    <string name="no_content_oxygen">Currently there are no entries for oxygen level. Please click on the + icon above to add a new entry.</string>
     <string name="medical_allergies_subtitle">Allergy</string>
     <string name="type_title">Type Of Allergy</string>
     <string name="food_allergies_subtitle">Allergy</string>
