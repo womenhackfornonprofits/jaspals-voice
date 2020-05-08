@@ -42,13 +42,21 @@
 
     <include layout="@layout/divider" />
 
-    <android.support.v7.widget.RecyclerView
+    <RelativeLayout
+        android:minWidth="@dimen/label_min_width"
+        android:padding="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
         android:id="@+id/bloodPressureRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:padding="@dimen/margin_xx_small"
         android:visibility="visible" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/noContentView"
