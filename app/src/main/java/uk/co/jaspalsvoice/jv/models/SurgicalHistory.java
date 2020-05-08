@@ -48,8 +48,6 @@ public class SurgicalHistory {
 
     public ContentValues toContentValues() {
         ContentValues cv = new ContentValues();
-       /* cv.put(DbOpenHelper.COLUMN_B_UUID, getUuid());
-        cv.put(DbOpenHelper.COLUMN_B_ID, getId());*/
         cv.put(DbOpenHelper.COLUMN_SH_HISTORY, getSurgicalHistory());
         cv.put(DbOpenHelper.COLUMN_SH_DATE, getDate());
         return cv;

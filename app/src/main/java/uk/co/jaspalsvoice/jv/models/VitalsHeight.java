@@ -48,8 +48,6 @@ public class VitalsHeight {
 
     public ContentValues toContentValues() {
         ContentValues cv = new ContentValues();
-       /* cv.put(DbOpenHelper.COLUMN_B_UUID, getUuid());
-        cv.put(DbOpenHelper.COLUMN_B_ID, getId());*/
         cv.put(DbOpenHelper.COLUMN_H_HEIGHT, getHeight());
         cv.put(DbOpenHelper.COLUMN_H_DATE, getDate());
         return cv;

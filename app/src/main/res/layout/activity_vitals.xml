@@ -30,6 +30,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <uk.co.jaspalsvoice.jv.views.VitalsOxygenLevelCardView
+            android:id="@+id/oxygenLevelCardView"
+            android:elevation="@dimen/elevation"
+            app:cardUseCompatPadding="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <uk.co.jaspalsvoice.jv.views.VitalsHeightCardView
             android:id="@+id/heightCardView"
             android:elevation="@dimen/elevation"

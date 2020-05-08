@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:minWidth="@dimen/label_min_width"
+        android:padding="@dimen/margin_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_normal_size"
+            android:textStyle="bold"
+            tools:text="@string/vitals_blood_pressure_title" />
+
+        <ImageView
+            android:src="@drawable/ic_add_box_grey_600_24dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/addOxygenButton"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/divider" />
+    <include
+        android:id="@+id/olTitleLayout"
+        layout="@layout/common_heading_for_list"/>
+
+    <include layout="@layout/divider" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/oxygenRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:visibility="visible"
+        android:padding="@dimen/margin_xx_small" />
+
+    <TextView
+        android:id="@+id/noContentView"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:textSize="@dimen/text_normal_size"
+        android:text="@string/no_content_oxygen"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <include
+        android:id="@+id/addNewOxygen"
+        layout="@layout/common_list_item"/>
+</LinearLayout>

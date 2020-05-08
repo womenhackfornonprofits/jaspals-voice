@@ -20,8 +20,6 @@ public class Medicine {
 
     public ContentValues toContentValues() {
         ContentValues cv = new ContentValues();
-//        cv.put(DbOpenHelper.COLUMN_M_UUID, getUuid());
-        //cv.put(DbOpenHelper.COLUMN_M_ID, getId());
         cv.put(DbOpenHelper.COLUMN_M_NAME, getName());
         cv.put(DbOpenHelper.COLUMN_M_DOSAGE, getDosage());
         cv.put(DbOpenHelper.COLUMN_M_REASON, getReason());

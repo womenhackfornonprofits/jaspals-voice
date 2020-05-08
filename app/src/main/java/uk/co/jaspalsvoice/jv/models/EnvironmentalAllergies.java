@@ -48,8 +48,6 @@ public class EnvironmentalAllergies {
 
     public ContentValues toContentValues() {
         ContentValues cv = new ContentValues();
-       /* cv.put(DbOpenHelper.COLUMN_B_UUID, getUuid());
-        cv.put(DbOpenHelper.COLUMN_B_ID, getId());*/
         cv.put(DbOpenHelper.COLUMN_EA_ALLERGY, getEnvironmentalAllergies());
         cv.put(DbOpenHelper.COLUMN_EA_TYPE, getType());
         return cv;

@@ -48,8 +48,6 @@ public class FoodAllergies {
 
     public ContentValues toContentValues() {
         ContentValues cv = new ContentValues();
-       /* cv.put(DbOpenHelper.COLUMN_B_UUID, getUuid());
-        cv.put(DbOpenHelper.COLUMN_B_ID, getId());*/
         cv.put(DbOpenHelper.COLUMN_FA_ALLERGY, getFoodAllergies());
         cv.put(DbOpenHelper.COLUMN_FA_TYPE, getType());
         return cv;

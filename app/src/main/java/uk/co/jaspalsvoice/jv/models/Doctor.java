@@ -69,14 +69,6 @@ public class Doctor {
         this.name = name;
     }
 
-  /*  public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-*/
     public String getHospitalName() {
         return hospitalName;
     }

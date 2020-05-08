@@ -1,7 +1,6 @@
 package uk.co.jaspalsvoice.jv.activities;
 
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -12,10 +11,12 @@ import uk.co.jaspalsvoice.jv.R;
 import uk.co.jaspalsvoice.jv.models.VitalsBloodGlucose;
 import uk.co.jaspalsvoice.jv.models.VitalsBloodPressure;
 import uk.co.jaspalsvoice.jv.models.VitalsHeight;
+import uk.co.jaspalsvoice.jv.models.VitalsOxygenLevel;
 import uk.co.jaspalsvoice.jv.models.VitalsWeight;
 import uk.co.jaspalsvoice.jv.views.VitalsBloodGlucoseCardView;
 import uk.co.jaspalsvoice.jv.views.VitalsBloodPressureCardView;
 import uk.co.jaspalsvoice.jv.views.VitalsHeightCardView;
+import uk.co.jaspalsvoice.jv.views.VitalsOxygenLevelCardView;
 import uk.co.jaspalsvoice.jv.views.VitalsWeightCardView;
 
 public class VitalsActivity extends BaseActivity {
@@ -25,6 +26,9 @@ public class VitalsActivity extends BaseActivity {
 
     private VitalsBloodGlucoseCardView bloodGlucoseCardView;
     private int bloodGlucoseId;
+
+    private VitalsOxygenLevelCardView oxygenLevelCardView;
+    private int oxygenLevelId;
 
     private VitalsHeightCardView heightCardView;
     private int heightId;
@@ -50,6 +54,12 @@ public class VitalsActivity extends BaseActivity {
         bloodGlucoseCardView = (VitalsBloodGlucoseCardView)
                 findViewById(R.id.bloodGlucoseCardView);
         new BloodGlucose().execute();
+    }
+
+    private void loadOxygenLevelView() {
+        oxygenLevelCardView = (VitalsOxygenLevelCardView)
+                findViewById(R.id.oxygenLevelCardView);
+        new OxygenLevel().execute();
     }
 
     private void loadHeightView() {
@@ -78,6 +88,14 @@ public class VitalsActivity extends BaseActivity {
 
     public void setBloodGlucoseId(int bloodGlucoseId) {
         this.bloodGlucoseId = bloodGlucoseId;
+    }
+
+    public int getOxygenLevelId() {
+        return oxygenLevelId;
+    }
+
+    public void setOxygenLevelId(int oxygenLevelId) {
+        this.oxygenLevelId = oxygenLevelId;
     }
 
     public int getHeightId() {
@@ -117,6 +135,18 @@ public class VitalsActivity extends BaseActivity {
         @Override
         protected void onPostExecute(List<VitalsBloodGlucose> bloodGlucoses) {
             bloodGlucoseCardView.displayRecords(new ArrayList<VitalsBloodGlucose>(bloodGlucoses));
+        }
+    }
+
+    private class OxygenLevel extends AsyncTask<Void, Void, List<VitalsOxygenLevel>> {
+        @Override
+        protected List<VitalsOxygenLevel> doInBackground(Void... params) {
+            return ((JvApplication) getApplication()).getDbHelper().readAllOxygenLevels();
+        }
+
+        @Override
+        protected void onPostExecute(List<VitalsOxygenLevel> oxygenLevels) {
+            oxygenLevelCardView.displayRecords(new ArrayList<VitalsOxygenLevel>(oxygenLevels));
         }
     }
 

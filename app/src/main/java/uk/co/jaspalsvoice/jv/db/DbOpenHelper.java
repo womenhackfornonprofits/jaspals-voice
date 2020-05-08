@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DbOpenHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "jv.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Table, columns
     public static final String TABLE_MEDICAL_TEAM = "medical_team";
@@ -65,6 +65,13 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     public static final String COLUMN_BG_ID = "id";
     public static final String COLUMN_BG_BLOODGLUCOSE = "bloodglucose";
     public static final String COLUMN_BG_DATE = "date";
+
+    // Table, columns
+    public static final String TABLE_OXYGEN_LEVEL = "oxygenleveltable";
+    public static final String COLUMN_OL_UUID = "uuid";
+    public static final String COLUMN_OL_ID = "id";
+    public static final String COLUMN_OL_OXYGENLEVEL = "oxygenlevel";
+    public static final String COLUMN_OL_DATE = "date";
 
     // Table, columns
     public static final String TABLE_HEIGHT = "heighttable";
@@ -175,6 +182,14 @@ public class DbOpenHelper extends SQLiteOpenHelper {
             + COLUMN_BG_BLOODGLUCOSE + " TEXT, "
             + COLUMN_BG_DATE + " TEXT);";
 
+    // Creation statement for TABLE_BLOODGLUCOSE
+    private static final String CREATE_TABLE_OXYGENLEVEL = "CREATE TABLE "
+            + TABLE_OXYGEN_LEVEL + "("
+            + COLUMN_OL_UUID + " TEXT, "
+            + COLUMN_OL_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_OL_OXYGENLEVEL + " TEXT, "
+            + COLUMN_OL_DATE + " TEXT);";
+
     // Creation statement for TABLE_HEIGHT
     private static final String CREATE_TABLE_HEIGHT = "CREATE TABLE "
             + TABLE_HEIGHT + "("
@@ -243,6 +258,7 @@ public class DbOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_MEDICAL_TEAM_MEMBER);
         db.execSQL(CREATE_TABLE_BLOODPRESSURE);
         db.execSQL(CREATE_TABLE_BLOODGLUCOSE);
+        db.execSQL(CREATE_TABLE_OXYGENLEVEL);
         db.execSQL(CREATE_TABLE_HEIGHT);
         db.execSQL(CREATE_TABLE_WEIGHT);
         db.execSQL(CREATE_TABLE_MEDICAL_ALLERGIES);
@@ -254,6 +270,8 @@ public class DbOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        if (oldVersion < 2) {
+            db.execSQL(CREATE_TABLE_OXYGENLEVEL);
+        }
     }
 }

@@ -24,6 +24,7 @@ import uk.co.jaspalsvoice.jv.models.SurgicalHistory;
 import uk.co.jaspalsvoice.jv.models.VitalsBloodGlucose;
 import uk.co.jaspalsvoice.jv.models.VitalsBloodPressure;
 import uk.co.jaspalsvoice.jv.models.VitalsHeight;
+import uk.co.jaspalsvoice.jv.models.VitalsOxygenLevel;
 import uk.co.jaspalsvoice.jv.models.VitalsWeight;
 
 
@@ -83,6 +84,13 @@ public class DbHelper {
             DbOpenHelper.COLUMN_BG_ID,
             DbOpenHelper.COLUMN_BG_BLOODGLUCOSE,
             DbOpenHelper.COLUMN_BG_DATE,
+    };
+
+    private static final String[] OXYGEN_LEVEL_COLUMN_NAMES = new String[]{
+            DbOpenHelper.COLUMN_OL_UUID,
+            DbOpenHelper.COLUMN_OL_ID,
+            DbOpenHelper.COLUMN_OL_OXYGENLEVEL,
+            DbOpenHelper.COLUMN_OL_DATE,
     };
 
     private static final String[] HEIGHT_COLUMN_NAMES = new String[]{
@@ -365,6 +373,43 @@ public class DbHelper {
                             String[] whereArgs = new String[]{String.valueOf(id)};
                             if (sqlite.update(DbOpenHelper.TABLE_WEIGHT,
                                     weight.toContentValues(), where, whereArgs) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Update succeeded, updated rows:" + insertedRows + id);
+                            }
+                        }
+                    }
+                    sqlite.setTransactionSuccessful();
+                    return insertedRows;
+                } finally {
+                    sqlite.endTransaction();
+                }
+            }
+        });
+    }
+
+    /**
+     * Inserts oxygen levels in the db.
+     */
+    public Future<Long> insertOrReplaceOxygenLevel(final List<VitalsOxygenLevel> oxygenLevels,
+                                              final boolean isUpdate, final int id) {
+        return executor.submit(new Callable<Long>() {
+            @Override
+            public Long call() throws Exception {
+                long insertedRows = 0;
+                try {
+                    sqlite.beginTransaction();
+                    for (VitalsOxygenLevel oxygenLevel: oxygenLevels) {
+                        if (!isUpdate) {
+                            if (sqlite.insert(DbOpenHelper.TABLE_OXYGEN_LEVEL, null,
+                                    oxygenLevel.toContentValues()) >= 0) {
+                                insertedRows++;
+                                Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
+                            }
+                        } else {
+                            String where = "id=?";
+                            String[] whereArgs = new String[]{String.valueOf(id)};
+                            if (sqlite.update(DbOpenHelper.TABLE_OXYGEN_LEVEL,
+                                    oxygenLevel.toContentValues(), where, whereArgs) >= 0) {
                                 insertedRows++;
                                 Log.d(TAG, "Update succeeded, updated rows:" + insertedRows + id);
                             }
@@ -772,6 +817,40 @@ public class DbHelper {
         }
         return weights;
     }
+
+    /**
+     * Gets from db a list containing all oxygen levels
+     */
+    public List<VitalsOxygenLevel> readAllOxygenLevels() {
+        List<VitalsOxygenLevel> oxygenLevels = new ArrayList<>();
+        Cursor allOxygenLevels= null;
+        try {
+            allOxygenLevels = readAllFuture(DbOpenHelper.TABLE_OXYGEN_LEVEL,
+                    OXYGEN_LEVEL_COLUMN_NAMES, DbOpenHelper.COLUMN_OL_ID).get();
+            if (allOxygenLevels != null) {
+                if (allOxygenLevels.moveToFirst()) {
+                    while (!allOxygenLevels.isAfterLast()) {
+                        VitalsOxygenLevel oxygenLevel = new VitalsOxygenLevel();
+                        oxygenLevel.setId(allOxygenLevels.getInt(allOxygenLevels.getColumnIndex(DbOpenHelper.COLUMN_OL_ID)));
+                        oxygenLevel.setOxygenLevel(allOxygenLevels.getString(allOxygenLevels.getColumnIndex(DbOpenHelper.COLUMN_OL_OXYGENLEVEL)));
+                        oxygenLevel.setDate(allOxygenLevels.getString(allOxygenLevels.getColumnIndex(DbOpenHelper.COLUMN_OL_DATE)));
+                        oxygenLevels.add(oxygenLevel);
+                        allOxygenLevels.moveToNext();
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            Log.e(TAG, e.getMessage(), e);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            if (allOxygenLevels != null) {
+                allOxygenLevels.close();
+            }
+        }
+        return oxygenLevels;
+    }
+
 
     /**
      * Gets from db a list containing all medical allergies.

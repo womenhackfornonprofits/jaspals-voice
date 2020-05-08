@@ -48,8 +48,6 @@ public class VitalsBloodPressure {
 
     public ContentValues toContentValues() {
         ContentValues cv = new ContentValues();
-       /* cv.put(DbOpenHelper.COLUMN_B_UUID, getUuid());
-        cv.put(DbOpenHelper.COLUMN_B_ID, getId());*/
         cv.put(DbOpenHelper.COLUMN_B_BLOODPRESSURE, getBloodPressure());
         cv.put(DbOpenHelper.COLUMN_B_DATE, getDate());
         return cv;
