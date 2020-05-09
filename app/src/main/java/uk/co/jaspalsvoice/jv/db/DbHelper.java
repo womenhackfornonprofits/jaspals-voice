@@ -164,7 +164,7 @@ public class DbHelper {
                     Log.d(TAG, "Insert succeeded, inserted rows:" + insertedRows);
                     sqlite.setTransactionSuccessful();
                 } catch (Exception e){
-                    e.printStackTrace();
+                    Log.e(TAG, e.getMessage(), e);
                 }
                 finally {
                     sqlite.endTransaction();
@@ -641,7 +641,7 @@ public class DbHelper {
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage(), e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage(), e);
         } finally {
             if (allDoctors != null) {
                 allDoctors.close();
@@ -676,7 +676,7 @@ public class DbHelper {
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage(), e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage(), e);
         } finally {
             if (allDoctors != null) {
                 allDoctors.close();
@@ -709,7 +709,7 @@ public class DbHelper {
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage(), e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage(), e);
         } finally {
             if (allBloodPressures != null) {
                 allBloodPressures.close();
@@ -742,7 +742,7 @@ public class DbHelper {
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage(), e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage(), e);
         } finally {
             if (allBloodGlucoses != null) {
                 allBloodGlucoses.close();
@@ -775,7 +775,7 @@ public class DbHelper {
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage(), e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage(), e);
         } finally {
             if (allHeights != null) {
                 allHeights.close();
@@ -809,7 +809,7 @@ public class DbHelper {
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage(), e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage(), e);
         } finally {
             if (allWeights != null) {
                 allWeights.close();
@@ -842,7 +842,7 @@ public class DbHelper {
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage(), e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage(), e);
         } finally {
             if (allOxygenLevels != null) {
                 allOxygenLevels.close();
@@ -876,7 +876,7 @@ public class DbHelper {
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage(), e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage(), e);
         } finally {
             if (allMedicalAllergies != null) {
                 allMedicalAllergies.close();
@@ -909,7 +909,7 @@ public class DbHelper {
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage(), e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage(), e);
         } finally {
             if (allFoodAllergies != null) {
                 allFoodAllergies.close();
@@ -942,7 +942,7 @@ public class DbHelper {
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage(), e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage(), e);
         } finally {
             if (allEnvironmentalAllergies != null) {
                 allEnvironmentalAllergies.close();
@@ -975,7 +975,7 @@ public class DbHelper {
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage(), e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage(), e);
         } finally {
             if (allDiagnoses != null) {
                 allDiagnoses.close();
@@ -1008,7 +1008,7 @@ public class DbHelper {
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage(), e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage(), e);
         } finally {
             if (allHistories != null) {
                 allHistories.close();
@@ -1048,7 +1048,7 @@ public class DbHelper {
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage(), e);
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage(), e);
         } finally {
             if (allMedicines != null) {
                 allMedicines.close();
